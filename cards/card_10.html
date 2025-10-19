@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Loops & Range - Counted Repetition</title>
+    <link rel="stylesheet" href="../static/css/hypercard.css">
+</head>
+<body class="has-sticky-nav">
+    <!-- Sticky Top Navigation -->
+    <div class="sticky-top-nav">
+        <div class="sticky-nav-left">
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_9.html'">←</button>
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_11.html'">→</button>
+        </div>
+        <div class="sticky-nav-center">Card 10 / 15</div>
+        <div class="sticky-nav-right">
+            <a href="../browse.html" class="sticky-nav-link">Browse</a>
+            <a href="../index.html" class="sticky-nav-link">Home</a>
+        </div>
+    </div>
+
+    <div class="hypercard-stack">
+        <div class="card-header">
+            <div class="card-title">For Loops & Range - Counted Repetition</div>
+            <div class="card-number">Card 10 of 15</div>
+        </div>
+
+        <div class="card-content">
+            <h2>Repeating a Specific Number of Times</h2>
+
+            <div class="narrative">
+                "For loops allow us to continuously change the value of a loop variable. Best for repeating a certain number of times."
+            </div>
+
+            <h3>Understanding Range</h3>
+
+            <div class="visualization">
+                <div class="viz-container">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <strong style="font-size: 18px;">range() generates a sequence of numbers</strong>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div class="viz-box" style="background-color: var(--viz-bg, #3a4a5a); border: 2px solid var(--viz-border, #4a5a6a);">
+                            <code style="font-size: 16px;">range(5)</code>
+                            <div style="margin-top: 10px; font-size: 14px;">
+                                0, 1, 2, 3, 4
+                            </div>
+                            <div style="margin-top: 10px; font-size: 12px; opacity: 0.8;">
+                                Starts at 0, stops before 5
+                            </div>
+                        </div>
+
+                        <div class="viz-box" style="background-color: var(--viz-bg, #4a3a4a); border: 2px solid var(--viz-border, #5a4a5a);">
+                            <code style="font-size: 16px;">range(2, 7)</code>
+                            <div style="margin-top: 10px; font-size: 14px;">
+                                2, 3, 4, 5, 6
+                            </div>
+                            <div style="margin-top: 10px; font-size: 12px; opacity: 0.8;">
+                                Starts at 2, stops before 7
+                            </div>
+                        </div>
+
+                        <div class="viz-box" style="background-color: var(--viz-bg, #3a4a4a); border: 2px solid var(--viz-border, #4a6a6a);">
+                            <code style="font-size: 16px;">range(0, 10, 2)</code>
+                            <div style="margin-top: 10px; font-size: 14px;">
+                                0, 2, 4, 6, 8
+                            </div>
+                            <div style="margin-top: 10px; font-size: 12px; opacity: 0.8;">
+                                Step by 2 each time
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-concept">
+                <strong>Critical Detail:</strong> range() is non-inclusive - it stops BEFORE the end number. If you want numbers 1-10, use range(1, 11).
+            </div>
+
+            <h3>How For Loops Work</h3>
+
+            <div class="visualization">
+                <div class="viz-container">
+                    <pre class="viz-code-block" style="margin-bottom: 15px;">
+for ii in range(5):
+    print(ii)</pre>
+
+                    <div class="viz-code-block">
+                        <strong>What's happening:</strong><br><br>
+                        # Iteration 1: ii = 0<br>
+                        0<br><br>
+                        # Iteration 2: ii = 1<br>
+                        1<br><br>
+                        # Iteration 3: ii = 2<br>
+                        2<br><br>
+                        # Iteration 4: ii = 3<br>
+                        3<br><br>
+                        # Iteration 5: ii = 4<br>
+                        4
+                    </div>
+                </div>
+            </div>
+
+            <h3>Interactive For Loop Explorer</h3>
+
+            <div class="visualization">
+                <div class="viz-container">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 15px;">
+                        <div>
+                            <label style="display: block; font-weight: bold; margin-bottom: 5px;">Start:</label>
+                            <input type="number" id="rangeStart" value="0" class="viz-input" style="width: 100%;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: bold; margin-bottom: 5px;">Stop:</label>
+                            <input type="number" id="rangeStop" value="5" class="viz-input" style="width: 100%;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: bold; margin-bottom: 5px;">Step:</label>
+                            <input type="number" id="rangeStep" value="1" class="viz-input" style="width: 100%;">
+                        </div>
+                    </div>
+
+                    <button class="hc-button" onclick="runForLoop()" style="width: 100%; margin-bottom: 15px;">Run For Loop</button>
+
+                    <div class="viz-display-area" style="margin-bottom: 15px;">
+                        <div id="loop-code" style="font-family: monospace; margin-bottom: 10px;"></div>
+                    </div>
+
+                    <div id="for-output" class="viz-code-block" style="min-height: 100px;">
+                        Configure range and click Run
+                    </div>
+                </div>
+            </div>
+
+            <h3>For Loop vs While Loop</h3>
+
+            <pre class="viz-code-block">
+# For Loop - when you know how many times
+for ii in range(5):
+    print(ii)
+
+# While Loop - when you don't know
+counter = 0
+while counter < 5:
+    print(counter)
+    counter += 1
+
+# Same output, different use cases!</pre>
+
+            <div class="narrative">
+                "For loops are cleaner when you know the count. While loops are better when the condition might change in unpredictable ways."
+            </div>
+
+            <div class="key-concept">
+                <strong>Mental Model:</strong> A for loop is like a ticket dispenser. You know exactly how many tickets (iterations) you'll get. The machine automatically counts for you.
+            </div>
+
+            <h3>Common For Loop Patterns</h3>
+            <ul>
+                <li><strong>Count to N:</strong> for ii in range(n)</li>
+                <li><strong>Count from A to B:</strong> for ii in range(a, b)</li>
+                <li><strong>Count by steps:</strong> for ii in range(0, 10, 2) # evens</li>
+                <li><strong>Countdown:</strong> for ii in range(10, 0, -1)</li>
+            </ul>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-arrows">
+                <button class="arrow-button" onclick="window.location.href='card_9.html'">←</button>
+                <button class="arrow-button" onclick="window.location.href='card_11.html'">→</button>
+            </div>
+
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="hc-button" onclick="window.location.href='../browse.html'">
+                    Browse <span class="shortcut">Ctrl+B</span>
+                </button>
+                <button class="hc-button" onclick="window.location.href='../index.html'">
+                    Home <span class="shortcut">Ctrl+H</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 66.67%"></div>
+        </div>
+    </div>
+
+    <script src="../static/js/navigation.js"></script>
+    <script>
+    function runForLoop() {
+        const start = parseInt(document.getElementById('rangeStart').value);
+        const stop = parseInt(document.getElementById('rangeStop').value);
+        const step = parseInt(document.getElementById('rangeStep').value);
+        const output = document.getElementById('for-output');
+        const codeDisplay = document.getElementById('loop-code');
+
+        if (step === 0) {
+            output.innerHTML = '<span style="color: #ff6b6b;">Error: Step cannot be 0!</span>';
+            return;
+        }
+
+        if ((step > 0 && start >= stop) || (step < 0 && start <= stop)) {
+            output.innerHTML = '<span style="color: #ff6b6b;">Warning: This range produces no values!</span>';
+            codeDisplay.innerHTML = `for ii in range(${start}, ${stop}, ${step}):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(ii)<br><br># No iterations - range is empty`;
+            return;
+        }
+
+        // Generate the code display
+        if (step === 1) {
+            codeDisplay.innerHTML = `for ii in range(${start}, ${stop}):`;
+        } else {
+            codeDisplay.innerHTML = `for ii in range(${start}, ${stop}, ${step}):`;
+        }
+        codeDisplay.innerHTML += `<br>&nbsp;&nbsp;&nbsp;&nbsp;print(ii)`;
+
+        // Generate output
+        let result = '> Running loop...\n\n';
+        let count = 0;
+        const maxIterations = 50; // Safety limit
+
+        if (step > 0) {
+            for (let i = start; i < stop && count < maxIterations; i += step) {
+                result += `# ii = ${i}\n${i}\n\n`;
+                count++;
+            }
+        } else {
+            for (let i = start; i > stop && count < maxIterations; i += step) {
+                result += `# ii = ${i}\n${i}\n\n`;
+                count++;
+            }
+        }
+
+        if (count >= maxIterations) {
+            result += '\n... (truncated for display)';
+        }
+
+        result += `\n> Loop complete! ${count} iterations`;
+        output.textContent = result;
+    }
+
+    // Initialize
+    runForLoop();
+    </script>
+</body>
+</html>

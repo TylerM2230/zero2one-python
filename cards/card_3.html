@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Types - Why Different Boxes?</title>
+    <link rel="stylesheet" href="../static/css/hypercard.css" />
+  </head>
+  <body class="has-sticky-nav">
+    <!-- Sticky Top Navigation -->
+    <div class="sticky-top-nav">
+      <div class="sticky-nav-left">
+        <button
+          class="sticky-nav-arrow"
+          onclick="window.location.href='card_2.html'"
+        >
+          ←
+        </button>
+        <button
+          class="sticky-nav-arrow"
+          onclick="window.location.href='card_4.html'"
+        >
+          →
+        </button>
+      </div>
+      <div class="sticky-nav-center">Card 3 / 15</div>
+      <div class="sticky-nav-right">
+        <a href="../browse.html" class="sticky-nav-link">Browse</a>
+        <a href="../index.html" class="sticky-nav-link">Home</a>
+      </div>
+    </div>
+
+    <div class="hypercard-stack">
+      <div class="card-header">
+        <div class="card-title">Data Types - Why Different Boxes?</div>
+        <div class="card-number">Card 3 of 15</div>
+      </div>
+
+      <div class="card-content">
+        <h2>Why Can't We Treat All Information the Same?</h2>
+
+        <div class="narrative">
+          "There are different types of information out there, and we have to
+          treat each one differently."
+        </div>
+
+        <h3>The Three Fundamental Types</h3>
+
+        <div class="visualization">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              gap: 15px;
+            "
+          >
+            <div class="viz-box">
+              <h4 style="margin-bottom: 10px">String (str)</h4>
+              <p style="font-size: 13px; margin-bottom: 10px">Text/Words</p>
+              <code style="display: block; padding: 5px">"Hello World"</code>
+              <p style="font-size: 12px; margin-top: 10px">
+                Strings are sequences of characters. Anything in quotes.
+              </p>
+            </div>
+
+            <div class="viz-box">
+              <h4 style="margin-bottom: 10px">Integer (int)</h4>
+              <p style="font-size: 13px; margin-bottom: 10px">Whole Numbers</p>
+              <code style="display: block; padding: 5px">42</code>
+              <p style="font-size: 12px; margin-top: 10px">
+                Numbers without decimals. Can do math with them.
+              </p>
+            </div>
+
+            <div class="viz-box">
+              <h4 style="margin-bottom: 10px">Boolean (bool)</h4>
+              <p style="font-size: 13px; margin-bottom: 10px">True/False</p>
+              <code style="display: block; padding: 5px">True</code>
+              <p style="font-size: 12px; margin-top: 10px">
+                Only two values: True or False. Like a light switch (on/off).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h3>Why Types Matter</h3>
+        <p>Operations that work on one type don't work on others:</p>
+
+        <div class="visualization">
+          <div class="viz-container">
+            <div class="viz-button-group">
+              <button
+                class="hc-button"
+                onclick="tryOperation('valid1')"
+                style="width: 250px"
+              >
+                5 + 3 = ?
+              </button>
+              <button
+                class="hc-button"
+                onclick="tryOperation('valid2')"
+                style="width: 250px"
+              >
+                "Hello" + " World" = ?
+              </button>
+              <button
+                class="hc-button"
+                onclick="tryOperation('invalid')"
+                style="width: 250px"
+              >
+                "5" + 3 = ?
+              </button>
+              <button
+                class="hc-button"
+                onclick="tryOperation('invalid2')"
+                style="width: 250px"
+              >
+                True + "hello" = ?
+              </button>
+            </div>
+
+            <div
+              id="type-result"
+              class="viz-display-area"
+              style="margin-top: 15px; min-height: 50px; font-family: monospace"
+            >
+              Click operations to see results
+            </div>
+          </div>
+        </div>
+
+        <div class="key-concept">
+          <strong>Mental Model:</strong> Types are like tools. You can't hammer
+          in a screw. You can't saw with a screwdriver. Same data, different
+          tools, different results.
+        </div>
+
+        <h3>Type Conversion (Casting)</h3>
+        <p>Sometimes you need to convert between types:</p>
+        <pre class="viz-code-block">
+age = "25"        # This is a string
+age = int(age)    # Now it's a number: 25
+
+score = 100       # This is a number
+score = str(score) # Now it's a string: "100"</pre
+        >
+
+        <div class="narrative">
+          "Understanding types is understanding what operations make sense. You
+          don't 'add' words the way you add numbers. The computer needs to know
+          which 'add' you mean."
+        </div>
+      </div>
+
+      <div class="bottom-nav">
+        <div class="nav-arrows">
+          <button
+            class="arrow-button"
+            onclick="window.location.href='card_2.html'"
+          >
+            ←
+          </button>
+          <button
+            class="arrow-button"
+            onclick="window.location.href='card_4.html'"
+          >
+            →
+          </button>
+        </div>
+
+        <div style="display: flex; gap: 8px; flex-wrap: wrap">
+          <button
+            class="hc-button"
+            onclick="window.location.href='../browse.html'"
+          >
+            Browse <span class="shortcut">Ctrl+B</span>
+          </button>
+          <button
+            class="hc-button"
+            onclick="window.location.href='../index.html'"
+          >
+            Home <span class="shortcut">Ctrl+H</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 20%"></div>
+      </div>
+    </div>
+
+    <script src="../static/js/navigation.js"></script>
+    <script>
+      function tryOperation(op) {
+        const result = document.getElementById("type-result");
+
+        // Remove all state classes first
+        result.classList.remove("viz-state-success", "viz-state-error");
+
+        switch (op) {
+          case "valid1":
+            result.innerHTML =
+              "✔ <strong>5 + 3 = 8</strong><br>Both are integers, addition works!";
+            result.classList.add("viz-state-success");
+            break;
+          case "valid2":
+            result.innerHTML =
+              '✔ <strong>"Hello" + " World" = "Hello World"</strong><br>Both are strings, concatenation works!';
+            result.classList.add("viz-state-success");
+            break;
+          case "invalid":
+            result.innerHTML =
+              '✘ <strong>TypeError: "5" + 3</strong><br>String + Integer doesn\'t make sense!<br>Did you mean "53" (concat) or 8 (addition)?';
+            result.classList.add("viz-state-error");
+            break;
+          case "invalid2":
+            result.innerHTML =
+              '✘ <strong>TypeError: True + "hello"</strong><br>Boolean + String doesn\'t make sense!<br>Computer needs clarity on what operation to perform.';
+            result.classList.add("viz-state-error");
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Cards - Python Zero to One</title>
+    <link rel="stylesheet" href="static/css/hypercard.css">
+</head>
+<body class="has-sticky-nav">
+    <!-- Sticky Top Navigation -->
+    <div class="sticky-top-nav">
+        <div class="sticky-nav-left">
+            <button class="sticky-nav-arrow" onclick="window.location.href='index.html'">←</button>
+            <button class="sticky-nav-arrow" disabled>→</button>
+        </div>
+        <div class="sticky-nav-center">Browse All Cards</div>
+        <div class="sticky-nav-right">
+            <a href="browse.html" class="sticky-nav-link">Browse</a>
+            <a href="index.html" class="sticky-nav-link">Home</a>
+        </div>
+    </div>
+
+    <div class="hypercard-stack">
+        <div class="card-header">
+            <div class="card-title">Browse All Cards</div>
+            <div class="card-number">16 Total</div>
+        </div>
+
+        <div class="card-content">
+            <h2>Card Stack Overview</h2>
+            <div class="card-grid">
+                <a href="index.html" class="card-item">
+                    <div class="card-item-number">Home</div>
+                    <div class="card-item-title">Welcome</div>
+                </a>
+                <a href="cards/card_0.html" class="card-item">
+                    <div class="card-item-number">0</div>
+                    <div class="card-item-title">The Computational Mindset</div>
+                </a>
+                <a href="cards/card_1.html" class="card-item">
+                    <div class="card-item-number">1</div>
+                    <div class="card-item-title">Mental Model of Programs</div>
+                </a>
+                <a href="cards/card_2.html" class="card-item">
+                    <div class="card-item-number">2</div>
+                    <div class="card-item-title">Variables as Mental Containers</div>
+                </a>
+                <a href="cards/card_3.html" class="card-item">
+                    <div class="card-item-number">3</div>
+                    <div class="card-item-title">Data Types - Why Different Boxes?</div>
+                </a>
+                <a href="cards/card_4.html" class="card-item">
+                    <div class="card-item-number">4</div>
+                    <div class="card-item-title">Input/Output - Program Conversation</div>
+                </a>
+                <a href="cards/card_5.html" class="card-item">
+                    <div class="card-item-number">5</div>
+                    <div class="card-item-title">Comparison Operators - Making Judgments</div>
+                </a>
+                <a href="cards/card_6.html" class="card-item">
+                    <div class="card-item-number">6</div>
+                    <div class="card-item-title">Logical Operators - Combining Truth</div>
+                </a>
+                <a href="cards/card_7.html" class="card-item">
+                    <div class="card-item-number">7</div>
+                    <div class="card-item-title">Conditionals - The Decision Tree</div>
+                </a>
+                <a href="cards/card_8.html" class="card-item">
+                    <div class="card-item-number">8</div>
+                    <div class="card-item-title">Nested Conditionals</div>
+                </a>
+                <a href="cards/card_9.html" class="card-item">
+                    <div class="card-item-number">9</div>
+                    <div class="card-item-title">While Loops - Persistent Patterns</div>
+                </a>
+                <a href="cards/card_10.html" class="card-item">
+                    <div class="card-item-number">10</div>
+                    <div class="card-item-title">For Loops & Range</div>
+                </a>
+                <a href="cards/card_11.html" class="card-item">
+                    <div class="card-item-number">11</div>
+                    <div class="card-item-title">Lists - Organizing Related Data</div>
+                </a>
+                <a href="cards/card_12.html" class="card-item">
+                    <div class="card-item-number">12</div>
+                    <div class="card-item-title">Functions - Building Your Own Tools</div>
+                </a>
+                <a href="cards/card_13.html" class="card-item">
+                    <div class="card-item-number">13</div>
+                    <div class="card-item-title">Dictionaries - Meaning Over Position</div>
+                </a>
+                <a href="cards/card_14.html" class="card-item">
+                    <div class="card-item-number">14</div>
+                    <div class="card-item-title">Recursion - Problems Within Problems</div>
+                </a>
+                <a href="cards/card_15.html" class="card-item">
+                    <div class="card-item-number">15</div>
+                    <div class="card-item-title">Next Steps</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-arrows">
+                <button class="arrow-button" disabled>←</button>
+                <button class="arrow-button" disabled>→</button>
+            </div>
+
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="hc-button" onclick="window.location.href='browse.html'">
+                    Browse <span class="shortcut">Ctrl+B</span>
+                </button>
+                <button class="hc-button" onclick="window.location.href='index.html'">
+                    Home <span class="shortcut">Ctrl+H</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/js/navigation.js"></script>
+</body>
+</html>

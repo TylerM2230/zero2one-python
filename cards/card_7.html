@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditionals - The Decision Tree</title>
+    <link rel="stylesheet" href="../static/css/hypercard.css">
+</head>
+<body class="has-sticky-nav">
+    <!-- Sticky Top Navigation -->
+    <div class="sticky-top-nav">
+        <div class="sticky-nav-left">
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_6.html'">←</button>
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_8.html'">→</button>
+        </div>
+        <div class="sticky-nav-center">Card 7 / 15</div>
+        <div class="sticky-nav-right">
+            <a href="../browse.html" class="sticky-nav-link">Browse</a>
+            <a href="../index.html" class="sticky-nav-link">Home</a>
+        </div>
+    </div>
+
+    <div class="hypercard-stack">
+        <div class="card-header">
+            <div class="card-title">Conditionals - The Decision Tree</div>
+            <div class="card-number">Card 7 of 15</div>
+        </div>
+
+        <div class="card-content">
+            <h2>How Do Programs Make Decisions?</h2>
+
+            <div class="narrative">
+                "Conditionals is how we allow our programs to make a decision. We use a condition to decide if we should execute a given block of code."
+            </div>
+
+            <h3>The Decision Structure</h3>
+
+            <div class="visualization">
+                <div class="viz-container" style="text-align: center;">
+                    <div class="viz-box" style="display: inline-block; margin-bottom: 20px; max-width: 400px;">
+                        <strong style="font-size: 18px;">IF condition is True?</strong>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-around; gap: 20px; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="font-size: 24px; margin-bottom: 10px;">✓ YES</div>
+                            <div class="viz-box viz-state-success">
+                                <strong>Execute this code</strong>
+                            </div>
+                        </div>
+
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="font-size: 24px; margin-bottom: 10px;">✗ NO</div>
+                            <div class="viz-box viz-state-error">
+                                <strong>Skip this code</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>The If-Elif-Else Chain</h3>
+
+            <pre class="viz-code-block">
+if condition1:
+    # Execute if condition1 is True
+elif condition2:
+    # Execute if condition1 False, condition2 True
+elif condition3:
+    # Execute if above False, condition3 True
+else:
+    # Execute if ALL above are False</pre>
+
+            <div class="key-concept">
+                <strong>Critical Concept:</strong> Indentation creates hierarchy. The indented code belongs to the condition above it. This is how Python knows what code to run when a condition is True.
+            </div>
+
+            <h3>Interactive Decision Tree</h3>
+
+            <div class="visualization">
+                <div class="viz-container">
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Enter a number:</label>
+                        <input type="number" id="numInput" value="0" class="viz-input" style="width: 100%; font-size: 16px; font-family: monospace;">
+                    </div>
+
+                    <button class="hc-button" onclick="evaluateNumber()" style="width: 100%; margin-bottom: 15px;">Evaluate</button>
+
+                    <div id="decision-path" class="viz-display-area" style="min-height: 100px;">
+                        <!-- Decision path will appear here -->
+                    </div>
+
+                    <div class="viz-code-block" style="margin-top: 15px; min-height: 60px;">
+                        <div id="code-trace">Enter a number and click Evaluate</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Real-World Example: Grade Calculator</h3>
+
+            <pre class="viz-code-block">
+score = 85
+
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"    # This runs! (85 >= 80)
+elif score >= 70:
+    grade = "C"    # Skipped (already found match)
+else:
+    grade = "F"    # Skipped (already found match)
+
+print(grade)  # Output: "B"</pre>
+
+            <div class="narrative">
+                "Once a condition is True, the rest are skipped. It's like a waterfall - water flows down the first path it finds."
+            </div>
+
+            <h3>Key Principles</h3>
+            <ul>
+                <li><strong>if:</strong> Always comes first, tests one condition</li>
+                <li><strong>elif:</strong> Optional, can have many, tests additional conditions</li>
+                <li><strong>else:</strong> Optional, comes last, catches everything else</li>
+                <li><strong>Only ONE block executes</strong> - first True condition wins</li>
+            </ul>
+
+            <div class="key-concept">
+                <strong>Mental Model:</strong> A conditional is like a choose-your-own-adventure book. Based on the condition (your choice), you follow one path and skip the others.
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-arrows">
+                <button class="arrow-button" onclick="window.location.href='card_6.html'">←</button>
+                <button class="arrow-button" onclick="window.location.href='card_8.html'">→</button>
+            </div>
+
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="hc-button" onclick="window.location.href='../browse.html'">
+                    Browse <span class="shortcut">Ctrl+B</span>
+                </button>
+                <button class="hc-button" onclick="window.location.href='../index.html'">
+                    Home <span class="shortcut">Ctrl+H</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 46.67%"></div>
+        </div>
+    </div>
+
+    <script src="../static/js/navigation.js"></script>
+    <script>
+    function evaluateNumber() {
+        const num = parseFloat(document.getElementById('numInput').value);
+        const path = document.getElementById('decision-path');
+        const trace = document.getElementById('code-trace');
+
+        let result = '';
+        let pathHTML = '';
+        let codeTrace = '';
+
+        codeTrace = `> number = ${num}\n\n`;
+
+        pathHTML = '<div style="text-align: left;">';
+
+        if (num > 0) {
+            result = 'POSITIVE';
+            pathHTML += '<div class="viz-box viz-state-success" style="margin: 10px 0;"><strong>✓ if num > 0:</strong> TRUE - Execute this block</div>';
+            pathHTML += '<div class="viz-box" style="margin: 10px 0;"><strong>elif num < 0:</strong> SKIPPED</div>';
+            pathHTML += '<div class="viz-box" style="margin: 10px 0;"><strong>else:</strong> SKIPPED</div>';
+            codeTrace += `> if num > 0:\n>     print("POSITIVE")\nPOSITIVE`;
+        } else if (num < 0) {
+            result = 'NEGATIVE';
+            pathHTML += '<div class="viz-box viz-state-error" style="margin: 10px 0;"><strong>if num > 0:</strong> FALSE - Skip</div>';
+            pathHTML += '<div class="viz-box viz-state-success" style="margin: 10px 0;"><strong>✓ elif num < 0:</strong> TRUE - Execute this block</div>';
+            pathHTML += '<div class="viz-box" style="margin: 10px 0;"><strong>else:</strong> SKIPPED</div>';
+            codeTrace += `> if num > 0:\n>     print("POSITIVE")\n(skipped)\n\n> elif num < 0:\n>     print("NEGATIVE")\nNEGATIVE`;
+        } else {
+            result = 'ZERO';
+            pathHTML += '<div class="viz-box viz-state-error" style="margin: 10px 0;"><strong>if num > 0:</strong> FALSE - Skip</div>';
+            pathHTML += '<div class="viz-box viz-state-error" style="margin: 10px 0;"><strong>elif num < 0:</strong> FALSE - Skip</div>';
+            pathHTML += '<div class="viz-box viz-state-success" style="margin: 10px 0;"><strong>✓ else:</strong> Execute this block (default)</div>';
+            codeTrace += `> if num > 0:\n>     print("POSITIVE")\n(skipped)\n\n> elif num < 0:\n>     print("NEGATIVE")\n(skipped)\n\n> else:\n>     print("ZERO")\nZERO`;
+        }
+
+        pathHTML += `<div class="viz-code-block" style="margin-top: 20px; text-align: center; font-size: 24px;"><strong>Result: ${result}</strong></div>`;
+        pathHTML += '</div>';
+
+        path.innerHTML = pathHTML;
+        trace.innerHTML = codeTrace;
+    }
+
+    // Initialize
+    evaluateNumber();
+    </script>
+</body>
+</html>

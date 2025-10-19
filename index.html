@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Zero to One</title>
+    <link rel="stylesheet" href="static/css/hypercard.css">
+</head>
+<body class="has-sticky-nav">
+    <!-- Sticky Top Navigation -->
+    <div class="sticky-top-nav">
+        <div class="sticky-nav-left">
+            <button class="sticky-nav-arrow" disabled>←</button>
+            <button class="sticky-nav-arrow" onclick="window.location.href='cards/card_0.html'">→</button>
+        </div>
+        <div class="sticky-nav-center">Home</div>
+        <div class="sticky-nav-right">
+            <a href="browse.html" class="sticky-nav-link">Browse</a>
+            <a href="index.html" class="sticky-nav-link">Home</a>
+        </div>
+    </div>
+
+    <div class="hypercard-stack">
+        <div class="card-header">
+            <div class="card-title">Python Zero to One</div>
+            <div class="card-number">Home</div>
+        </div>
+
+        <div class="card-content">
+            <h2>Welcome to Python Zero to One</h2>
+
+            <div class="narrative">
+                "This is not a syntax reference. This is a journey into computational thinking."
+            </div>
+
+            <p>
+                Most programming tutorials teach you <em>what</em> to type. This guide teaches you <em>how to think</em> so that what you type makes sense.
+            </p>
+
+            <h3>How to Use This Guide</h3>
+            <ul>
+                <li>Navigate using arrow buttons or keyboard shortcuts (Ctrl+← / Ctrl+→)</li>
+                <li>Press <strong>Ctrl+B</strong> to browse all cards</li>
+                <li>Each card builds on previous ones—go in order the first time</li>
+                <li>Interact with visualizations to build intuition</li>
+            </ul>
+
+            <div class="key-concept">
+                <strong>Philosophy:</strong> Understanding why something works is more valuable than memorizing how to write it.
+            </div>
+
+            <p style="margin-top: 30px;">
+                <button class="hc-button" onclick="window.location.href='cards/card_0.html'" style="padding: 12px 24px; font-size: 14px;">
+                    Begin Journey →
+                </button>
+            </p>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-arrows">
+                <button class="arrow-button" disabled>←</button>
+                <button class="arrow-button" onclick="window.location.href='cards/card_0.html'">→</button>
+            </div>
+
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="hc-button" onclick="window.location.href='browse.html'">
+                    Browse <span class="shortcut">Ctrl+B</span>
+                </button>
+                <button class="hc-button" onclick="window.location.href='index.html'">
+                    Home <span class="shortcut">Ctrl+H</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%"></div>
+        </div>
+    </div>
+
+    <script src="static/js/navigation.js"></script>
+</body>
+</html>

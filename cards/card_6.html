@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logical Operators - Combining Truth</title>
+    <link rel="stylesheet" href="../static/css/hypercard.css">
+</head>
+<body class="has-sticky-nav">
+    <!-- Sticky Top Navigation -->
+    <div class="sticky-top-nav">
+        <div class="sticky-nav-left">
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_5.html'">←</button>
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_7.html'">→</button>
+        </div>
+        <div class="sticky-nav-center">Card 6 / 15</div>
+        <div class="sticky-nav-right">
+            <a href="../browse.html" class="sticky-nav-link">Browse</a>
+            <a href="../index.html" class="sticky-nav-link">Home</a>
+        </div>
+    </div>
+
+    <div class="hypercard-stack">
+        <div class="card-header">
+            <div class="card-title">Logical Operators - Combining Truth</div>
+            <div class="card-number">Card 6 of 15</div>
+        </div>
+
+        <div class="card-content">
+            <h2>What's the Function of Logical Operators?</h2>
+
+            <div class="narrative">
+                "Logical operators let us combine multiple True/False statements. They answer: What happens when we need BOTH conditions true? Or just ONE? Or the OPPOSITE?"
+            </div>
+
+            <h3>The Three Logical Operators</h3>
+
+            <div class="visualization">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <div class="viz-box">
+                        <h4 style="margin: 0 0 10px 0;">AND</h4>
+                        <p style="font-size: 13px; margin-bottom: 10px;">Connect dependent statements</p>
+                        <code style="display: block; background: var(--bg-primary); color: var(--text-primary); padding: 8px; margin-bottom: 10px;">True AND True → True<br>True AND False → False<br>False AND False → False</code>
+                        <p style="font-size: 12px; margin: 0;"><strong>Both must be True</strong></p>
+                    </div>
+
+                    <div class="viz-box">
+                        <h4 style="margin: 0 0 10px 0;">OR</h4>
+                        <p style="font-size: 13px; margin-bottom: 10px;">Connect alternatives</p>
+                        <code style="display: block; background: var(--bg-primary); color: var(--text-primary); padding: 8px; margin-bottom: 10px;">True OR True → True<br>True OR False → True<br>False OR False → False</code>
+                        <p style="font-size: 12px; margin: 0;"><strong>At least one must be True</strong></p>
+                    </div>
+
+                    <div class="viz-box">
+                        <h4 style="margin: 0 0 10px 0;">NOT</h4>
+                        <p style="font-size: 13px; margin-bottom: 10px;">Invert a statement</p>
+                        <code style="display: block; background: var(--bg-primary); color: var(--text-primary); padding: 8px; margin-bottom: 10px;">NOT True → False<br>NOT False → True</code>
+                        <p style="font-size: 12px; margin: 0;"><strong>Flips the truth value</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Interactive Circuit Diagram</h3>
+
+            <div class="visualization">
+                <div class="viz-container">
+                    <div style="margin-bottom: 20px;">
+                        <label style="font-weight: bold; margin-bottom: 10px; display: block;">Circuit Type:</label>
+                        <select id="circuitType" onchange="updateCircuit()" class="viz-input" style="font-size: 16px; font-family: monospace; width: 100%;">
+                            <option value="AND">AND Circuit (Series)</option>
+                            <option value="OR">OR Circuit (Parallel)</option>
+                            <option value="NOT">NOT Circuit (Inverter)</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap;">
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" id="switch1" onchange="updateCircuit()" style="width: 20px; height: 20px;">
+                            <span style="font-weight: bold;">Switch A</span>
+                        </label>
+                        <label id="switch2Label" style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" id="switch2" onchange="updateCircuit()" style="width: 20px; height: 20px;">
+                            <span style="font-weight: bold;">Switch B</span>
+                        </label>
+                    </div>
+
+                    <div id="circuit-diagram" class="viz-display-area" style="text-align: center; min-height: 150px;">
+                        <!-- Circuit will be drawn here -->
+                    </div>
+
+                    <div id="bulb-status" class="viz-display-area" style="margin-top: 20px; text-align: center; font-size: 24px; font-weight: bold;">
+                        <!-- Bulb status will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <h3>Real-World Examples</h3>
+
+            <pre class="viz-code-block">
+# AND - Both conditions must be true
+age = 20
+has_license = True
+can_drive = age >= 18 and has_license  # True
+
+# OR - At least one must be true
+is_weekend = True
+is_holiday = False
+can_sleep_in = is_weekend or is_holiday  # True
+
+# NOT - Flip the condition
+is_raining = False
+bring_umbrella = not is_raining  # True</pre>
+
+            <div class="key-concept">
+                <strong>Mental Model:</strong> Think of logical operators as gates:
+                <ul style="margin-top: 10px;">
+                    <li><strong>AND</strong> is a strict bouncer - everyone needs ID</li>
+                    <li><strong>OR</strong> is flexible - show either ID or ticket</li>
+                    <li><strong>NOT</strong> is opposite day - yes means no, no means yes</li>
+                </ul>
+            </div>
+
+            <div class="narrative">
+                "Logical operators let you combine simple comparisons into complex conditions. They're the building blocks for decision-making logic."
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-arrows">
+                <button class="arrow-button" onclick="window.location.href='card_5.html'">←</button>
+                <button class="arrow-button" onclick="window.location.href='card_7.html'">→</button>
+            </div>
+
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="hc-button" onclick="window.location.href='../browse.html'">
+                    Browse <span class="shortcut">Ctrl+B</span>
+                </button>
+                <button class="hc-button" onclick="window.location.href='../index.html'">
+                    Home <span class="shortcut">Ctrl+H</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 40%"></div>
+        </div>
+    </div>
+
+    <script src="../static/js/navigation.js"></script>
+    <script>
+    function updateCircuit() {
+        const type = document.getElementById('circuitType').value;
+        const switch1 = document.getElementById('switch1').checked;
+        const switch2 = document.getElementById('switch2').checked;
+        const diagram = document.getElementById('circuit-diagram');
+        const status = document.getElementById('bulb-status');
+        const switch2Label = document.getElementById('switch2Label');
+
+        let result;
+        let bulbColor;
+
+        if (type === 'NOT') {
+            switch2Label.style.display = 'none';
+            result = !switch1;
+            diagram.innerHTML = `
+                <div style="font-size: 18px; margin-bottom: 20px;">NOT Gate</div>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+                    <div style="width: 60px; height: 60px; border-radius: 50%; background: ${switch1 ? 'rgba(163, 190, 140, 0.8)' : 'rgba(191, 97, 106, 0.8)'}; border: 3px solid var(--border-color);"></div>
+                    <div style="font-size: 36px;">→ NOT →</div>
+                    <div style="width: 60px; height: 60px; border-radius: 50%; background: ${result ? 'rgba(163, 190, 140, 0.8)' : 'rgba(191, 97, 106, 0.8)'}; border: 3px solid var(--border-color);"></div>
+                </div>
+                <div style="margin-top: 15px; font-size: 14px;">Input: ${switch1} → Output: ${result}</div>
+            `;
+        } else {
+            switch2Label.style.display = 'flex';
+
+            if (type === 'AND') {
+                result = switch1 && switch2;
+                diagram.innerHTML = `
+                    <div style="font-size: 18px; margin-bottom: 20px;">AND Gate (Series Circuit)</div>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                        <div style="text-align: center;">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background: ${switch1 ? 'rgba(163, 190, 140, 0.8)' : 'rgba(191, 97, 106, 0.8)'}; border: 3px solid var(--border-color); margin: 0 auto;"></div>
+                            <div style="font-size: 12px; margin-top: 5px;">A: ${switch1}</div>
+                        </div>
+                        <div style="font-size: 24px;">─AND─</div>
+                        <div style="text-align: center;">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background: ${switch2 ? 'rgba(163, 190, 140, 0.8)' : 'rgba(191, 97, 106, 0.8)'}; border: 3px solid var(--border-color); margin: 0 auto;"></div>
+                            <div style="font-size: 12px; margin-top: 5px;">B: ${switch2}</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 15px; font-size: 14px;">Both must be ON for light to work</div>
+                `;
+            } else { // OR
+                result = switch1 || switch2;
+                diagram.innerHTML = `
+                    <div style="font-size: 18px; margin-bottom: 20px;">OR Gate (Parallel Circuit)</div>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                        <div style="text-align: center;">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background: ${switch1 ? 'rgba(163, 190, 140, 0.8)' : 'rgba(191, 97, 106, 0.8)'}; border: 3px solid var(--border-color); margin: 0 auto;"></div>
+                            <div style="font-size: 12px; margin-top: 5px;">A: ${switch1}</div>
+                        </div>
+                        <div style="font-size: 24px;">─OR─</div>
+                        <div style="text-align: center;">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background: ${switch2 ? 'rgba(163, 190, 140, 0.8)' : 'rgba(191, 97, 106, 0.8)'}; border: 3px solid var(--border-color); margin: 0 auto;"></div>
+                            <div style="font-size: 12px; margin-top: 5px;">B: ${switch2}</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 15px; font-size: 14px;">Either switch ON works</div>
+                `;
+            }
+        }
+
+        status.innerHTML = `
+            <div style="font-size: 72px; margin-bottom: 10px;">${result ? '💡' : '⚫'}</div>
+            <div style="color: ${result ? 'rgba(163, 190, 140, 1)' : 'rgba(191, 97, 106, 1)'};">${result ? 'LIGHT ON' : 'LIGHT OFF'}</div>
+            <div style="font-size: 16px; margin-top: 10px;">Result: ${result}</div>
+        `;
+        if (result) {
+            status.classList.add('viz-state-success');
+        } else {
+            status.classList.remove('viz-state-success');
+        }
+    }
+
+    // Initialize
+    updateCircuit();
+    </script>
+</body>
+</html>

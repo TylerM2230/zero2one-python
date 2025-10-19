@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lists - Organizing Related Data</title>
+    <link rel="stylesheet" href="../static/css/hypercard.css">
+</head>
+<body class="has-sticky-nav">
+    <!-- Sticky Top Navigation -->
+    <div class="sticky-top-nav">
+        <div class="sticky-nav-left">
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_10.html'">←</button>
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_12.html'">→</button>
+        </div>
+        <div class="sticky-nav-center">Card 11 / 15</div>
+        <div class="sticky-nav-right">
+            <a href="../browse.html" class="sticky-nav-link">Browse</a>
+            <a href="../index.html" class="sticky-nav-link">Home</a>
+        </div>
+    </div>
+
+    <div class="hypercard-stack">
+        <div class="card-header">
+            <div class="card-title">Lists - Organizing Related Data</div>
+            <div class="card-number">Card 11 of 15</div>
+        </div>
+
+        <div class="card-content">
+            <h2>What Is a List?</h2>
+
+            <div class="narrative">
+                "A list is an ordered collection of items. Instead of having separate variables for related data, group them together."
+            </div>
+
+            <h3>The Problem Lists Solve</h3>
+
+            <pre class="viz-code-block">
+# Without lists - messy and unscalable
+fruit1 = "apple"
+fruit2 = "banana"
+fruit3 = "orange"
+fruit4 = "grape"
+# What if we have 100 fruits?
+
+# With lists - organized and scalable
+fruits = ["apple", "banana", "orange", "grape"]</pre>
+
+            <h3>List Structure: Position Matters</h3>
+
+            <div class="visualization">
+                <div class="viz-container">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <code style="font-size: 18px;">fruits = ["apple", "banana", "orange"]</code>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                        <div style="text-align: center;">
+                            <div class="viz-box">
+                                <div style="font-size: 24px; margin-bottom: 10px;">"apple"</div>
+                            </div>
+                            <div class="viz-terminal" style="margin-top: 5px;">
+                                <strong>Index: 0</strong>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <div class="viz-box">
+                                <div style="font-size: 24px; margin-bottom: 10px;">"banana"</div>
+                            </div>
+                            <div class="viz-terminal" style="margin-top: 5px;">
+                                <strong>Index: 1</strong>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <div class="viz-box">
+                                <div style="font-size: 24px; margin-bottom: 10px;">"orange"</div>
+                            </div>
+                            <div class="viz-terminal" style="margin-top: 5px;">
+                                <strong>Index: 2</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="viz-display-area viz-state-success" style="margin-top: 20px; text-align: center;">
+                        <strong>Important:</strong> Lists start at index 0, not 1!<br>
+                        Last index is always: <code>len(list) - 1</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-concept">
+                <strong>Critical Concept:</strong> Lists are ordered - position matters. Each item has an index (position number) starting at 0.
+            </div>
+
+            <h3>Interactive List Explorer</h3>
+
+            <div class="visualization">
+                <div class="viz-container">
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Add item to list:</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="newItem" placeholder="Enter item" class="viz-input" style="flex: 1;">
+                            <button class="hc-button" onclick="addItem()">Add</button>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Access by index:</label>
+                        <div class="viz-button-group" style="display: flex; gap: 10px;">
+                            <input type="number" id="accessIndex" placeholder="Index" value="0" class="viz-input" style="width: 100px;">
+                            <button class="hc-button" onclick="accessItem()">Get Item</button>
+                            <button class="hc-button viz-state-error" onclick="removeItem()">Remove</button>
+                        </div>
+                    </div>
+
+                    <div id="list-display" class="viz-display-area" style="margin-bottom: 15px; min-height: 100px;">
+                        <!-- List visualization -->
+                    </div>
+
+                    <div id="list-output" class="viz-terminal" style="min-height: 60px;">
+                        <!-- Output -->
+                    </div>
+                </div>
+            </div>
+
+            <h3>Common List Operations</h3>
+
+            <pre class="viz-code-block">
+# Creating a list
+fruits = ["apple", "banana"]
+
+# Accessing items
+first = fruits[0]        # "apple"
+last = fruits[1]         # "banana"
+
+# Adding items
+fruits.append("orange")  # Add to end
+fruits.insert(1, "grape") # Insert at position 1
+
+# Removing items
+fruits.remove("apple")   # Remove by value
+item = fruits.pop()      # Remove and return last
+
+# Getting length
+count = len(fruits)      # How many items?
+
+# Checking membership
+has_apple = "apple" in fruits  # True or False</pre>
+
+            <h3>Looping Through Lists</h3>
+
+            <pre class="viz-code-block">
+fruits = ["apple", "banana", "orange"]
+
+# Method 1: Direct iteration
+for fruit in fruits:
+    print(fruit)
+
+# Method 2: Using index
+for ii in range(len(fruits)):
+    print(ii, fruits[ii])</pre>
+
+            <div class="key-concept">
+                <strong>Mental Model:</strong> A list is like a row of numbered boxes. Each box holds one item. You can access any box by its number (index), but remember: the first box is #0, not #1.
+            </div>
+
+            <div class="narrative">
+                "Lists let you group related data together and process them systematically. They're fundamental to working with multiple pieces of information."
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-arrows">
+                <button class="arrow-button" onclick="window.location.href='card_10.html'">←</button>
+                <button class="arrow-button" onclick="window.location.href='card_12.html'">→</button>
+            </div>
+
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="hc-button" onclick="window.location.href='../browse.html'">
+                    Browse <span class="shortcut">Ctrl+B</span>
+                </button>
+                <button class="hc-button" onclick="window.location.href='../index.html'">
+                    Home <span class="shortcut">Ctrl+H</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 73.33%"></div>
+        </div>
+    </div>
+
+    <script src="../static/js/navigation.js"></script>
+    <script>
+    let myList = ["apple", "banana", "orange"];
+
+    function renderList() {
+        const display = document.getElementById('list-display');
+        const output = document.getElementById('list-output');
+
+        if (myList.length === 0) {
+            display.innerHTML = '<div style="text-align: center; color: #999; padding: 20px;">List is empty</div>';
+            output.textContent = 'my_list = []';
+            return;
+        }
+
+        let html = '<div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">';
+        myList.forEach((item, index) => {
+            html += `
+                <div style="text-align: center;">
+                    <div class="viz-box">
+                        <div style="font-size: 18px;">"${item}"</div>
+                    </div>
+                    <div class="viz-terminal" style="margin-top: 5px;">
+                        [${index}]
+                    </div>
+                </div>
+            `;
+        });
+        html += '</div>';
+        html += `<div style="margin-top: 15px; text-align: center; font-family: monospace;">Length: ${myList.length}</div>`;
+
+        display.innerHTML = html;
+        output.textContent = 'my_list = [' + myList.map(item => '"' + item + '"').join(', ') + ']';
+    }
+
+    function addItem() {
+        const input = document.getElementById('newItem');
+        const item = input.value.trim();
+
+        if (item === '') {
+            document.getElementById('list-output').textContent = 'Error: Cannot add empty item';
+            return;
+        }
+
+        myList.push(item);
+        input.value = '';
+        renderList();
+        document.getElementById('list-output').textContent += '\n> my_list.append("' + item + '")';
+    }
+
+    function accessItem() {
+        const index = parseInt(document.getElementById('accessIndex').value);
+        const output = document.getElementById('list-output');
+
+        if (isNaN(index)) {
+            output.textContent = 'Error: Invalid index';
+            return;
+        }
+
+        if (index < 0 || index >= myList.length) {
+            output.textContent = `Error: Index ${index} out of range (0-${myList.length - 1})`;
+            return;
+        }
+
+        output.textContent = `> my_list[${index}]\n"${myList[index]}"`;
+    }
+
+    function removeItem() {
+        const index = parseInt(document.getElementById('accessIndex').value);
+        const output = document.getElementById('list-output');
+
+        if (isNaN(index)) {
+            output.textContent = 'Error: Invalid index';
+            return;
+        }
+
+        if (index < 0 || index >= myList.length) {
+            output.textContent = `Error: Index ${index} out of range (0-${myList.length - 1})`;
+            return;
+        }
+
+        const removed = myList.splice(index, 1)[0];
+        renderList();
+        output.textContent = `> my_list.pop(${index})\nRemoved: "${removed}"`;
+    }
+
+    // Initialize
+    renderList();
+    </script>
+</body>
+</html>

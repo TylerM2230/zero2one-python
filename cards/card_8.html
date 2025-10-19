@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nested Conditionals - Decisions Within Decisions</title>
+    <link rel="stylesheet" href="../static/css/hypercard.css">
+</head>
+<body class="has-sticky-nav">
+    <!-- Sticky Top Navigation -->
+    <div class="sticky-top-nav">
+        <div class="sticky-nav-left">
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_7.html'">←</button>
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_9.html'">→</button>
+        </div>
+        <div class="sticky-nav-center">Card 8 / 15</div>
+        <div class="sticky-nav-right">
+            <a href="../browse.html" class="sticky-nav-link">Browse</a>
+            <a href="../index.html" class="sticky-nav-link">Home</a>
+        </div>
+    </div>
+
+    <div class="hypercard-stack">
+        <div class="card-header">
+            <div class="card-title">Nested Conditionals - Decisions Within Decisions</div>
+            <div class="card-number">Card 8 of 15</div>
+        </div>
+
+        <div class="card-content">
+            <h2>What Are Nested Conditionals?</h2>
+
+            <div class="narrative">
+                "A conditional inside of a conditional. When we are inside a conditional, we assume that condition is true. Then we can continue to further refine our checks and make more decisions."
+            </div>
+
+            <h3>The Concept: Narrowing Down</h3>
+
+            <div class="visualization">
+                <div class="viz-container">
+                    <div class="viz-box" style="margin-bottom: 15px;">
+                        <strong>First Decision:</strong> Is it raining?
+                    </div>
+
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 250px;">
+                            <div class="viz-box viz-state-success" style="margin-bottom: 10px; text-align: center;">
+                                <strong>IF raining = True</strong>
+                            </div>
+                            <div class="viz-box">
+                                <div style="margin-bottom: 10px;"><strong>Second Decision:</strong></div>
+                                <div class="viz-display-area" style="margin-bottom: 5px;">
+                                    IF have_umbrella: walk
+                                </div>
+                                <div class="viz-display-area">
+                                    ELSE: stay_home
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="flex: 1; min-width: 250px;">
+                            <div class="viz-box viz-state-error" style="margin-bottom: 10px; text-align: center;">
+                                <strong>ELSE (not raining)</strong>
+                            </div>
+                            <div class="viz-display-area">
+                                Just walk outside!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Code Structure</h3>
+
+            <pre class="viz-code-block">
+if condition1:
+    # First level decision
+    print("Condition 1 is true")
+
+    if condition2:
+        # Second level - NESTED inside first
+        print("Both conditions true!")
+    else:
+        print("Only condition 1 true")
+else:
+    print("Condition 1 is false")</pre>
+
+            <div class="key-concept">
+                <strong>Key Insight:</strong> Each level of nesting adds another layer of indentation. The deeper the indent, the more conditions must be True to reach that code.
+            </div>
+
+            <h3>Interactive Example: Access Control</h3>
+
+            <div class="visualization">
+                <div class="viz-container">
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                            <input type="checkbox" id="hasTicket" onchange="checkAccess()" style="width: 20px; height: 20px;">
+                            <span style="font-weight: bold;">Has Ticket?</span>
+                        </label>
+
+                        <label style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                            <input type="checkbox" id="isAdult" onchange="checkAccess()" style="width: 20px; height: 20px;">
+                            <span style="font-weight: bold;">Is Adult (18+)?</span>
+                        </label>
+
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" id="hasGuardian" onchange="checkAccess()" style="width: 20px; height: 20px;">
+                            <span style="font-weight: bold;">Has Guardian?</span>
+                        </label>
+                    </div>
+
+                    <div id="access-result" class="viz-display-area" style="min-height: 100px;">
+                        <!-- Result will appear here -->
+                    </div>
+
+                    <div class="viz-code-block" style="margin-top: 15px; font-size: 12px; min-height: 80px;">
+                        <div id="code-execution">Check the boxes to see nested logic</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Real Example: Age and Permission Check</h3>
+
+            <pre class="viz-code-block">
+age = 16
+has_permission = True
+
+if age >= 18:
+    # Adult - can decide alone
+    print("Access granted (adult)")
+else:
+    # Not adult - need to check permission
+    if has_permission:
+        print("Access granted (with permission)")
+    else:
+        print("Access denied (no permission)")</pre>
+
+            <div class="narrative">
+                "Nested conditionals let you make refined decisions. First, check the big picture. Then, within each case, check the details."
+            </div>
+
+            <div class="key-concept">
+                <strong>Mental Model:</strong> Think of nested conditionals like a security checkpoint with multiple gates. You only reach the inner gates if you pass the outer ones first.
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-arrows">
+                <button class="arrow-button" onclick="window.location.href='card_7.html'">←</button>
+                <button class="arrow-button" onclick="window.location.href='card_9.html'">→</button>
+            </div>
+
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="hc-button" onclick="window.location.href='../browse.html'">
+                    Browse <span class="shortcut">Ctrl+B</span>
+                </button>
+                <button class="hc-button" onclick="window.location.href='../index.html'">
+                    Home <span class="shortcut">Ctrl+H</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 53.33%"></div>
+        </div>
+    </div>
+
+    <script src="../static/js/navigation.js"></script>
+    <script>
+    function checkAccess() {
+        const hasTicket = document.getElementById('hasTicket').checked;
+        const isAdult = document.getElementById('isAdult').checked;
+        const hasGuardian = document.getElementById('hasGuardian').checked;
+        const result = document.getElementById('access-result');
+        const codeExec = document.getElementById('code-execution');
+
+        let message = '';
+        let bgColor = '';
+        let code = '';
+
+        code = `if has_ticket:\n`;
+
+        if (hasTicket) {
+            code += `    # Ticket check passed ✓\n    if is_adult:\n`;
+
+            if (isAdult) {
+                message = '✓ ACCESS GRANTED<br><br>Has ticket AND is adult';
+                result.classList.add('viz-state-success');
+                result.classList.remove('viz-state-error');
+                code += `        # Adult check passed ✓\n        print("Access granted (adult)")`;
+            } else {
+                code += `    # Adult check failed ✗\n    else:\n        if has_guardian:\n`;
+
+                if (hasGuardian) {
+                    message = '✓ ACCESS GRANTED<br><br>Has ticket, not adult, but has guardian';
+                    result.classList.add('viz-state-success');
+                    result.classList.remove('viz-state-error');
+                    code += `            # Guardian check passed ✓\n            print("Access granted (with guardian)")`;
+                } else {
+                    message = '✗ ACCESS DENIED<br><br>Has ticket, not adult, no guardian';
+                    result.classList.add('viz-state-error');
+                    result.classList.remove('viz-state-success');
+                    code += `        # Guardian check failed ✗\n        else:\n            print("Access denied (minor without guardian)")`;
+                }
+            }
+        } else {
+            message = '✗ ACCESS DENIED<br><br>No ticket - other conditions don\'t matter';
+            result.classList.add('viz-state-error');
+            result.classList.remove('viz-state-success');
+            code += `    # Ticket check failed ✗\n    print("No ticket")\n# ELSE block not reached - never checked adult/guardian`;
+        }
+
+        result.innerHTML = `<div style="font-size: 32px; font-weight: bold; text-align: center;">${message}</div>`;
+        codeExec.innerHTML = code;
+    }
+
+    // Initialize
+    checkAccess();
+    </script>
+</body>
+</html>

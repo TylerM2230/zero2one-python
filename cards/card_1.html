@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Model of Programs</title>
+    <link rel="stylesheet" href="../static/css/hypercard.css">
+</head>
+<body class="has-sticky-nav">
+    <!-- Sticky Top Navigation -->
+    <div class="sticky-top-nav">
+        <div class="sticky-nav-left">
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_0.html'">←</button>
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_2.html'">→</button>
+        </div>
+        <div class="sticky-nav-center">Card 1 / 15</div>
+        <div class="sticky-nav-right">
+            <a href="../browse.html" class="sticky-nav-link">Browse</a>
+            <a href="../index.html" class="sticky-nav-link">Home</a>
+        </div>
+    </div>
+
+    <div class="hypercard-stack">
+        <div class="card-header">
+            <div class="card-title">Mental Model of Programs</div>
+            <div class="card-number">Card 1 of 15</div>
+        </div>
+
+        <div class="card-content">
+            <h2>A Program is a List of Instructions</h2>
+
+            <div class="narrative">
+                "A program is fundamentally a conversation in precise language—a list of instructions that execute from top to bottom."
+            </div>
+
+            <h3>Sequential Execution</h3>
+            <p>
+                Computers read and execute your code like you read a book: line by line, top to bottom. Each instruction completes before the next one starts.
+            </p>
+
+            <div class="key-concept">
+                <strong>Mental Model:</strong> Think of a program as a recipe. Each step happens in order. You can't frost a cake before you bake it.
+            </div>
+
+            <div class="visualization">
+                <div style="text-align: center; width: 100%;">
+                    <h4 style="margin-bottom: 20px;">Watch Instructions Execute</h4>
+                    <div class="viz-container">
+                        <div id="code-lines" style="font-family: monospace; text-align: left; margin-bottom: 20px;">
+                            <div id="line1" style="padding: 5px;">1. Turn on oven</div>
+                            <div id="line2" style="padding: 5px;">2. Mix ingredients</div>
+                            <div id="line3" style="padding: 5px;">3. Pour into pan</div>
+                            <div id="line4" style="padding: 5px;">4. Bake for 30 minutes</div>
+                            <div id="line5" style="padding: 5px;">5. Remove and cool</div>
+                        </div>
+                        <div id="execution-state" class="viz-display-area" style="margin-bottom: 15px;">
+                            ⏸️ Press "Execute" to start
+                        </div>
+                        <div class="viz-button-group">
+                            <button class="hc-button" onclick="executeNext()" style="width: 200px;">
+                                Execute Next Line
+                            </button>
+                            <button class="hc-button" onclick="resetExecution()" style="width: 200px;">
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>The Translation Process</h3>
+            <p>
+                Programming is translating your thoughts into symbols the computer understands. First you think through the logic, then you express it in code syntax.
+            </p>
+
+            <div class="narrative">
+                "Don't start with syntax. Start with 'What steps does this need?' Write them in plain English. Then translate to code."
+            </div>
+
+            <h3>Example: Making Toast</h3>
+            <p><strong>Human thought:</strong> "I want toast"</p>
+            <p><strong>Program logic:</strong></p>
+            <ol>
+                <li>Get bread</li>
+                <li>Put bread in toaster</li>
+                <li>Set timer to 2 minutes</li>
+                <li>Press start</li>
+                <li>Wait until timer done</li>
+                <li>Remove toast</li>
+            </ol>
+            <p><strong>Python code:</strong> (We'll learn the syntax later—for now, see the structure)</p>
+            <pre class="viz-code-block">bread = get_item("bread")
+toaster.insert(bread)
+toaster.set_timer(120)
+toaster.start()
+toaster.wait_until_done()
+toast = toaster.remove()</pre>
+
+            <p>Notice how each line does <em>one thing</em>. That's the key to clear thinking and clear code.</p>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-arrows">
+                <button class="arrow-button" onclick="window.location.href='card_0.html'">←</button>
+                <button class="arrow-button" onclick="window.location.href='card_2.html'">→</button>
+            </div>
+
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="hc-button" onclick="window.location.href='../browse.html'">
+                    Browse <span class="shortcut">Ctrl+B</span>
+                </button>
+                <button class="hc-button" onclick="window.location.href='../index.html'">
+                    Home <span class="shortcut">Ctrl+H</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 6.67%"></div>
+        </div>
+    </div>
+
+    <script src="../static/js/navigation.js"></script>
+    <script>
+    const steps = [
+        "⏸️ Press 'Execute' to start",
+        "🔥 Oven is heating up...",
+        "🥣 Mixing flour, eggs, sugar...",
+        "🍞 Pouring batter into pan...",
+        "⏰ Baking... (30 minutes)",
+        "✅ Done! Cake is cooling."
+    ];
+    let currentLine = 0;
+
+    function executeNext() {
+        if (currentLine < 5) {
+            // Remove highlight from previous line
+            if (currentLine > 0) {
+                document.getElementById('line' + currentLine).classList.remove('viz-highlight');
+            }
+            currentLine++;
+
+            // Highlight current line
+            document.getElementById('line' + currentLine).classList.add('viz-highlight');
+
+            // Update execution state
+            document.getElementById('execution-state').textContent = steps[currentLine];
+        }
+    }
+
+    function resetExecution() {
+        currentLine = 0;
+        for (let i = 1; i <= 5; i++) {
+            document.getElementById('line' + i).classList.remove('viz-highlight');
+        }
+        document.getElementById('execution-state').textContent = steps[0];
+    }
+    </script>
+</body>
+</html>

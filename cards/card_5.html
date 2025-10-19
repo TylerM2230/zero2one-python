@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison Operators - Making Judgments</title>
+    <link rel="stylesheet" href="../static/css/hypercard.css">
+</head>
+<body class="has-sticky-nav">
+    <!-- Sticky Top Navigation -->
+    <div class="sticky-top-nav">
+        <div class="sticky-nav-left">
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_4.html'">←</button>
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_6.html'">→</button>
+        </div>
+        <div class="sticky-nav-center">Card 5 / 15</div>
+        <div class="sticky-nav-right">
+            <a href="../browse.html" class="sticky-nav-link">Browse</a>
+            <a href="../index.html" class="sticky-nav-link">Home</a>
+        </div>
+    </div>
+
+    <div class="hypercard-stack">
+        <div class="card-header">
+            <div class="card-title">Comparison Operators - Making Judgments</div>
+            <div class="card-number">Card 5 of 15</div>
+        </div>
+
+        <div class="card-content">
+            <h2>Why Do We Need to Compare Things?</h2>
+
+            <div class="narrative">
+                "Comparison operators allow us to make valuations about different values or express a relationship."
+            </div>
+
+            <h3>The Six Comparison Operators</h3>
+
+            <div class="visualization">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px;">
+                    <div class="viz-box" style="text-align: center;">
+                        <h4 style="font-size: 24px; margin: 0;">&lt;</h4>
+                        <p style="margin: 10px 0 5px 0; font-weight: bold;">Less Than</p>
+                        <code>5 &lt; 10</code>
+                        <p style="font-size: 12px; margin-top: 5px;">→ True</p>
+                    </div>
+
+                    <div class="viz-box" style="text-align: center;">
+                        <h4 style="font-size: 24px; margin: 0;">&gt;</h4>
+                        <p style="margin: 10px 0 5px 0; font-weight: bold;">Greater Than</p>
+                        <code>10 &gt; 5</code>
+                        <p style="font-size: 12px; margin-top: 5px;">→ True</p>
+                    </div>
+
+                    <div class="viz-box" style="text-align: center;">
+                        <h4 style="font-size: 24px; margin: 0;">==</h4>
+                        <p style="margin: 10px 0 5px 0; font-weight: bold;">Equal To</p>
+                        <code>5 == 5</code>
+                        <p style="font-size: 12px; margin-top: 5px;">→ True</p>
+                    </div>
+
+                    <div class="viz-box" style="text-align: center;">
+                        <h4 style="font-size: 24px; margin: 0;">!=</h4>
+                        <p style="margin: 10px 0 5px 0; font-weight: bold;">Not Equal To</p>
+                        <code>5 != 10</code>
+                        <p style="font-size: 12px; margin-top: 5px;">→ True</p>
+                    </div>
+
+                    <div class="viz-box" style="text-align: center;">
+                        <h4 style="font-size: 24px; margin: 0;">&lt;=</h4>
+                        <p style="margin: 10px 0 5px 0; font-weight: bold;">Less/Equal</p>
+                        <code>5 &lt;= 5</code>
+                        <p style="font-size: 12px; margin-top: 5px;">→ True</p>
+                    </div>
+
+                    <div class="viz-box" style="text-align: center;">
+                        <h4 style="font-size: 24px; margin: 0;">&gt;=</h4>
+                        <p style="margin: 10px 0 5px 0; font-weight: bold;">Greater/Equal</p>
+                        <code>10 &gt;= 5</code>
+                        <p style="font-size: 12px; margin-top: 5px;">→ True</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Interactive Comparison Lab</h3>
+
+            <div class="visualization">
+                <div class="viz-container">
+                    <div style="display: flex; gap: 15px; margin-bottom: 15px; align-items: center; flex-wrap: wrap;">
+                        <input type="number" id="num1" value="5" class="viz-input" style="width: 80px; padding: 8px; font-size: 16px; font-family: monospace;">
+
+                        <select id="operator" class="viz-input" style="padding: 8px; font-size: 16px; font-family: monospace;">
+                            <option value="<">&lt;</option>
+                            <option value=">">&gt;</option>
+                            <option value="==">==</option>
+                            <option value="!=">!=</option>
+                            <option value="<=">&lt;=</option>
+                            <option value=">=">&gt;=</option>
+                        </select>
+
+                        <input type="number" id="num2" value="10" class="viz-input" style="width: 80px; padding: 8px; font-size: 16px; font-family: monospace;">
+
+                        <button class="hc-button" onclick="compare()">Compare</button>
+                    </div>
+
+                    <div id="compare-result" class="viz-display-area" style="text-align: center; font-size: 24px; font-weight: bold; min-height: 60px; display: flex; align-items: center; justify-content: center;">
+                        Click Compare to see result
+                    </div>
+                </div>
+            </div>
+
+            <h3>Expressing Relationships</h3>
+
+            <div class="key-concept">
+                <strong>Mental Model:</strong> Comparisons are questions that always have True/False answers. They express relationships between values.
+            </div>
+
+            <pre class="viz-code-block"># Real-world examples
+age = 18
+is_adult = age >= 18  # True
+
+score = 75
+passed = score >= 60  # True
+perfect = score == 100  # False
+
+temperature = 32
+is_freezing = temperature <= 32  # True</pre>
+
+            <div class="narrative">
+                "Every comparison evaluates to a Boolean - True or False. This is the foundation for making decisions in your programs."
+            </div>
+
+            <h3>Common Use Cases</h3>
+            <ul>
+                <li><strong>Checking age requirements:</strong> age >= 18</li>
+                <li><strong>Testing equality:</strong> password == correct_password</li>
+                <li><strong>Finding differences:</strong> current_score != previous_score</li>
+                <li><strong>Range checking:</strong> 0 <= score <= 100</li>
+            </ul>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-arrows">
+                <button class="arrow-button" onclick="window.location.href='card_4.html'">←</button>
+                <button class="arrow-button" onclick="window.location.href='card_6.html'">→</button>
+            </div>
+
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="hc-button" onclick="window.location.href='../browse.html'">
+                    Browse <span class="shortcut">Ctrl+B</span>
+                </button>
+                <button class="hc-button" onclick="window.location.href='../index.html'">
+                    Home <span class="shortcut">Ctrl+H</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 33.33%"></div>
+        </div>
+    </div>
+
+    <script src="../static/js/navigation.js"></script>
+    <script>
+    function compare() {
+        const num1 = parseFloat(document.getElementById('num1').value);
+        const num2 = parseFloat(document.getElementById('num2').value);
+        const op = document.getElementById('operator').value;
+        const result = document.getElementById('compare-result');
+
+        let answer;
+        switch(op) {
+            case '<': answer = num1 < num2; break;
+            case '>': answer = num1 > num2; break;
+            case '==': answer = num1 == num2; break;
+            case '!=': answer = num1 != num2; break;
+            case '<=': answer = num1 <= num2; break;
+            case '>=': answer = num1 >= num2; break;
+        }
+
+        // Remove all state classes first
+        result.classList.remove('viz-state-success', 'viz-state-error');
+
+        result.innerHTML = num1 + ' ' + op + ' ' + num2 + '<br><br>' +
+                          '<span style="font-size: 36px;">' +
+                          answer + '</span>';
+
+        // Add appropriate state class
+        if (answer) {
+            result.classList.add('viz-state-success');
+        } else {
+            result.classList.add('viz-state-error');
+        }
+    }
+    </script>
+</body>
+</html>

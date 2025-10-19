@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables as Mental Containers</title>
+    <link rel="stylesheet" href="../static/css/hypercard.css">
+</head>
+<body class="has-sticky-nav">
+    <!-- Sticky Top Navigation -->
+    <div class="sticky-top-nav">
+        <div class="sticky-nav-left">
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_1.html'">←</button>
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_3.html'">→</button>
+        </div>
+        <div class="sticky-nav-center">Card 2 / 15</div>
+        <div class="sticky-nav-right">
+            <a href="../browse.html" class="sticky-nav-link">Browse</a>
+            <a href="../index.html" class="sticky-nav-link">Home</a>
+        </div>
+    </div>
+
+    <div class="hypercard-stack">
+        <div class="card-header">
+            <div class="card-title">Variables as Mental Containers</div>
+            <div class="card-number">Card 2 of 15</div>
+        </div>
+
+        <div class="card-content">
+            <h2>How Do We Remember Things?</h2>
+
+            <div class="narrative">
+                "Programming is fundamentally about data transformation and manipulation. Variables are how we keep track of information as it changes."
+            </div>
+
+            <h3>The Container Metaphor</h3>
+            <p>
+                Think of a variable as a labeled box. The label is the variable name. The contents are the value. You can look inside the box, change what's inside, or use what's inside for other operations.
+            </p>
+
+            <div class="key-concept">
+                <strong>Key Insight:</strong> Variables don't just store data—they give data <em>meaning</em>. The number 25 is just a number. A variable called <code>age</code> containing 25 tells a story.
+            </div>
+
+            <div class="visualization">
+                <div style="text-align: center; width: 100%;">
+                    <h4 style="margin-bottom: 20px;">Interactive Variable Box</h4>
+                    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
+                        <div class="viz-box" style="min-width: 150px;">
+                            <div class="viz-box-header">
+                                name
+                            </div>
+                            <div id="var-name" class="viz-box-content">
+                                "Alice"
+                            </div>
+                        </div>
+                        <div class="viz-box" style="min-width: 150px;">
+                            <div class="viz-box-header">
+                                age
+                            </div>
+                            <div id="var-age" class="viz-box-content">
+                                25
+                            </div>
+                        </div>
+                        <div class="viz-box" style="min-width: 150px;">
+                            <div class="viz-box-header">
+                                score
+                            </div>
+                            <div id="var-score" class="viz-box-content">
+                                0
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="viz-code-block" style="margin-bottom: 15px; text-align: left;">
+                        <div id="code-display">name = "Alice"<br>age = 25<br>score = 0</div>
+                    </div>
+
+                    <div class="viz-button-group">
+                        <button class="hc-button" onclick="runOperation('reassign')" style="width: 200px;">
+                            age = age + 1
+                        </button>
+                        <button class="hc-button" onclick="runOperation('changeName')" style="width: 200px;">
+                            name = "Bob"
+                        </button>
+                        <button class="hc-button" onclick="runOperation('updateScore')" style="width: 200px;">
+                            score = score + 10
+                        </button>
+                        <button class="hc-button" onclick="reset()" style="width: 200px;">
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Assignment vs. Equality</h3>
+            <p>
+                The <code>=</code> sign in programming means "assign" not "equals". Reading <code>age = 25</code> should be: "Put the value 25 into the box labeled age."
+            </p>
+
+            <div class="key-concept">
+                <strong>Common Confusion:</strong> In math, <code>x = x + 1</code> makes no sense. In programming, it means: "Take the current value of x, add 1, and store the result back in x."
+            </div>
+
+            <h3>Why Variables Matter</h3>
+            <ol>
+                <li><strong>Memory:</strong> Store data you need later</li>
+                <li><strong>Clarity:</strong> Names make code readable</li>
+                <li><strong>Reusability:</strong> Change the value once, use it everywhere</li>
+                <li><strong>Manipulation:</strong> Transform data step by step</li>
+            </ol>
+
+            <div class="narrative">
+                "Without variables, you'd have to work with raw values. With variables, you work with <em>meaning</em>. That's the power of abstraction."
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-arrows">
+                <button class="arrow-button" onclick="window.location.href='card_1.html'">←</button>
+                <button class="arrow-button" onclick="window.location.href='card_3.html'">→</button>
+            </div>
+
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="hc-button" onclick="window.location.href='../browse.html'">
+                    Browse <span class="shortcut">Ctrl+B</span>
+                </button>
+                <button class="hc-button" onclick="window.location.href='../index.html'">
+                    Home <span class="shortcut">Ctrl+H</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 13.33%"></div>
+        </div>
+    </div>
+
+    <script src="../static/js/navigation.js"></script>
+    <script>
+    let name = "Alice";
+    let age = 25;
+    let score = 0;
+
+    function updateDisplay() {
+        document.getElementById('var-name').textContent = typeof name === 'string' ? `"${name}"` : name;
+        document.getElementById('var-age').textContent = age;
+        document.getElementById('var-score').textContent = score;
+    }
+
+    function runOperation(op) {
+        switch(op) {
+            case 'reassign':
+                age = age + 1;
+                document.getElementById('code-display').innerHTML =
+                    `name = "${name}"<br>age = age + 1  → age = ${age}<br>score = ${score}`;
+                break;
+            case 'changeName':
+                name = "Bob";
+                document.getElementById('code-display').innerHTML =
+                    `name = "Bob"<br>age = ${age}<br>score = ${score}`;
+                break;
+            case 'updateScore':
+                score = score + 10;
+                document.getElementById('code-display').innerHTML =
+                    `name = "${name}"<br>age = ${age}<br>score = score + 10  → score = ${score}`;
+                break;
+        }
+        updateDisplay();
+    }
+
+    function reset() {
+        name = "Alice";
+        age = 25;
+        score = 0;
+        document.getElementById('code-display').innerHTML = `name = "Alice"<br>age = 25<br>score = 0`;
+        updateDisplay();
+    }
+    </script>
+</body>
+</html>

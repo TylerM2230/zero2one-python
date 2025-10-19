@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions - Building Your Own Tools</title>
+    <link rel="stylesheet" href="../static/css/hypercard.css">
+</head>
+<body class="has-sticky-nav">
+    <!-- Sticky Top Navigation -->
+    <div class="sticky-top-nav">
+        <div class="sticky-nav-left">
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_11.html'">←</button>
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_13.html'">→</button>
+        </div>
+        <div class="sticky-nav-center">Card 12 / 15</div>
+        <div class="sticky-nav-right">
+            <a href="../browse.html" class="sticky-nav-link">Browse</a>
+            <a href="../index.html" class="sticky-nav-link">Home</a>
+        </div>
+    </div>
+
+    <div class="hypercard-stack">
+        <div class="card-header">
+            <div class="card-title">Functions - Building Your Own Tools</div>
+            <div class="card-number">Card 12 of 15</div>
+        </div>
+
+        <div class="card-content">
+            <h2>What Is a Function?</h2>
+
+            <div class="narrative">
+                "A system that takes in an input, performs an operation, and gives out an output. Think of it as a black box - you don't need to know HOW it works, just WHAT it does."
+            </div>
+
+            <h3>The Black Box Concept</h3>
+
+            <div class="visualization">
+                <div class="viz-container" style="text-align: center;">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 18px; margin-bottom: 10px; font-weight: bold;">INPUT</div>
+                            <div class="viz-box">
+                                <div style="font-size: 24px;">2, 3</div>
+                            </div>
+                        </div>
+
+                        <div style="font-size: 48px;">→</div>
+
+                        <div style="text-align: center;">
+                            <div style="font-size: 18px; margin-bottom: 10px; font-weight: bold;">FUNCTION</div>
+                            <div class="viz-terminal" style="padding: 30px; min-width: 150px;">
+                                <div style="font-size: 24px;">add(a, b)</div>
+                                <div style="font-size: 14px; margin-top: 10px;">Black Box</div>
+                            </div>
+                        </div>
+
+                        <div style="font-size: 48px;">→</div>
+
+                        <div style="text-align: center;">
+                            <div style="font-size: 18px; margin-bottom: 10px; font-weight: bold;">OUTPUT</div>
+                            <div class="viz-box" style="background-color: var(--viz-bg, #3a4a5a); border: 2px solid var(--viz-border, #4a5a6a);">
+                                <div style="font-size: 24px;">5</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="viz-display-area" style="margin-top: 30px;">
+                        <strong>You don't need to know HOW it adds - just that it does!</strong>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Function Anatomy</h3>
+
+            <pre class="viz-code-block">
+def function_name(parameter1, parameter2):
+    # Function body - the code that runs
+    result = parameter1 + parameter2
+    return result  # Output
+
+# Calling the function
+output = function_name(2, 3)  # output = 5</pre>
+
+            <div class="key-concept">
+                <strong>Two Parts:</strong>
+                <ul style="margin-top: 10px;">
+                    <li><strong>Function Header:</strong> Name and parameters (inputs)</li>
+                    <li><strong>Function Body:</strong> Code that executes when called</li>
+                </ul>
+            </div>
+
+            <h3>Interactive Function Builder</h3>
+
+            <div class="visualization">
+                <div class="viz-container">
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Select Function:</label>
+                        <select id="functionType" onchange="updateFunction()" class="viz-input" style="width: 100%; font-family: monospace;">
+                            <option value="add">add(a, b) - Addition</option>
+                            <option value="multiply">multiply(a, b) - Multiplication</option>
+                            <option value="greet">greet(name) - Greeting</option>
+                            <option value="is_even">is_even(n) - Check even</option>
+                        </select>
+                    </div>
+
+                    <div id="input-area" style="margin-bottom: 15px;">
+                        <!-- Dynamic inputs -->
+                    </div>
+
+                    <button class="hc-button" onclick="callFunction()" style="width: 100%; margin-bottom: 15px;">Call Function</button>
+
+                    <div class="viz-display-area" style="margin-bottom: 15px;">
+                        <div class="viz-box-header">Function Definition:</div>
+                        <pre id="function-code" class="viz-code-block" style="font-size: 13px; overflow-x: auto;"></pre>
+                    </div>
+
+                    <div id="function-output" class="viz-terminal" style="text-align: center; min-height: 80px;">
+                        Configure inputs and call function
+                    </div>
+                </div>
+            </div>
+
+            <h3>Why Use Functions?</h3>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                <div class="viz-box" style="background-color: var(--viz-bg, #3a4a5a); border: 2px solid var(--viz-border, #4a5a6a);">
+                    <h4>Reusability</h4>
+                    <p style="font-size: 13px;">Write once, use many times</p>
+                </div>
+                <div class="viz-box" style="background-color: var(--viz-bg, #4a3a4a); border: 2px solid var(--viz-border, #5a4a5a);">
+                    <h4>Organization</h4>
+                    <p style="font-size: 13px;">Group related code together</p>
+                </div>
+                <div class="viz-box" style="background-color: var(--viz-bg, #3a4a4a); border: 2px solid var(--viz-border, #4a6a6a);">
+                    <h4>Abstraction</h4>
+                    <p style="font-size: 13px;">Hide complexity, show interface</p>
+                </div>
+            </div>
+
+            <h3>Real-World Example</h3>
+
+            <pre class="viz-code-block">
+# Define function once
+def calculate_grade(score):
+    if score >= 90:
+        return "A"
+    elif score >= 80:
+        return "B"
+    elif score >= 70:
+        return "C"
+    else:
+        return "F"
+
+# Use it many times
+grade1 = calculate_grade(95)  # "A"
+grade2 = calculate_grade(82)  # "B"
+grade3 = calculate_grade(68)  # "F"</pre>
+
+            <div class="key-concept">
+                <strong>Mental Model:</strong> Functions are like tools in a toolbox. You reach for the right tool (function) when you need it. You don't rebuild the hammer each time - you just use it.
+            </div>
+
+            <div class="narrative">
+                "Functions let you build your own custom operations. They're fundamental to organizing code and avoiding repetition."
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-arrows">
+                <button class="arrow-button" onclick="window.location.href='card_11.html'">←</button>
+                <button class="arrow-button" onclick="window.location.href='card_13.html'">→</button>
+            </div>
+
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="hc-button" onclick="window.location.href='../browse.html'">
+                    Browse <span class="shortcut">Ctrl+B</span>
+                </button>
+                <button class="hc-button" onclick="window.location.href='../index.html'">
+                    Home <span class="shortcut">Ctrl+H</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 80%"></div>
+        </div>
+    </div>
+
+    <script src="../static/js/navigation.js"></script>
+    <script>
+    function updateFunction() {
+        const type = document.getElementById('functionType').value;
+        const inputArea = document.getElementById('input-area');
+        const codeDisplay = document.getElementById('function-code');
+
+        let inputHTML = '';
+        let code = '';
+
+        switch(type) {
+            case 'add':
+                inputHTML = `
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <input type="number" id="param1" value="5" placeholder="a" class="viz-input" style="flex: 1;">
+                        <input type="number" id="param2" value="3" placeholder="b" class="viz-input" style="flex: 1;">
+                    </div>
+                `;
+                code = `def add(a, b):
+    return a + b`;
+                break;
+            case 'multiply':
+                inputHTML = `
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <input type="number" id="param1" value="4" placeholder="a" class="viz-input" style="flex: 1;">
+                        <input type="number" id="param2" value="7" placeholder="b" class="viz-input" style="flex: 1;">
+                    </div>
+                `;
+                code = `def multiply(a, b):
+    return a * b`;
+                break;
+            case 'greet':
+                inputHTML = `
+                    <input type="text" id="param1" value="Alice" placeholder="name" class="viz-input" style="width: 100%;">
+                `;
+                code = `def greet(name):
+    return "Hello, " + name + "!"`;
+                break;
+            case 'is_even':
+                inputHTML = `
+                    <input type="number" id="param1" value="8" placeholder="n" class="viz-input" style="width: 100%;">
+                `;
+                code = `def is_even(n):
+    return n % 2 == 0`;
+                break;
+        }
+
+        inputArea.innerHTML = inputHTML;
+        codeDisplay.textContent = code;
+    }
+
+    function callFunction() {
+        const type = document.getElementById('functionType').value;
+        const output = document.getElementById('function-output');
+        const param1 = document.getElementById('param1').value;
+
+        let result = '';
+        let visualization = '';
+
+        switch(type) {
+            case 'add':
+                const param2_add = document.getElementById('param2').value;
+                const sum = parseFloat(param1) + parseFloat(param2_add);
+                result = `INPUT: ${param1}, ${param2_add}\n\n↓ Into Function ↓\n\n[add(${param1}, ${param2_add})]\n\n↓ Processing ↓\n\nreturn ${param1} + ${param2_add}\n\n↓ Output ↓\n\n${sum}`;
+                break;
+            case 'multiply':
+                const param2_mult = document.getElementById('param2').value;
+                const product = parseFloat(param1) * parseFloat(param2_mult);
+                result = `INPUT: ${param1}, ${param2_mult}\n\n↓ Into Function ↓\n\n[multiply(${param1}, ${param2_mult})]\n\n↓ Processing ↓\n\nreturn ${param1} * ${param2_mult}\n\n↓ Output ↓\n\n${product}`;
+                break;
+            case 'greet':
+                const greeting = `Hello, ${param1}!`;
+                result = `INPUT: "${param1}"\n\n↓ Into Function ↓\n\n[greet("${param1}")]\n\n↓ Processing ↓\n\nreturn "Hello, " + "${param1}" + "!"\n\n↓ Output ↓\n\n"${greeting}"`;
+                break;
+            case 'is_even':
+                const isEven = parseFloat(param1) % 2 === 0;
+                result = `INPUT: ${param1}\n\n↓ Into Function ↓\n\n[is_even(${param1})]\n\n↓ Processing ↓\n\nreturn ${param1} % 2 == 0\n\n↓ Output ↓\n\n${isEven}`;
+                break;
+        }
+
+        output.textContent = result;
+    }
+
+    // Initialize
+    updateFunction();
+    </script>
+</body>
+</html>

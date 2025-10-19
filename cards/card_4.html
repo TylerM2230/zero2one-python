@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input/Output - Program Conversation</title>
+    <link rel="stylesheet" href="../static/css/hypercard.css">
+</head>
+<body class="has-sticky-nav">
+    <!-- Sticky Top Navigation -->
+    <div class="sticky-top-nav">
+        <div class="sticky-nav-left">
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_3.html'">←</button>
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_5.html'">→</button>
+        </div>
+        <div class="sticky-nav-center">Card 4 / 15</div>
+        <div class="sticky-nav-right">
+            <a href="../browse.html" class="sticky-nav-link">Browse</a>
+            <a href="../index.html" class="sticky-nav-link">Home</a>
+        </div>
+    </div>
+
+    <div class="hypercard-stack">
+        <div class="card-header">
+            <div class="card-title">Input/Output - Program Conversation</div>
+            <div class="card-number">Card 4 of 15</div>
+        </div>
+
+        <div class="card-content">
+            <h2>How Do Programs Talk to Us?</h2>
+
+            <div class="narrative">
+                "One of the ways that we can present information is through printing items to the console. One of the ways to make our programs dynamic is by allowing our users to add their own data."
+            </div>
+
+            <h3>The Two-Way Conversation</h3>
+
+            <div class="visualization">
+                <div class="viz-container" style="display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px;">👤</div>
+                        <div style="font-weight: bold;">User</div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 24px;">→</span>
+                            <div class="viz-box" style="padding: 10px;">
+                                <strong>input()</strong><br>User sends data
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="viz-box" style="padding: 10px;">
+                                <strong>print()</strong><br>Program responds
+                            </div>
+                            <span style="font-size: 24px;">←</span>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px;">💻</div>
+                        <div style="font-weight: bold;">Program</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Interactive Example</h3>
+
+            <div class="visualization">
+                <div class="viz-container">
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Enter your name:</label>
+                        <input type="text" id="userName" class="viz-input" style="width: 100%; padding: 8px; font-size: 14px; font-family: monospace;">
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Enter your age:</label>
+                        <input type="text" id="userAge" class="viz-input" style="width: 100%; padding: 8px; font-size: 14px; font-family: monospace;">
+                    </div>
+
+                    <button class="hc-button" onclick="processInput()" style="width: 100%;">Run Program</button>
+
+                    <div id="output" class="viz-display-area" style="margin-top: 15px; font-family: monospace; min-height: 60px; background: var(--terminal-bg); color: var(--terminal-text);">
+                        Console output will appear here...
+                    </div>
+                </div>
+            </div>
+
+            <h3>The Critical Pitfall: Storing Input</h3>
+
+            <div class="key-concept">
+                <strong>Common Mistake:</strong> Getting input but not storing it in a variable means the data disappears!
+            </div>
+
+            <pre class="viz-code-block"># ❌ WRONG - Data vanishes
+input("Enter your name: ")
+print(name)  # Error! What is name?
+
+# ✅ CORRECT - Store in variable
+name = input("Enter your name: ")
+print(name)  # Works!</pre>
+
+            <h3>Casting: Converting Types</h3>
+
+            <div class="narrative">
+                "The default type of information from input() is a string. If we're expecting a number, we have to convert it."
+            </div>
+
+            <pre class="viz-code-block"># Input always returns strings
+age = input("Age: ")  # User types "25"
+# age is "25" (string) not 25 (number)
+
+# Cast to integer to do math
+age = int(input("Age: "))
+# Now age is 25 (number)
+
+# Cast back to string
+age_text = str(age)  # "25" (string)</pre>
+
+            <div class="key-concept">
+                <strong>Mental Model:</strong> Input/Output is like passing notes. You write something (input), pass it to the program, the program writes back (output). But you need to keep the note (store in variable) to read it later.
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-arrows">
+                <button class="arrow-button" onclick="window.location.href='card_3.html'">←</button>
+                <button class="arrow-button" onclick="window.location.href='card_5.html'">→</button>
+            </div>
+
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="hc-button" onclick="window.location.href='../browse.html'">
+                    Browse <span class="shortcut">Ctrl+B</span>
+                </button>
+                <button class="hc-button" onclick="window.location.href='../index.html'">
+                    Home <span class="shortcut">Ctrl+H</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 26.67%"></div>
+        </div>
+    </div>
+
+    <script src="../static/js/navigation.js"></script>
+    <script>
+    function processInput() {
+        const name = document.getElementById('userName').value;
+        const ageInput = document.getElementById('userAge').value;
+        const output = document.getElementById('output');
+
+        if (!name || !ageInput) {
+            output.innerHTML = '> Error: Please fill in both fields!';
+            return;
+        }
+
+        // Check if age is a number
+        const age = parseInt(ageInput);
+        if (isNaN(age)) {
+            output.innerHTML = '> Error: Age must be a number!\n> You entered: "' + ageInput + '" (string)\n> Casting failed - cannot convert to integer';
+        } else {
+            output.innerHTML = '> name = input("Enter your name: ")\n' +
+                              '> "' + name + '"\n\n' +
+                              '> age = int(input("Enter your age: "))\n' +
+                              '> ' + age + '\n\n' +
+                              '> print("Hello, " + name + "!")\n' +
+                              'Hello, ' + name + '!\n\n' +
+                              '> print("You are " + str(age) + " years old")\n' +
+                              'You are ' + age + ' years old';
+        }
+    }
+    </script>
+</body>
+</html>

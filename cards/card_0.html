@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Computational Mindset</title>
+    <link rel="stylesheet" href="../static/css/hypercard.css">
+</head>
+<body class="has-sticky-nav">
+    <!-- Sticky Top Navigation -->
+    <div class="sticky-top-nav">
+        <div class="sticky-nav-left">
+            <button class="sticky-nav-arrow" onclick="window.location.href='../index.html'">←</button>
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_1.html'">→</button>
+        </div>
+        <div class="sticky-nav-center">Card 0 / 15</div>
+        <div class="sticky-nav-right">
+            <a href="../browse.html" class="sticky-nav-link">Browse</a>
+            <a href="../index.html" class="sticky-nav-link">Home</a>
+        </div>
+    </div>
+
+    <div class="hypercard-stack">
+        <div class="card-header">
+            <div class="card-title">The Computational Mindset</div>
+            <div class="card-number">Card 0 of 15</div>
+        </div>
+
+        <div class="card-content">
+            <h2>What Does It Mean to Think Like a Computer?</h2>
+
+            <div class="narrative">
+                "Before we write code, understand what a computer is and how it thinks."
+            </div>
+
+            <h3>The Fundamental Truth</h3>
+            <p>
+                A computer is the most literal-minded entity you'll encounter. It does <em>exactly</em> what you tell it—nothing more, nothing less. No intuition. No common sense. No "figuring out what you meant."
+            </p>
+
+            <div class="key-concept">
+                <strong>Core Principle:</strong> Programming is translating human intentions into precise, unambiguous instructions.
+            </div>
+
+            <h3>The Sandwich Exercise</h3>
+            <p>
+                Imagine teaching someone who's never seen food how to make a peanut butter sandwich. You cannot skip steps. You cannot assume they know what "spread" means.
+            </p>
+
+            <div class="visualization">
+                <div style="text-align: center; width: 100%;">
+                    <h4 style="margin-bottom: 20px;">Instruction Simulator</h4>
+                    <div class="viz-code-block" style="font-size: 14px; margin-bottom: 20px;">
+                        <strong>Instruction:</strong><br>
+                        <span id="current-instruction" style="font-family: monospace;">"Open the jar"</span>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong>Computer's Response:</strong>
+                        <div id="instruction-result" class="viz-display-area viz-state-error" style="margin-top: 10px;">
+                            ❌ ERROR: Which jar? Where is it? What does "open" mean?
+                        </div>
+                    </div>
+                    <button class="hc-button" onclick="cycleInstructions()" style="width: 220px; margin: 0 auto;">
+                        Try Next Instruction
+                    </button>
+                </div>
+            </div>
+
+            <h3>Why Programs Work</h3>
+            <p>Programs work because they follow three principles:</p>
+            <ol>
+                <li><strong>Precision:</strong> Every instruction must be explicit and unambiguous</li>
+                <li><strong>Sequence:</strong> Instructions execute in order, one after another</li>
+                <li><strong>Determinism:</strong> Same instructions always produce same result</li>
+            </ol>
+
+            <div class="narrative">
+                "When you understand that a computer follows instructions blindly, you realize that <em>you</em> are the intelligence. Your job: break down problems into steps so simple that even a literal-minded machine can follow them."
+            </div>
+
+            <h3>Moving Forward</h3>
+            <p>
+                Next, we'll learn the building blocks that let us give these precise instructions: variables, data types, control flow. Each concept exists to solve a specific problem in translating human thought into machine action.
+            </p>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-arrows">
+                <button class="arrow-button" onclick="window.location.href='../index.html'">←</button>
+                <button class="arrow-button" onclick="window.location.href='card_1.html'">→</button>
+            </div>
+
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="hc-button" onclick="window.location.href='../browse.html'">
+                    Browse <span class="shortcut">Ctrl+B</span>
+                </button>
+                <button class="hc-button" onclick="window.location.href='../index.html'">
+                    Home <span class="shortcut">Ctrl+H</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%"></div>
+        </div>
+    </div>
+
+    <script src="../static/js/navigation.js"></script>
+    <script>
+    const instructions = [
+        {
+            instruction: '"Open the jar"',
+            result: '❌ ERROR: Which jar? Where is it? What does "open" mean?',
+            correct: false
+        },
+        {
+            instruction: '"Locate the peanut butter jar on the counter"',
+            result: '✓ SUCCESS: Found jar at position (x: 10cm, y: 5cm)',
+            correct: true
+        },
+        {
+            instruction: '"Grab the lid and twist counterclockwise until detached"',
+            result: '✓ SUCCESS: Lid removed. Jar is now open.',
+            correct: true
+        },
+        {
+            instruction: '"Put peanut butter on bread"',
+            result: '❌ ERROR: Place entire jar on bread? Scoop how much? Which bread?',
+            correct: false
+        },
+        {
+            instruction: '"Pick up knife. Insert 2cm into peanut butter. Extract. Apply to bread slice #1 in sweeping motion"',
+            result: '✓ SUCCESS: Peanut butter spread evenly on bread slice.',
+            correct: true
+        }
+    ];
+
+    let currentIdx = 0;
+
+    function cycleInstructions() {
+        currentIdx = (currentIdx + 1) % instructions.length;
+        const instr = instructions[currentIdx];
+        const resultEl = document.getElementById('instruction-result');
+
+        document.getElementById('current-instruction').textContent = instr.instruction;
+        resultEl.textContent = instr.result;
+
+        // Toggle state classes
+        if (instr.correct) {
+            resultEl.classList.remove('viz-state-error');
+            resultEl.classList.add('viz-state-success');
+        } else {
+            resultEl.classList.remove('viz-state-success');
+            resultEl.classList.add('viz-state-error');
+        }
+    }
+    </script>
+</body>
+</html>
