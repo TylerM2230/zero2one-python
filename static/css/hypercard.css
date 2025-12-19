@@ -514,7 +514,65 @@ strong {
 }
 
 @media (max-width: 600px) {
-    .hypercard-stack { height: 100vh; border: none; box-shadow: none; width: 100%; }
-    .card-content { padding: 16px; }
+    .hypercard-stack { 
+        height: auto; 
+        min-height: 100vh; 
+        border: none; 
+        box-shadow: none; 
+        width: 100%; 
+        border-left: var(--border-width) solid var(--phosphor);
+        border-right: var(--border-width) solid var(--phosphor);
+    }
+    .card-content { padding: 20px 16px; }
     h2 { font-size: 1.5rem; }
+    
+    /* Stack navigation on mobile */
+    .bottom-nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .nav-arrows, .nav-links {
+        width: 100%;
+        justify-content: center;
+        order: unset; /* Reset order to stack naturally or enforce specific order */
+    }
+    
+    .nav-arrows { order: 2; }
+    .nav-links { order: 1; flex-direction: column; }
+    
+    .hc-button, .arrow-button {
+        width: 100%;
+        text-align: center;
+        padding: 16px; /* Larger touch target */
+    }
+    
+    /* Ensure code blocks scroll */
+    .viz-terminal, .ascii-art, pre {
+        overflow-x: auto;
+        max-width: 100%;
+        scrollbar-width: thin;
+        scrollbar-color: var(--phosphor) var(--void);
+    }
+    
+    /* Adjust visual input text area */
+    .viz-input, input, textarea {
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    /* Layout Wrapper padding */
+    .layout-wrapper {
+        padding: 0;
+        gap: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    /* Very small screens */
+    .card-title { font-size: 1rem; }
+    .card-header { padding: 10px; }
+    
+    .card-grid {
+        grid-template-columns: 1fr; /* Single column for cards */
+    }
 }
