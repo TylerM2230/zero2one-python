@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Void Background -->
+  <rect width="64" height="64" fill="#000000"/>
+  
+  <!-- Phosphor Arrow (>) -->
+  <path d="M12 16 L38 32 L12 48 L18 54 L48 32 L18 10 Z" fill="#ffffff"/>
+  
+  <!-- Phosphor Underscore (_) -->
+  <rect x="42" y="46" width="14" height="8" fill="#ffffff"/>
+</svg>

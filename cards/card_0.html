@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Computational Mindset</title>
+    <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../static/css/hypercard.css">
 </head>
 <body class="has-sticky-nav">
@@ -20,83 +21,98 @@
         </div>
     </div>
 
-    <div class="hypercard-stack">
+    <div class="layout-wrapper">
+        <div class="hypercard-stack">
         <div class="card-header">
             <div class="card-title">The Computational Mindset</div>
             <div class="card-number">Card 0 of 15</div>
         </div>
 
         <div class="card-content">
-            <h2>What Does It Mean to Think Like a Computer?</h2>
+            <!-- ASCII Header -->
+            <pre class="ascii-art">
+   ______      __  __  __  _              __ 
+  / ____/___  / /_/ /_/ /_(_)________  __/ /_
+  / /   / __ \/ __/ __/ __/ / ___/ __ \/ / __/
+/ /___/ /_/ / /_/ /_/ /_/ (__  ) /_/ / / /_  
+\____/\____/\__/\__/\__/_/____/\____/_/\__/  
+            </pre>
 
             <div class="narrative">
-                "Before we write code, understand what a computer is and how it thinks."
+                <strong>> SYSTEM MSG:</strong> Entities [Computers] possess 0% intuition. Obedience protocol is 100%.
             </div>
 
-            <h3>The Fundamental Truth</h3>
-            <p>
-                A computer is the most literal-minded entity you'll encounter. It does <em>exactly</em> what you tell it—nothing more, nothing less. No intuition. No common sense. No "figuring out what you meant."
-            </p>
-
-            <div class="key-concept">
-                <strong>Core Principle:</strong> Programming is translating human intentions into precise, unambiguous instructions.
-            </div>
-
-            <h3>The Sandwich Exercise</h3>
-            <p>
-                Imagine teaching someone who's never seen food how to make a peanut butter sandwich. You cannot skip steps. You cannot assume they know what "spread" means.
-            </p>
-
+            <!-- Terminal-style Visualization -->
             <div class="visualization">
-                <div style="text-align: center; width: 100%;">
-                    <h4 style="margin-bottom: 20px;">Instruction Simulator</h4>
-                    <div class="viz-code-block" style="font-size: 14px; margin-bottom: 20px;">
-                        <strong>Instruction:</strong><br>
-                        <span id="current-instruction" style="font-family: monospace;">"Open the jar"</span>
+                <div style="width: 100%;">
+                    <div style="border-bottom: 1px dashed var(--phosphor); margin-bottom: 15px; padding-bottom: 5px;">
+                        <strong>> SANDWICH_SIM_v1.0.exe</strong>
                     </div>
-                    <div style="margin-bottom: 20px;">
-                        <strong>Computer's Response:</strong>
-                        <div id="instruction-result" class="viz-display-area viz-state-error" style="margin-top: 10px;">
-                            ❌ ERROR: Which jar? Where is it? What does "open" mean?
+                    
+                    <p style="font-size: 0.9em; margin-bottom: 15px;">OBJ: INSTRUCT_ENTITY >> MAKE_SANDWICH</p>
+                    
+                    <div class="viz-terminal" style="margin-bottom: 20px;">
+                        <div style="margin-bottom: 10px;">> AWAITING INPUT...</div>
+                        <div style="margin-bottom: 10px;">
+                            <span style="opacity: 0.7;">USER >> </span>
+                            <span id="current-instruction">"Open the jar"</span>
+                        </div>
+                        
+                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dotted #333;">
+                            <span style="opacity: 0.7;">KERNEL_RESPONSE >> </span>
+                            <span id="instruction-result" class="viz-state-error" style="background: none; border: none; padding: 0;">
+                                [FATAL_ERR]: LINK_MISSING (Which jar? Coordinates null.)
+                            </span>
                         </div>
                     </div>
-                    <button class="hc-button" onclick="cycleInstructions()" style="width: 220px; margin: 0 auto;">
-                        Try Next Instruction
+                    
+                    <button class="hc-button" onclick="cycleInstructions()" style="width: 100%;">
+                        > EXECUTE_NEXT_ATTEMPT
                     </button>
                 </div>
             </div>
 
-            <h3>Why Programs Work</h3>
-            <p>Programs work because they follow three principles:</p>
-            <ol>
-                <li><strong>Precision:</strong> Every instruction must be explicit and unambiguous</li>
-                <li><strong>Sequence:</strong> Instructions execute in order, one after another</li>
-                <li><strong>Determinism:</strong> Same instructions always produce same result</li>
-            </ol>
+            <h3>// CORE_PRINCIPLES</h3>
+            
+            <ul style="font-size: 1.2rem;">
+                <li>
+                    <strong>Precision is everything.</strong><br>
+                    <span style="font-size: 0.9em; opacity: 0.8;">Computers need exact coordinates, not "over there."</span>
+                </li>
+                <li>
+                    <strong>No intuition.</strong><br>
+                    <span style="font-size: 0.9em; opacity: 0.8;">They don't know what a sandwich <em>is</em> until you define it.</span>
+                </li>
+                <li>
+                    <strong>Sequence matters.</strong><br>
+                    <span style="font-size: 0.9em; opacity: 0.8;">You can't spread peanut butter before opening the jar.</span>
+                </li>
+            </ul>
 
-            <div class="narrative">
-                "When you understand that a computer follows instructions blindly, you realize that <em>you</em> are the intelligence. Your job: break down problems into steps so simple that even a literal-minded machine can follow them."
+            <div class="key-concept">
+                <strong>Takeaway</strong>
+                Programming is just <em>translating</em> your thoughts into steps small enough for a machine to follow.
             </div>
-
-            <h3>Moving Forward</h3>
-            <p>
-                Next, we'll learn the building blocks that let us give these precise instructions: variables, data types, control flow. Each concept exists to solve a specific problem in translating human thought into machine action.
-            </p>
         </div>
 
         <div class="bottom-nav">
-            <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='../index.html'">←</button>
-                <button class="arrow-button" onclick="window.location.href='card_1.html'">→</button>
-            </div>
-
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    Browse <span class="shortcut">Ctrl+B</span>
+                    [ BROWSE ]
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    Home <span class="shortcut">Ctrl+H</span>
+                    [ HOME ]
                 </button>
+            </div>
+
+            <!-- Visual Navigation Progress -->
+            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
+                [<span style="background: var(--phosphor); color: var(--void);"></span>..............................] 00/15
+            </div>
+
+            <div class="nav-arrows">
+                <button class="arrow-button" onclick="window.location.href='../index.html'"> &lt; PREV </button>
+                <button class="arrow-button" onclick="window.location.href='card_1.html'"> NEXT &gt; </button>
             </div>
         </div>
 
@@ -105,32 +121,48 @@
         </div>
     </div>
 
+    <div class="ascii-assistant">
+        <div class="assistant-bubble">
+            > [WHY_IT_MATTERS]:<br>
+            If you assume the computer "knows" what a sandwich is, you will introduce 99% of your bugs.
+        </div>
+        <div class="assistant-avatar">
+ .--.
+ |__| .-------.
+ |=.| |.-----.|
+ |--| ||     ||
+ |  | |'-----'|
+ |__|~')_____('
+        </div>
+    </div>
+    </div>
+
     <script src="../static/js/navigation.js"></script>
     <script>
     const instructions = [
         {
             instruction: '"Open the jar"',
-            result: '❌ ERROR: Which jar? Where is it? What does "open" mean?',
+            result: '[FATAL_ERR]: LINK_MISSING (Which jar? Coordinates null.)',
             correct: false
         },
         {
-            instruction: '"Locate the peanut butter jar on the counter"',
-            result: '✓ SUCCESS: Found jar at position (x: 10cm, y: 5cm)',
+            instruction: 'LOCATE(JAR, COORDS: 10, 5)',
+            result: '> SUCCESS: TARGET_ACQUIRED [x:10, y:5]',
             correct: true
         },
         {
-            instruction: '"Grab the lid and twist counterclockwise until detached"',
-            result: '✓ SUCCESS: Lid removed. Jar is now open.',
+            instruction: 'GRAB(LID) && ROTATE(CCW, UNTIL_DETACHED)',
+            result: '> SUCCESS: CONTAINER_OPEN',
             correct: true
         },
         {
             instruction: '"Put peanut butter on bread"',
-            result: '❌ ERROR: Place entire jar on bread? Scoop how much? Which bread?',
+            result: '[ERR]: AMBIGUOUS_PARAM (Entire jar? How much? Which bread?)',
             correct: false
         },
         {
-            instruction: '"Pick up knife. Insert 2cm into peanut butter. Extract. Apply to bread slice #1 in sweeping motion"',
-            result: '✓ SUCCESS: Peanut butter spread evenly on bread slice.',
+            instruction: 'EXTRACT(KNIFE, 2CM); APPLY(BREAD_1, SWEEP)',
+            result: '> SUCCESS: DEPLOYMENT_COMPLETE',
             correct: true
         }
     ];

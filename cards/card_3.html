@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Types - Why Different Boxes?</title>
+        <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../static/css/hypercard.css" />
   </head>
   <body class="has-sticky-nav">
@@ -30,7 +31,8 @@
       </div>
     </div>
 
-    <div class="hypercard-stack">
+    <div class="layout-wrapper">
+        <div class="hypercard-stack">
       <div class="card-header">
         <div class="card-title">Data Types - Why Different Boxes?</div>
         <div class="card-number">Card 3 of 15</div>
@@ -152,41 +154,47 @@ score = str(score) # Now it's a string: "100"</pre
         </div>
       </div>
 
-      <div class="bottom-nav">
-        <div class="nav-arrows">
-          <button
-            class="arrow-button"
-            onclick="window.location.href='card_2.html'"
-          >
-            ←
-          </button>
-          <button
-            class="arrow-button"
-            onclick="window.location.href='card_4.html'"
-          >
-            →
-          </button>
+                                                              <div class="bottom-nav">
+            <div class="nav-links">
+                <button class="hc-button" onclick="window.location.href='../browse.html'">
+                    [ BROWSE ]
+                </button>
+                <button class="hc-button" onclick="window.location.href='../index.html'">
+                    [ HOME ]
+                </button>
+            </div>
+
+            <!-- Visual Navigation Progress -->
+            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
+                [<span style="background: var(--phosphor); color: var(--void);">######........................</span>] 03/15
+            </div>
+
+            <div class="nav-arrows">
+                <button class="arrow-button" onclick="window.location.href='card_2.html'"> &lt; PREV </button>
+                <button class="arrow-button" onclick="window.location.href='card_4.html'"> NEXT &gt; </button>
+            </div>
         </div>
 
-        <div style="display: flex; gap: 8px; flex-wrap: wrap">
-          <button
-            class="hc-button"
-            onclick="window.location.href='../browse.html'"
-          >
-            Browse <span class="shortcut">Ctrl+B</span>
-          </button>
-          <button
-            class="hc-button"
-            onclick="window.location.href='../index.html'"
-          >
-            Home <span class="shortcut">Ctrl+H</span>
-          </button>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 20.0%"></div>
         </div>
-      </div>
+    </div>
 
-      <div class="progress-bar">
-        <div class="progress-fill" style="width: 20%"></div>
-      </div>
+        <!-- ASCII ASSISTANT -->
+    <div class="ascii-assistant">
+        <div class="assistant-bubble">
+            > [WHY_IT_MATTERS]:<br>
+            Data is potential energy. Operations convert it into kinetic action.
+        </div>
+        <div class="assistant-avatar">
+ .--.
+ |__| .-------.
+ |=.| |.-----.|
+ |--| ||     ||
+ |  | |'-----'|
+ |__|~')_____('
+        </div>
+    </div>
     </div>
 
     <script src="../static/js/navigation.js"></script>
