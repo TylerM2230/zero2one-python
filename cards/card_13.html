@@ -84,16 +84,16 @@
             <div class="visualization">
                 <div class="viz-container" style="width: 100%; max-width: 100%;">
                     <div style="margin-bottom: 15px;">
-                        <div class="viz-button-group" style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; margin-bottom: 10px;">
-                            <input type="text" id="newKey" placeholder="Key" class="viz-input" style="min-width: 0;">
-                            <input type="text" id="newValue" placeholder="Value" class="viz-input" style="min-width: 0;">
-                            <button class="hc-button" onclick="addPair()" style="white-space: nowrap;">Add</button>
+                        <div class="viz-button-group" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+                            <input type="text" id="newKey" placeholder="Key" class="viz-input" style="flex: 1; min-width: 80px;">
+                            <input type="text" id="newValue" placeholder="Value" class="viz-input" style="flex: 1; min-width: 80px;">
+                            <button class="hc-button" onclick="addPair()" style="white-space: nowrap; flex-grow: 1;">Add</button>
                         </div>
                     </div>
 
                     <div style="margin-bottom: 15px;">
-                        <div class="viz-button-group" style="display: grid; grid-template-columns: 1fr auto; gap: 8px;">
-                            <input type="text" id="lookupKey" placeholder="Look up key" class="viz-input" style="min-width: 0;">
+                        <div class="viz-button-group" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <input type="text" id="lookupKey" placeholder="Look up key" class="viz-input" style="flex: 1; min-width: 150px;">
                             <button class="hc-button" onclick="lookupValue()" style="white-space: nowrap;">Get</button>
                         </div>
                     </div>
@@ -198,15 +198,10 @@ alice_grade = grades["Alice"]  # 95
     <div class="ascii-assistant">
         <div class="assistant-bubble">
             > [WHY_IT_MATTERS]:<br>
-            Scope protects you from yourself. What happens in the function stays in the function.
+            Keys open doors. Dictionaries let you find the data without searching the whole world.
         </div>
         <div class="assistant-avatar">
- .--.
- |__| .-------.
- |=.| |.-----.|
- |--| ||     ||
- |  | |'-----'|
- |__|~')_____('
+            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
         </div>
     </div>
     </div>

@@ -102,18 +102,18 @@ fruits = ["apple", "banana", "orange", "grape"]</pre>
                 <div class="viz-container">
                     <div style="margin-bottom: 15px;">
                         <label style="display: block; font-weight: bold; margin-bottom: 5px;">Add item to list:</label>
-                        <div style="display: flex; gap: 10px;">
-                            <input type="text" id="newItem" placeholder="Enter item" class="viz-input" style="flex: 1;">
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <input type="text" id="newItem" placeholder="Enter item" class="viz-input" style="flex: 1; min-width: 150px;">
                             <button class="hc-button" onclick="addItem()">Add</button>
                         </div>
                     </div>
 
                     <div style="margin-bottom: 15px;">
                         <label style="display: block; font-weight: bold; margin-bottom: 5px;">Access by index:</label>
-                        <div class="viz-button-group" style="display: flex; gap: 10px;">
-                            <input type="number" id="accessIndex" placeholder="Index" value="0" class="viz-input" style="width: 100px;">
-                            <button class="hc-button" onclick="accessItem()">Get Item</button>
-                            <button class="hc-button viz-state-error" onclick="removeItem()">Remove</button>
+                        <div class="viz-button-group" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <input type="number" id="accessIndex" placeholder="Index" value="0" class="viz-input" style="width: 100px; flex-grow: 1;">
+                            <button class="hc-button" onclick="accessItem()" style="flex-grow: 1;">Get Item</button>
+                            <button class="hc-button viz-state-error" onclick="removeItem()" style="flex-grow: 1;">Remove</button>
                         </div>
                     </div>
 
@@ -203,15 +203,10 @@ for ii in range(len(fruits)):
     <div class="ascii-assistant">
         <div class="assistant-bubble">
             > [WHY_IT_MATTERS]:<br>
-            Keys open doors. Dictionaries let you find the data without searching the whole world.
+            A variable holds a thought. A list holds a culture. Organizing data is organizing the mind.
         </div>
         <div class="assistant-avatar">
- .--.
- |__| .-------.
- |=.| |.-----.|
- |--| ||     ||
- |  | |'-----'|
- |__|~')_____('
+            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
         </div>
     </div>
     </div>

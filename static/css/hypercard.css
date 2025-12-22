@@ -284,6 +284,55 @@ strong {
     padding: 10px;
 }
 
+/* Image-based avatar styles */
+.assistant-avatar img {
+    display: block;
+    max-width: 260px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    
+    /* Clean, pixelated look */
+    image-rendering: pixelated;
+    
+    /* 1-bit Monochrome Effect: Grayscale + High Contrast to make it purely B&W */
+    filter: grayscale(100%) contrast(200%);
+    
+    border: none;
+}
+
+@media (max-width: 1024px) {
+   .ascii-assistant {
+        /* Stack interaction on mobile: Bubble on TOP, Avatar on BOTTOM */
+        display: flex;
+        flex-direction: column; 
+        width: 100%;
+        max-width: 100%;
+        margin-top: 30px;
+        align-items: center; /* Center everything horizontally */
+    }
+
+    .assistant-bubble {
+        margin-bottom: 0; /* Zero gap for tightest fit */
+        width: 90%; 
+        max-width: 400px;
+        text-align: left;
+        align-self: center; /* Ensure bubble is centered */
+    }
+    
+    /* Ensure tail points down to avatar */
+    .assistant-bubble::after {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -15px; /* Ensure it sticks out the bottom */
+        border-top-color: var(--phosphor); /* Ensure color is correct */
+    }
+    
+    .assistant-avatar {
+        padding-top: 0;
+    }
+}
+
 /* -------------------------------------------
    RESPONSIVE DESIGN (Mobile)
    ------------------------------------------- */
@@ -300,35 +349,6 @@ strong {
         height: auto;
         min-height: 70vh;
         margin-bottom: 20px;
-    }
-    
-    .ascii-assistant {
-        width: 100%;
-        max-width: 500px;
-        flex-direction: row; /* Horizontal layout on mobile? or just block */
-        align-items: flex-start;
-        gap: 20px;
-    }
-    
-    .assistant-bubble {
-        margin-bottom: 0;
-        order: 2;
-    }
-    
-    .assistant-bubble::after {
-        /* Point LEFT to avatar if row layout */
-        bottom: auto;
-        top: 20px;
-        left: -15px;
-        transform: none;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-right: 15px solid var(--phosphor);
-        border-left: none;
-    }
-    
-    .assistant-avatar {
-        order: 1;
     }
 }
 
@@ -557,7 +577,9 @@ strong {
     
     /* Adjust visual input text area */
     .viz-input, input, textarea {
-        font-size: 16px; /* Prevent zoom on iOS */
+        font-size: 16px !important; /* Prevent zoom on iOS */
+        max-width: 100%;
+        width: 100%;
     }
     
     /* Layout Wrapper padding */
