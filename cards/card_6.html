@@ -25,9 +25,8 @@
         <div class="hypercard-stack">
         <div class="card-header">
             <div class="card-title">Logical Operators - Combining Truth</div>
-            <div class="card-number">Card 6 of 15</div>
+            <div class="card-number">6 / 15</div>
         </div>
-
         <div class="card-content">
             <h2>What's the Function of Logical Operators?</h2>
 
@@ -38,7 +37,7 @@
             <h3>The Three Logical Operators</h3>
 
             <div class="visualization">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
                     <div class="viz-box">
                         <h4 style="margin: 0 0 10px 0;">AND</h4>
                         <p style="font-size: 13px; margin-bottom: 10px;">Connect dependent statements</p>
@@ -96,10 +95,16 @@
                 </div>
             </div>
 
-            <h3>Real-World Examples</h3>
-
-            <pre class="viz-code-block">
-# AND - Both conditions must be true
+            <details class="hc-disclosure">
+                <summary class="hc-disclosure-summary">
+                    <span class="hc-disclosure-summary-left">
+                        <span class="hc-disclosure-badge badge-code">CODE EXAMPLES</span>
+                        <span>Real-World Boolean Logic &amp; Gate Mental Models</span>
+                    </span>
+                    <span class="hc-disclosure-chevron">+ Explore</span>
+                </summary>
+                <div class="hc-disclosure-body">
+                    <pre class="viz-code-block"># AND - Both conditions must be true
 age = 20
 has_license = True
 can_drive = age >= 18 and has_license  # True
@@ -113,38 +118,42 @@ can_sleep_in = is_weekend or is_holiday  # True
 is_raining = False
 bring_umbrella = not is_raining  # True</pre>
 
-            <div class="key-concept">
-                <strong>Mental Model:</strong> Think of logical operators as gates:
-                <ul style="margin-top: 10px;">
-                    <li><strong>AND</strong> is a strict bouncer - everyone needs ID</li>
-                    <li><strong>OR</strong> is flexible - show either ID or ticket</li>
-                    <li><strong>NOT</strong> is opposite day - yes means no, no means yes</li>
-                </ul>
-            </div>
+                    <div class="key-concept" style="margin-bottom: 0;">
+                        <strong>Mental Model:</strong> Think of logical operators as gates:
+                        <ul style="margin-top: 10px; margin-bottom: 0;">
+                            <li><strong>AND</strong> is a strict bouncer — everyone needs ID</li>
+                            <li><strong>OR</strong> is flexible — show either ID or ticket</li>
+                            <li><strong>NOT</strong> is opposite day — yes means no, no means yes</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
 
-            <div class="narrative">
-                "Logical operators let you combine simple comparisons into complex conditions. They're the building blocks for decision-making logic."
+            <div class="flower-encouragement">
+                <img src="../static/images/cursors/flower_7.png" alt="Scarlet Blossoms">
+                <div>
+                    <strong>Woodland Milestone:</strong> You can now combine any number of conditions with <code>and</code>, <code>or</code>, and <code>not</code>! Next, let's use these conditions to branch your code with <code>if-elif-else</code>.
+                </div>
             </div>
         </div>
 
-                                                                <div class="bottom-nav">
+                <div class="bottom-nav">
             <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">############..................</span>] 06/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='card_5.html'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='card_7.html'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='card_5.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='card_7.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
@@ -153,20 +162,25 @@ bring_umbrella = not is_raining  # True</pre>
         </div>
     </div>
 
-        <!-- ASCII ASSISTANT -->
     <div class="ascii-assistant">
         <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            Logic is the bedrock. Truth is binary. There is no 'maybe' in the core.
+            Logical operators combine conditions: 'and' requires both to be True, 'or' accepts either one, and 'not' flips True and False.
         </div>
         <div class="assistant-avatar">
-            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
+            <img src="../static/images/mascot.png" alt="Wizard Guide" />
         </div>
     </div>
     </div>
 
     <script src="../static/js/navigation.js"></script>
     <script>
+    function getOrbStyle(state, size) {
+        const bg = state ? 'rgba(102, 192, 50, 0.28)' : 'rgba(229, 107, 85, 0.25)';
+        const border = state ? '2px solid var(--accent-primary)' : '2px solid var(--state-error)';
+        const glow = state ? '0 0 12px rgba(102, 192, 50, 0.45)' : 'none';
+        return `width: ${size}px; height: ${size}px; border-radius: 50%; background: ${bg}; border: ${border}; box-shadow: ${glow}; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 13px; margin: 0 auto;`;
+    }
+
     function updateCircuit() {
         const type = document.getElementById('circuitType').value;
         const switch1 = document.getElementById('switch1').checked;
@@ -176,69 +190,61 @@ bring_umbrella = not is_raining  # True</pre>
         const switch2Label = document.getElementById('switch2Label');
 
         let result;
-        let bulbColor;
 
         if (type === 'NOT') {
             switch2Label.style.display = 'none';
             result = !switch1;
-            diagram.innerHTML = `
-                <div style="font-size: 18px; margin-bottom: 20px;">NOT Gate</div>
-                <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-                    <div style="width: 60px; height: 60px; border-radius: 50%; background: ${switch1 ? 'rgba(163, 190, 140, 0.8)' : 'rgba(191, 97, 106, 0.8)'}; border: 3px solid var(--border-color);"></div>
-                    <div style="font-size: 36px;">→ NOT →</div>
-                    <div style="width: 60px; height: 60px; border-radius: 50%; background: ${result ? 'rgba(163, 190, 140, 0.8)' : 'rgba(191, 97, 106, 0.8)'}; border: 3px solid var(--border-color);"></div>
-                </div>
-                <div style="margin-top: 15px; font-size: 14px;">Input: ${switch1} → Output: ${result}</div>
-            `;
+            diagram.innerHTML = `<div style="font-size: 18px; font-weight: bold; margin-bottom: 18px;">NOT Gate (Inverter)</div>` +
+                `<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">` +
+                    `<div style="${getOrbStyle(switch1, 60)}">${switch1 ? 'T' : 'F'}</div>` +
+                    `<div style="font-size: 28px; font-weight: bold; color: var(--accent-secondary);">→ not →</div>` +
+                    `<div style="${getOrbStyle(result, 60)}">${result ? 'T' : 'F'}</div>` +
+                `</div>` +
+                `<div style="margin-top: 15px; font-size: 14px;"><code>not ${switch1 ? 'True' : 'False'}</code> → <strong>${result ? 'True' : 'False'}</strong></div>`;
         } else {
             switch2Label.style.display = 'flex';
 
             if (type === 'AND') {
                 result = switch1 && switch2;
-                diagram.innerHTML = `
-                    <div style="font-size: 18px; margin-bottom: 20px;">AND Gate (Series Circuit)</div>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                        <div style="text-align: center;">
-                            <div style="width: 50px; height: 50px; border-radius: 50%; background: ${switch1 ? 'rgba(163, 190, 140, 0.8)' : 'rgba(191, 97, 106, 0.8)'}; border: 3px solid var(--border-color); margin: 0 auto;"></div>
-                            <div style="font-size: 12px; margin-top: 5px;">A: ${switch1}</div>
-                        </div>
-                        <div style="font-size: 24px;">─AND─</div>
-                        <div style="text-align: center;">
-                            <div style="width: 50px; height: 50px; border-radius: 50%; background: ${switch2 ? 'rgba(163, 190, 140, 0.8)' : 'rgba(191, 97, 106, 0.8)'}; border: 3px solid var(--border-color); margin: 0 auto;"></div>
-                            <div style="font-size: 12px; margin-top: 5px;">B: ${switch2}</div>
-                        </div>
-                    </div>
-                    <div style="margin-top: 15px; font-size: 14px;">Both must be ON for light to work</div>
-                `;
+                diagram.innerHTML = `<div style="font-size: 18px; font-weight: bold; margin-bottom: 18px;">AND Gate (Series Circuit)</div>` +
+                    `<div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">` +
+                        `<div style="text-align: center;">` +
+                            `<div style="${getOrbStyle(switch1, 54)}">${switch1 ? 'T' : 'F'}</div>` +
+                            `<div style="font-size: 12px; margin-top: 6px;">A: ${switch1 ? 'True' : 'False'}</div>` +
+                        `</div>` +
+                        `<div style="font-size: 22px; font-weight: bold; color: var(--accent-secondary);">─ and ─</div>` +
+                        `<div style="text-align: center;">` +
+                            `<div style="${getOrbStyle(switch2, 54)}">${switch2 ? 'T' : 'F'}</div>` +
+                            `<div style="font-size: 12px; margin-top: 6px;">B: ${switch2 ? 'True' : 'False'}</div>` +
+                        `</div>` +
+                    `</div>` +
+                    `<div style="margin-top: 15px; font-size: 14px;">Both switches must be True for the circuit to complete</div>`;
             } else { // OR
                 result = switch1 || switch2;
-                diagram.innerHTML = `
-                    <div style="font-size: 18px; margin-bottom: 20px;">OR Gate (Parallel Circuit)</div>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                        <div style="text-align: center;">
-                            <div style="width: 50px; height: 50px; border-radius: 50%; background: ${switch1 ? 'rgba(163, 190, 140, 0.8)' : 'rgba(191, 97, 106, 0.8)'}; border: 3px solid var(--border-color); margin: 0 auto;"></div>
-                            <div style="font-size: 12px; margin-top: 5px;">A: ${switch1}</div>
-                        </div>
-                        <div style="font-size: 24px;">─OR─</div>
-                        <div style="text-align: center;">
-                            <div style="width: 50px; height: 50px; border-radius: 50%; background: ${switch2 ? 'rgba(163, 190, 140, 0.8)' : 'rgba(191, 97, 106, 0.8)'}; border: 3px solid var(--border-color); margin: 0 auto;"></div>
-                            <div style="font-size: 12px; margin-top: 5px;">B: ${switch2}</div>
-                        </div>
-                    </div>
-                    <div style="margin-top: 15px; font-size: 14px;">Either switch ON works</div>
-                `;
+                diagram.innerHTML = `<div style="font-size: 18px; font-weight: bold; margin-bottom: 18px;">OR Gate (Parallel Circuit)</div>` +
+                    `<div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">` +
+                        `<div style="text-align: center;">` +
+                            `<div style="${getOrbStyle(switch1, 54)}">${switch1 ? 'T' : 'F'}</div>` +
+                            `<div style="font-size: 12px; margin-top: 6px;">A: ${switch1 ? 'True' : 'False'}</div>` +
+                        `</div>` +
+                        `<div style="font-size: 22px; font-weight: bold; color: var(--accent-secondary);">─ or ─</div>` +
+                        `<div style="text-align: center;">` +
+                            `<div style="${getOrbStyle(switch2, 54)}">${switch2 ? 'T' : 'F'}</div>` +
+                            `<div style="font-size: 12px; margin-top: 6px;">B: ${switch2 ? 'True' : 'False'}</div>` +
+                        `</div>` +
+                    `</div>` +
+                    `<div style="margin-top: 15px; font-size: 14px;">Either switch being True completes the circuit</div>`;
             }
         }
 
-        status.innerHTML = `
-            <div style="font-size: 72px; margin-bottom: 10px;">${result ? '💡' : '⚫'}</div>
-            <div style="color: ${result ? 'rgba(163, 190, 140, 1)' : 'rgba(191, 97, 106, 1)'};">${result ? 'LIGHT ON' : 'LIGHT OFF'}</div>
-            <div style="font-size: 16px; margin-top: 10px;">Result: ${result}</div>
-        `;
+        status.innerHTML = `<div style="font-size: 56px; margin-bottom: 6px;">${result ? 'ON' : 'OFF'}</div>` +
+            `<div style="color: ${result ? 'var(--accent-primary)' : 'var(--state-error)'};">${result ? 'LIGHT ON (True)' : 'LIGHT OFF (False)'}</div>` +
+            `<div style="font-size: 15px; margin-top: 6px;">Evaluates to: <code>${result ? 'True' : 'False'}</code></div>`;
+        status.classList.remove('viz-state-success', 'viz-state-error');
         if (result) {
             status.classList.add('viz-state-success');
         } else {
-            status.classList.remove('viz-state-success');
+            status.classList.add('viz-state-error');
         }
     }
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Input/Output - Program Conversation</title>
-        <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../static/css/hypercard.css">
 </head>
 <body class="has-sticky-nav">
@@ -23,125 +23,165 @@
 
     <div class="layout-wrapper">
         <div class="hypercard-stack">
-        <div class="card-header">
+            <div class="card-header">
             <div class="card-title">Input/Output - Program Conversation</div>
-            <div class="card-number">Card 4 of 15</div>
+            <div class="card-number">4 / 15</div>
         </div>
-
         <div class="card-content">
-            <h2>How Do Programs Talk to Us?</h2>
+                <h2>How Do Programs Talk With Us?</h2>
 
-            <div class="narrative">
-                "One of the ways that we can present information is through printing items to the console. One of the ways to make our programs dynamic is by allowing our users to add their own data."
-            </div>
+                <div class="narrative">
+                    "We present information to the outside world by printing to the console, and we make our programs come alive by listening to user input."
+                </div>
 
-            <h3>The Two-Way Conversation</h3>
+                <h3>The Two-Way Conversation</h3>
 
-            <div class="visualization">
-                <div class="viz-container" style="display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap;">
-                    <div style="text-align: center;">
-                        <div style="font-size: 48px;">👤</div>
-                        <div style="font-weight: bold;">User</div>
-                    </div>
+                <div class="visualization">
+                    <div class="viz-container" style="display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap;">
+                        <div class="viz-box" style="text-align: center; min-width: 120px;">
+                            <div><svg viewBox="0 0 24 24" width="36" height="36" stroke="var(--accent-secondary)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+                            <div style="font-weight: 700;">Apprentice (User)</div>
+                        </div>
 
-                    <div style="display: flex; flex-direction: column; gap: 15px;">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span style="font-size: 24px;">→</span>
-                            <div class="viz-box" style="padding: 10px;">
-                                <strong>input()</strong><br>User sends data
+                        <div style="display: flex; flex-direction: column; gap: 14px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="font-size: 22px; color: var(--accent-secondary);">→</span>
+                                <div class="viz-box" style="padding: 10px 16px;">
+                                    <code>input()</code> — <strong>Listens</strong> (User sends text into a variable)
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div class="viz-box" style="padding: 10px 16px;">
+                                    <code>print()</code> — <strong>Speaks</strong> (Program displays result on screen)
+                                </div>
+                                <span style="font-size: 22px; color: var(--accent-primary);">←</span>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div class="viz-box" style="padding: 10px;">
-                                <strong>print()</strong><br>Program responds
-                            </div>
-                            <span style="font-size: 24px;">←</span>
+
+                        <div class="viz-box" style="text-align: center; min-width: 120px;">
+                            <div><svg viewBox="0 0 24 24" width="36" height="36" stroke="var(--accent-primary)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
+                            <div style="font-weight: 700;">Python Program</div>
                         </div>
                     </div>
+                </div>
 
-                    <div style="text-align: center;">
-                        <div style="font-size: 48px;">💻</div>
-                        <div style="font-weight: bold;">Program</div>
+                <h3>Interactive Console &amp; Memory Inspector</h3>
+
+                <div class="visualization">
+                    <div class="viz-container">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 14px;">
+                            <div>
+                                <label for="userName" style="display: block; font-weight: 700; margin-bottom: 4px;">Enter your name (<code>input()</code>):</label>
+                                <input type="text" id="userName" class="viz-input" placeholder="e.g. Lyra" value="Lyra" style="width: 100%;">
+                            </div>
+
+                            <div>
+                                <label for="userAge" style="display: block; font-weight: 700; margin-bottom: 4px;">Enter your age (<code>int(input())</code>):</label>
+                                <input type="text" id="userAge" class="viz-input" placeholder="e.g. 21" value="21" style="width: 100%;">
+                            </div>
+                        </div>
+
+                        <button type="button" class="hc-button" onclick="runProgram()" style="width: 100%; margin-bottom: 14px;">
+                            ▶ Run Program &amp; Inspect Memory
+                        </button>
+
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; align-items: stretch;">
+                            <div>
+                                <h4 style="margin-top: 0; margin-bottom: 6px;">Console Output</h4>
+                                <div id="output" class="viz-display-area" style="margin-top: 0; min-height: 150px;">Click "Run Program &amp; Inspect Memory" to execute!</div>
+                            </div>
+
+                            <div>
+                                <h4 style="margin-top: 0; margin-bottom: 6px;">Live Variable Memory Inspector</h4>
+                                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px;">
+                                    <div id="mem-box-name" class="viz-box" style="flex: 1; min-width: 120px;">
+                                        <div class="viz-box-header">name <span id="mem-type-name">(str)</span></div>
+                                        <div id="mem-val-name" class="viz-box-content">"Lyra"</div>
+                                    </div>
+                                    <div id="mem-box-age" class="viz-box" style="flex: 1; min-width: 120px;">
+                                        <div class="viz-box-header">age <span id="mem-type-age">(int)</span></div>
+                                        <div id="mem-val-age" class="viz-box-content">21</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <h3>Interactive Example</h3>
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge badge-pitfall">PITFALL WATCH</span>
+                            <span>The Critical Pitfall: Catching <code>input()</code> Inside a Variable</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <div class="key-concept" style="margin-top: 0;">
+                            <strong>Common Mistake:</strong> Calling <code>input()</code> without assigning it to a variable is like asking someone their name and immediately forgetting it!
+                        </div>
 
-            <div class="visualization">
-                <div class="viz-container">
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Enter your name:</label>
-                        <input type="text" id="userName" class="viz-input" style="width: 100%; padding: 8px; font-size: 14px; font-family: monospace;">
-                    </div>
-
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Enter your age:</label>
-                        <input type="text" id="userAge" class="viz-input" style="width: 100%; padding: 8px; font-size: 14px; font-family: monospace;">
-                    </div>
-
-                    <button class="hc-button" onclick="processInput()" style="width: 100%;">Run Program</button>
-
-                    <div id="output" class="viz-display-area" style="margin-top: 15px; font-family: monospace; min-height: 60px; background: var(--terminal-bg); color: var(--terminal-text);">
-                        Console output will appear here...
-                    </div>
-                </div>
-            </div>
-
-            <h3>The Critical Pitfall: Storing Input</h3>
-
-            <div class="key-concept">
-                <strong>Common Mistake:</strong> Getting input but not storing it in a variable means the data disappears!
-            </div>
-
-            <pre class="viz-code-block"># ❌ WRONG - Data vanishes
+                        <pre class="viz-code-block"># [AVOID]  — The user's answer is never stored and vanishes immediately!
 input("Enter your name: ")
-print(name)  # Error! What is name?
+print(name)  # NameError: name 'name' is not defined
 
-# ✅ CORRECT - Store in variable
+# [GOOD]  — Catch the user's response inside a variable box!
 name = input("Enter your name: ")
-print(name)  # Works!</pre>
+print("Hello, " + name)</pre>
+                    </div>
+                </details>
 
-            <h3>Casting: Converting Types</h3>
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge badge-code">TYPE RULE</span>
+                            <span>Remember: <code>input()</code> Always Returns a String!</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <div class="narrative" style="margin-top: 0;">
+                            "Even if a user types digits like 25 into input(), Python receives it as the text string '25'. To do math with it, wrap it in int()."
+                        </div>
 
-            <div class="narrative">
-                "The default type of information from input() is a string. If we're expecting a number, we have to convert it."
+                        <pre class="viz-code-block"># 1. input() always gives you a string (text)
+raw_age = input("Enter your age: ")   # User types 25 → raw_age is "25" (str)
+
+# 2. Cast to int so you can do arithmetic
+age = int(raw_age)                    # age is now 25 (int)
+next_year = age + 1                   # 26 (int)
+
+# 3. Cast back to str if gluing into a sentence with +
+print("Next year you will be " + str(next_year))</pre>
+                    </div>
+                </details>
+
+                <div class="flower-encouragement">
+                    <img src="../static/images/cursors/flower_5.png" alt="Sakura Blossoms">
+                    <div>
+                        <strong>Card 4 Takeaway (Sakura Blossoms Unlocked!):</strong>
+                        You have completed the entire <strong>Foundations Realm (Cards 0–4)</strong>! You now know how to sequence instructions, store data in variables, respect data types, and converse with users via <code>input()</code> and <code>print()</code>.
+                    </div>
+                </div>
             </div>
 
-            <pre class="viz-code-block"># Input always returns strings
-age = input("Age: ")  # User types "25"
-# age is "25" (string) not 25 (number)
-
-# Cast to integer to do math
-age = int(input("Age: "))
-# Now age is 25 (number)
-
-# Cast back to string
-age_text = str(age)  # "25" (string)</pre>
-
-            <div class="key-concept">
-                <strong>Mental Model:</strong> Input/Output is like passing notes. You write something (input), pass it to the program, the program writes back (output). But you need to keep the note (store in variable) to read it later.
-            </div>
-        </div>
-
-                                                                <div class="bottom-nav">
+                    <div class="bottom-nav">
             <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">########......................</span>] 04/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='card_3.html'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='card_5.html'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='card_3.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='card_5.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
@@ -150,45 +190,68 @@ age_text = str(age)  # "25" (string)</pre>
         </div>
     </div>
 
-        <!-- ASCII ASSISTANT -->
     <div class="ascii-assistant">
         <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            A program that doesn't talk back is just a heater. I/O is the voice of the machine.
+            Use print() to speak and input() to listen. Always store input() inside a variable, and wrap it in int() when you need math.
         </div>
         <div class="assistant-avatar">
-            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
+            <img src="../static/images/mascot.png" alt="Wizard Guide" />
         </div>
     </div>
     </div>
 
     <script src="../static/js/navigation.js"></script>
     <script>
-    function processInput() {
-        const name = document.getElementById('userName').value;
-        const ageInput = document.getElementById('userAge').value;
+    function runProgram() {
+        const name = document.getElementById('userName').value.trim();
+        const ageInput = document.getElementById('userAge').value.trim();
         const output = document.getElementById('output');
+        const memValName = document.getElementById('mem-val-name');
+        const memValAge = document.getElementById('mem-val-age');
+        const memTypeAge = document.getElementById('mem-type-age');
+        const memBoxName = document.getElementById('mem-box-name');
+        const memBoxAge = document.getElementById('mem-box-age');
+
+        output.classList.remove('viz-state-error', 'viz-state-success');
 
         if (!name || !ageInput) {
-            output.innerHTML = '> Error: Please fill in both fields!';
+            output.textContent = '> Error: Please enter both your name and your age above!';
+            output.classList.add('viz-state-error');
             return;
         }
 
-        // Check if age is a number
-        const age = parseInt(ageInput);
-        if (isNaN(age)) {
-            output.innerHTML = '> Error: Age must be a number!\n> You entered: "' + ageInput + '" (string)\n> Casting failed - cannot convert to integer';
+        memValName.textContent = `"${name}"`;
+        memBoxName.classList.add('viz-highlight');
+        setTimeout(() => memBoxName.classList.remove('viz-highlight'), 450);
+
+        const age = Number(ageInput);
+        if (!Number.isInteger(age) || ageInput === '') {
+            memValAge.textContent = `"${ageInput}"`;
+            memTypeAge.textContent = '(str - ValueError!)';
+            output.textContent =
+                `>>> name = input("Enter your name: ")\n` +
+                `>>> age = int(input("Enter your age: "))\n` +
+                `ValueError: invalid literal for int() with base 10: '${ageInput}'\n` +
+                `(Tip: Enter a whole number like 21 so int() can convert it!)`;
+            output.classList.add('viz-state-error');
         } else {
-            output.innerHTML = '> name = input("Enter your name: ")\n' +
-                              '> "' + name + '"\n\n' +
-                              '> age = int(input("Enter your age: "))\n' +
-                              '> ' + age + '\n\n' +
-                              '> print("Hello, " + name + "!")\n' +
-                              'Hello, ' + name + '!\n\n' +
-                              '> print("You are " + str(age) + " years old")\n' +
-                              'You are ' + age + ' years old';
+            memValAge.textContent = String(age);
+            memTypeAge.textContent = '(int)';
+            memBoxAge.classList.add('viz-highlight');
+            setTimeout(() => memBoxAge.classList.remove('viz-highlight'), 450);
+
+            output.textContent =
+                `>>> name = input("Enter your name: ")   # stored "${name}" (str)\n` +
+                `>>> age = int(input("Enter your age: ")) # stored ${age} (int)\n` +
+                `>>> print("Hello, " + name + "!")\n` +
+                `Hello, ${name}!\n` +
+                `>>> print("Next year you will be " + str(age + 1))\n` +
+                `Next year you will be ${age + 1}`;
+            output.classList.add('viz-state-success');
         }
     }
+
+    const processInput = runProgram;
     </script>
 </body>
 </html>

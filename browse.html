@@ -12,7 +12,7 @@
     <div class="sticky-top-nav">
         <div class="sticky-nav-left">
             <button class="sticky-nav-arrow" onclick="window.location.href='index.html'">←</button>
-            <button class="sticky-nav-arrow" disabled>→</button>
+            <button class="sticky-nav-arrow" onclick="window.location.href='cards/card_0.html'">→</button>
         </div>
         <div class="sticky-nav-center">Browse All Cards</div>
         <div class="sticky-nav-right">
@@ -21,103 +21,285 @@
         </div>
     </div>
 
-    <div class="hypercard-stack">
-        <div class="card-header">
+    <div class="layout-wrapper">
+        <div class="hypercard-stack">
+            <div class="card-header">
             <div class="card-title">Browse All Cards</div>
-            <div class="card-number">16 Total</div>
+            <div class="card-number">16 Cards</div>
         </div>
-
         <div class="card-content">
-            <h2>Card Stack Overview</h2>
-            <div class="card-grid">
-                <a href="index.html" class="card-item">
-                    <div class="card-item-number">Home</div>
-                    <div class="card-item-title">Welcome</div>
-                </a>
-                <a href="cards/card_0.html" class="card-item">
-                    <div class="card-item-number">0</div>
-                    <div class="card-item-title">The Computational Mindset</div>
-                </a>
-                <a href="cards/card_1.html" class="card-item">
-                    <div class="card-item-number">1</div>
-                    <div class="card-item-title">Mental Model of Programs</div>
-                </a>
-                <a href="cards/card_2.html" class="card-item">
-                    <div class="card-item-number">2</div>
-                    <div class="card-item-title">Variables as Mental Containers</div>
-                </a>
-                <a href="cards/card_3.html" class="card-item">
-                    <div class="card-item-number">3</div>
-                    <div class="card-item-title">Data Types - Why Different Boxes?</div>
-                </a>
-                <a href="cards/card_4.html" class="card-item">
-                    <div class="card-item-number">4</div>
-                    <div class="card-item-title">Input/Output - Program Conversation</div>
-                </a>
-                <a href="cards/card_5.html" class="card-item">
-                    <div class="card-item-number">5</div>
-                    <div class="card-item-title">Comparison Operators - Making Judgments</div>
-                </a>
-                <a href="cards/card_6.html" class="card-item">
-                    <div class="card-item-number">6</div>
-                    <div class="card-item-title">Logical Operators - Combining Truth</div>
-                </a>
-                <a href="cards/card_7.html" class="card-item">
-                    <div class="card-item-number">7</div>
-                    <div class="card-item-title">Conditionals - The Decision Tree</div>
-                </a>
-                <a href="cards/card_8.html" class="card-item">
-                    <div class="card-item-number">8</div>
-                    <div class="card-item-title">Nested Conditionals</div>
-                </a>
-                <a href="cards/card_9.html" class="card-item">
-                    <div class="card-item-number">9</div>
-                    <div class="card-item-title">While Loops - Persistent Patterns</div>
-                </a>
-                <a href="cards/card_10.html" class="card-item">
-                    <div class="card-item-number">10</div>
-                    <div class="card-item-title">For Loops & Range</div>
-                </a>
-                <a href="cards/card_11.html" class="card-item">
-                    <div class="card-item-number">11</div>
-                    <div class="card-item-title">Lists - Organizing Related Data</div>
-                </a>
-                <a href="cards/card_12.html" class="card-item">
-                    <div class="card-item-number">12</div>
-                    <div class="card-item-title">Functions - Building Your Own Tools</div>
-                </a>
-                <a href="cards/card_13.html" class="card-item">
-                    <div class="card-item-number">13</div>
-                    <div class="card-item-title">Dictionaries - Meaning Over Position</div>
-                </a>
-                <a href="cards/card_14.html" class="card-item">
-                    <div class="card-item-number">14</div>
-                    <div class="card-item-title">Recursion - Problems Within Problems</div>
-                </a>
-                <a href="cards/card_15.html" class="card-item">
-                    <div class="card-item-number">15</div>
-                    <div class="card-item-title">Next Steps</div>
-                </a>
-            </div>
-        </div>
+                <h2>Woodland Grimoire Map</h2>
+                <p style="margin-bottom: 14px;">
+                    Journey through all 16 cards in order, or filter by realm below. Each card unlocks a fundamental mental model and its own botanical pixel bloom.
+                </p>
 
-        <div class="bottom-nav">
-            <div class="nav-arrows">
-                <button class="arrow-button" disabled>←</button>
-                <button class="arrow-button" disabled>→</button>
+                <div class="viz-box" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin: 14px 0;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="static/images/cursors/flower_16.png" alt="Garden Progress" style="width: 28px; height: 28px; image-rendering: pixelated;">
+                        <div>
+                            <strong id="browse-bloom-count" style="color: var(--accent-primary);">0 / 16 Blooms Collected</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary);">Explore cards to collect blooms, then redeem all 16 on Card 15 for your printable certificate!</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <button type="button" id="toggle-previews-btn" class="hc-button" onclick="toggleConceptPreviews()" style="padding: 7px 12px; font-size: 0.8rem;">
+                            + Peek Concept Summaries
+                        </button>
+                        <a href="cards/card_15.html#flower-redemption-section" class="hc-button" style="padding: 7px 12px; font-size: 0.8rem; text-decoration: none; border-color: var(--border-gold); color: var(--accent-secondary);">
+                            Redeem Certificate →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive Realm Filter Buttons -->
+                <div class="viz-button-group" style="justify-content: flex-start; margin: 16px 0 22px 0;">
+                    <button type="button" class="hc-button realm-filter-btn active" data-filter="all" onclick="filterRealm('all')" style="padding: 8px 14px; font-size: 0.85rem;">
+                        All (16)
+                    </button>
+                    <button type="button" class="hc-button realm-filter-btn" data-filter="foundations" onclick="filterRealm('foundations')" style="padding: 8px 14px; font-size: 0.85rem;">
+                        Foundations (0–4)
+                    </button>
+                    <button type="button" class="hc-button realm-filter-btn" data-filter="logic" onclick="filterRealm('logic')" style="padding: 8px 14px; font-size: 0.85rem;">
+                        Logic &amp; Decisions (5–8)
+                    </button>
+                    <button type="button" class="hc-button realm-filter-btn" data-filter="loops" onclick="filterRealm('loops')" style="padding: 8px 14px; font-size: 0.85rem;">
+                        Loops &amp; Collections (9–11)
+                    </button>
+                    <button type="button" class="hc-button realm-filter-btn" data-filter="mastery" onclick="filterRealm('mastery')" style="padding: 8px 14px; font-size: 0.85rem;">
+                        Abstraction &amp; Mastery (12–15)
+                    </button>
+                </div>
+
+                <div class="card-grid" id="browse-card-grid">
+                    <a href="index.html" class="card-item" data-realm="foundations">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/bonsai.png" alt="Bonsai Home" class="card-item-flower">
+                            <span class="card-item-realm">Sanctuary</span>
+                        </div>
+                        <div class="card-item-number">Home</div>
+                        <div class="card-item-title">Welcome &amp; Bonsai Growth Visualizer</div>
+                    </a>
+
+                    <a href="cards/card_0.html" class="card-item" data-realm="foundations">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_1.png" alt="Lavender Tulips" class="card-item-flower">
+                            <span class="card-item-realm">Foundations</span>
+                        </div>
+                        <div class="card-item-number">0</div>
+                        <div class="card-item-title">The Computational Mindset</div>
+                    </a>
+
+                    <a href="cards/card_1.html" class="card-item" data-realm="foundations">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_2.png" alt="Golden Tulips" class="card-item-flower">
+                            <span class="card-item-realm">Foundations</span>
+                        </div>
+                        <div class="card-item-number">1</div>
+                        <div class="card-item-title">Mental Model of Programs</div>
+                    </a>
+
+                    <a href="cards/card_2.html" class="card-item" data-realm="foundations">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_3.png" alt="Coral Tulips" class="card-item-flower">
+                            <span class="card-item-realm">Foundations</span>
+                        </div>
+                        <div class="card-item-number">2</div>
+                        <div class="card-item-title">Variables as Mental Containers</div>
+                    </a>
+
+                    <a href="cards/card_3.html" class="card-item" data-realm="foundations">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_4.png" alt="Crimson Rose" class="card-item-flower">
+                            <span class="card-item-realm">Foundations</span>
+                        </div>
+                        <div class="card-item-number">3</div>
+                        <div class="card-item-title">Data Types - Why Different Boxes?</div>
+                    </a>
+
+                    <a href="cards/card_4.html" class="card-item" data-realm="foundations">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_5.png" alt="Sakura Blossoms" class="card-item-flower">
+                            <span class="card-item-realm">Foundations</span>
+                        </div>
+                        <div class="card-item-number">4</div>
+                        <div class="card-item-title">Input/Output - Program Conversation</div>
+                    </a>
+
+                    <a href="cards/card_5.html" class="card-item" data-realm="logic">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_6.png" alt="Marigold Bundle" class="card-item-flower">
+                            <span class="card-item-realm">Logic &amp; Decisions</span>
+                        </div>
+                        <div class="card-item-number">5</div>
+                        <div class="card-item-title">Comparison Operators - Making Judgments</div>
+                    </a>
+
+                    <a href="cards/card_6.html" class="card-item" data-realm="logic">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_7.png" alt="Scarlet Blossoms" class="card-item-flower">
+                            <span class="card-item-realm">Logic &amp; Decisions</span>
+                        </div>
+                        <div class="card-item-number">6</div>
+                        <div class="card-item-title">Logical Operators - Combining Truth</div>
+                    </a>
+
+                    <a href="cards/card_7.html" class="card-item" data-realm="logic">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_8.png" alt="Ivory Tulip" class="card-item-flower">
+                            <span class="card-item-realm">Logic &amp; Decisions</span>
+                        </div>
+                        <div class="card-item-number">7</div>
+                        <div class="card-item-title">Conditionals - The Decision Tree</div>
+                    </a>
+
+                    <a href="cards/card_8.html" class="card-item" data-realm="logic">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_9.png" alt="Meadow Daisies" class="card-item-flower">
+                            <span class="card-item-realm">Logic &amp; Decisions</span>
+                        </div>
+                        <div class="card-item-number">8</div>
+                        <div class="card-item-title">Nested Conditionals</div>
+                    </a>
+
+                    <a href="cards/card_9.html" class="card-item" data-realm="loops">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_10.png" alt="Royal Pansies" class="card-item-flower">
+                            <span class="card-item-realm">Loops &amp; Collections</span>
+                        </div>
+                        <div class="card-item-number">9</div>
+                        <div class="card-item-title">While Loops - Persistent Patterns</div>
+                    </a>
+
+                    <a href="cards/card_10.html" class="card-item" data-realm="loops">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_11.png" alt="Calla Lilies" class="card-item-flower">
+                            <span class="card-item-realm">Loops &amp; Collections</span>
+                        </div>
+                        <div class="card-item-number">10</div>
+                        <div class="card-item-title">For Loops &amp; Range</div>
+                    </a>
+
+                    <a href="cards/card_11.html" class="card-item" data-realm="loops">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_12.png" alt="Twilight Tulip" class="card-item-flower">
+                            <span class="card-item-realm">Loops &amp; Collections</span>
+                        </div>
+                        <div class="card-item-number">11</div>
+                        <div class="card-item-title">Lists - Organizing Related Data</div>
+                    </a>
+
+                    <a href="cards/card_12.html" class="card-item" data-realm="mastery">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_13.png" alt="Pink Gerberas" class="card-item-flower">
+                            <span class="card-item-realm">Abstraction &amp; Mastery</span>
+                        </div>
+                        <div class="card-item-number">12</div>
+                        <div class="card-item-title">Functions - Building Your Own Tools</div>
+                    </a>
+
+                    <a href="cards/card_13.html" class="card-item" data-realm="mastery">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_14.png" alt="Forget-Me-Nots" class="card-item-flower">
+                            <span class="card-item-realm">Abstraction &amp; Mastery</span>
+                        </div>
+                        <div class="card-item-number">13</div>
+                        <div class="card-item-title">Dictionaries - Meaning Over Position</div>
+                    </a>
+
+                    <a href="cards/card_14.html" class="card-item" data-realm="mastery">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_15.png" alt="Twin Sunflowers" class="card-item-flower">
+                            <span class="card-item-realm">Abstraction &amp; Mastery</span>
+                        </div>
+                        <div class="card-item-number">14</div>
+                        <div class="card-item-title">Recursion - Problems Within Problems</div>
+                    </a>
+
+                    <a href="cards/card_15.html" class="card-item" data-realm="mastery">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="static/images/cursors/flower_16.png" alt="Rosebud Tulip" class="card-item-flower">
+                            <span class="card-item-realm">Abstraction &amp; Mastery</span>
+                        </div>
+                        <div class="card-item-number">15</div>
+                        <div class="card-item-title">Next Steps</div>
+                    </a>
+                </div>
+
+                <!-- MereSophist Companion Enterprise CTA -->
+                <div class="meresophist-cta">
+                    <div class="meresophist-cta-text">
+                        <h4>Stuck on a Concept or Ready for Live Code Reviews?</h4>
+                        <p>
+                            Connect with <strong>MereSophist (<a href="https://meresophist.xyz" target="_blank" rel="noopener" style="color: #ffe169;">meresophist.xyz</a>)</strong> for personalized 1-on-1 Python tutoring, problem-solving sessions, and project mentorship.
+                        </p>
+                    </div>
+                    <a href="https://meresophist.xyz" target="_blank" rel="noopener" class="meresophist-btn">
+                        Visit meresophist.xyz ↗
+                    </a>
+                </div>
             </div>
 
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <div class="bottom-nav">
+            <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='browse.html'">
-                    Browse <span class="shortcut">Ctrl+B</span>
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='index.html'">
-                    Home <span class="shortcut">Ctrl+H</span>
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
+
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+            </div>
+
+            <div class="nav-arrows">
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='index.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='cards/card_0.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 100%"></div>
         </div>
     </div>
 
+    <div class="ascii-assistant">
+        <div class="assistant-bubble">
+            Follow the cards in sequence from 0 to 15 to build your mental model step by step, or filter by topic to revisit any concept.
+        </div>
+        <div class="assistant-avatar">
+            <img src="static/images/mascot.png" alt="Wizard Guide" />
+        </div>
+    </div>
+    </div>
+
     <script src="static/js/navigation.js"></script>
+    <script>
+        function filterRealm(realm) {
+            const items = document.querySelectorAll('#browse-card-grid .card-item');
+            items.forEach(item => {
+                if (realm === 'all' || item.getAttribute('data-realm') === realm) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            document.querySelectorAll('.realm-filter-btn').forEach(btn => {
+                const isActive = btn.getAttribute('data-filter') === realm;
+                btn.classList.toggle('active', isActive);
+            });
+        }
+
+        function toggleConceptPreviews() {
+            const shown = document.body.classList.toggle('show-card-previews');
+            const btn = document.getElementById('toggle-previews-btn');
+            if (btn) {
+                btn.textContent = shown ? '− Hide Concept Summaries' : '+ Peek Concept Summaries';
+                btn.classList.toggle('viz-highlight', shown);
+            }
+        }
+    </script>
 </body>
 </html>

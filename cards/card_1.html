@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mental Model of Programs</title>
-        <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../static/css/hypercard.css">
 </head>
 <body class="has-sticky-nav">
@@ -23,102 +23,121 @@
 
     <div class="layout-wrapper">
         <div class="hypercard-stack">
-        <div class="card-header">
+            <div class="card-header">
             <div class="card-title">Mental Model of Programs</div>
-            <div class="card-number">Card 1 of 15</div>
+            <div class="card-number">1 / 15</div>
         </div>
-
         <div class="card-content">
-            <h2>A Program is a List of Instructions</h2>
+                <h2>A Program is a Scroll of Sequential Instructions</h2>
 
-            <div class="narrative">
-                "A program is fundamentally a conversation in precise language—a list of instructions that execute from top to bottom."
-            </div>
+                <div class="narrative">
+                    "A program is fundamentally a conversation in precise language—a scroll of instructions that the computer reads and executes strictly from top to bottom."
+                </div>
 
-            <h3>Sequential Execution</h3>
-            <p>
-                Computers read and execute your code like you read a book: line by line, top to bottom. Each instruction completes before the next one starts.
-            </p>
+                <h3>Sequential Execution</h3>
+                <p>
+                    Computers read and execute your code the way you read a page: line by line, from top to bottom. Each instruction finishes completely before the next line begins.
+                </p>
 
-            <div class="key-concept">
-                <strong>Mental Model:</strong> Think of a program as a recipe. Each step happens in order. You can't frost a cake before you bake it.
-            </div>
+                <div class="key-concept">
+                    <strong>Mental Model:</strong> Think of a program as a kitchen recipe or spell scroll. Each step happens in exact order—you can't butter warm toast before you put the bread in the toaster!
+                </div>
 
-            <div class="visualization">
-                <div style="text-align: center; width: 100%;">
-                    <h4 style="margin-bottom: 20px;">Watch Instructions Execute</h4>
-                    <div class="viz-container">
-                        <div id="code-lines" style="font-family: monospace; text-align: left; margin-bottom: 20px;">
-                            <div id="line1" style="padding: 5px;">1. Turn on oven</div>
-                            <div id="line2" style="padding: 5px;">2. Mix ingredients</div>
-                            <div id="line3" style="padding: 5px;">3. Pour into pan</div>
-                            <div id="line4" style="padding: 5px;">4. Bake for 30 minutes</div>
-                            <div id="line5" style="padding: 5px;">5. Remove and cool</div>
+                <!-- Interactive Sequential Toast & Recipe Visualizer -->
+                <div class="visualization">
+                    <div style="text-align: center; width: 100%;">
+                        <h4 style="margin-top: 0; margin-bottom: 16px;">Watch Instructions Execute Line-by-Line</h4>
+                        <div class="viz-container">
+                            <div id="code-lines" style="font-family: var(--font-stack); text-align: left; margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px;">
+                                <div id="line1" class="viz-box" style="padding: 10px 14px;">1. bread = get_slice("sourdough")</div>
+                                <div id="line2" class="viz-box" style="padding: 10px 14px;">2. toaster.insert(bread)</div>
+                                <div id="line3" class="viz-box" style="padding: 10px 14px;">3. toaster.toast(seconds=120)</div>
+                                <div id="line4" class="viz-box" style="padding: 10px 14px;">4. warm_toast = toaster.pop_up()</div>
+                                <div id="line5" class="viz-box" style="padding: 10px 14px;">5. spread_butter(warm_toast)</div>
+                            </div>
+
+                            <!-- Visual Toast Progress Icons -->
+                            <div id="toast-progress-icons" class="viz-box" style="margin-bottom: 14px; padding: 10px; font-family: var(--font-stack); font-size: 0.9rem;">
+                                Stage: [ Raw Loaf ] → → → → 
+                            </div>
+
+                            <div id="execution-state" class="viz-display-area" style="margin-bottom: 15px;">
+                                ⏸Ready at Line 0 — Press "Execute Next Line" to step through the program!
+                            </div>
+
+                            <div class="viz-button-group">
+                                <button type="button" class="hc-button" onclick="executeNext()" style="min-width: 210px;">
+                                    ▶ Execute Next Line
+                                </button>
+                                <button type="button" class="hc-button" onclick="resetExecution()" style="min-width: 150px;">
+                                    ↺ Reset
+                                </button>
+                            </div>
                         </div>
-                        <div id="execution-state" class="viz-display-area" style="margin-bottom: 15px;">
-                            ⏸️ Press "Execute" to start
+                    </div>
+                </div>
+
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge badge-code">DEEP DIVE</span>
+                            <span>The Translation Process: From Human Thought to Python Code</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <p>
+                            Programming is translating your human intentions into small steps the computer understands. Never start by staring at a blank screen worrying about punctuation—start by listing what needs to happen in plain English, then translate each line into code.
+                        </p>
+
+                        <div class="narrative">
+                            "Don't start with syntax. Start with: 'What steps does this problem need?' Write them in plain English first. Then translate each step to Python."
                         </div>
-                        <div class="viz-button-group">
-                            <button class="hc-button" onclick="executeNext()" style="width: 200px;">
-                                Execute Next Line
-                            </button>
-                            <button class="hc-button" onclick="resetExecution()" style="width: 200px;">
-                                Reset
-                            </button>
-                        </div>
+
+                        <h4>Step-by-Step Translation</h4>
+                        <p><strong>Human thought:</strong> "I want golden buttered toast."</p>
+                        <ol>
+                            <li>Fetch a slice of bread</li>
+                            <li>Place the bread inside the toaster</li>
+                            <li>Set the timer to 120 seconds and start toasting</li>
+                            <li>Pop up the warm toast when done</li>
+                            <li>Spread butter across the warm toast</li>
+                        </ol>
+
+                        <pre class="viz-code-block">bread = get_slice("sourdough")
+toaster.insert(bread)
+toaster.toast(seconds=120)
+warm_toast = toaster.pop_up()
+spread_butter(warm_toast)</pre>
+                    </div>
+                </details>
+
+                <div class="flower-encouragement">
+                    <img src="../static/images/cursors/flower_2.png" alt="Golden Tulips">
+                    <div>
+                        <strong>Card 1 Takeaway (Golden Tulips Unlocked!):</strong>
+                        Notice how each line of code performs <em>one clear action</em> in order. When you break a big problem into a sequence of small, one-line steps, your code almost writes itself!
                     </div>
                 </div>
             </div>
 
-            <h3>The Translation Process</h3>
-            <p>
-                Programming is translating your thoughts into symbols the computer understands. First you think through the logic, then you express it in code syntax.
-            </p>
-
-            <div class="narrative">
-                "Don't start with syntax. Start with 'What steps does this need?' Write them in plain English. Then translate to code."
-            </div>
-
-            <h3>Example: Making Toast</h3>
-            <p><strong>Human thought:</strong> "I want toast"</p>
-            <p><strong>Program logic:</strong></p>
-            <ol>
-                <li>Get bread</li>
-                <li>Put bread in toaster</li>
-                <li>Set timer to 2 minutes</li>
-                <li>Press start</li>
-                <li>Wait until timer done</li>
-                <li>Remove toast</li>
-            </ol>
-            <p><strong>Python code:</strong> (We'll learn the syntax later—for now, see the structure)</p>
-            <pre class="viz-code-block">bread = get_item("bread")
-toaster.insert(bread)
-toaster.set_timer(120)
-toaster.start()
-toaster.wait_until_done()
-toast = toaster.remove()</pre>
-
-            <p>Notice how each line does <em>one thing</em>. That's the key to clear thinking and clear code.</p>
-        </div>
-
-                                                                <div class="bottom-nav">
+                    <div class="bottom-nav">
             <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">##............................</span>] 01/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='card_0.html'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='card_2.html'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='card_0.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='card_2.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
@@ -127,14 +146,12 @@ toast = toaster.remove()</pre>
         </div>
     </div>
 
-        <!-- ASCII ASSISTANT -->
     <div class="ascii-assistant">
         <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            Without variables, data is ephemeral. You'd have to re-type the universe every time it changes.
+            Think of a program as a scroll read strictly from top to bottom. Order is the first law of code.
         </div>
         <div class="assistant-avatar">
-            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
+            <img src="../static/images/mascot.png" alt="Wizard Guide" />
         </div>
     </div>
     </div>
@@ -142,28 +159,43 @@ toast = toaster.remove()</pre>
     <script src="../static/js/navigation.js"></script>
     <script>
     const steps = [
-        "⏸️ Press 'Execute' to start",
-        "🔥 Oven is heating up...",
-        "🥣 Mixing flour, eggs, sugar...",
-        "🍞 Pouring batter into pan...",
-        "⏰ Baking... (30 minutes)",
-        "✅ Done! Cake is cooling."
+        "⏸Ready at Line 0 — Press 'Execute Next Line' to step through the program!",
+        "Line 1 Executed: Fetched a fresh slice of sourdough bread.",
+        "Line 2 Executed: Placed the bread slice into the toaster slot.",
+        "Line 3 Executed: Coils glowing! Toasting for 120 seconds...",
+        "Line 4 Executed: Pop! Golden, crispy warm toast is ready.",
+        "Line 5 Executed: Melted butter spread evenly! Program complete!"
     ];
+
+    const iconProgress = [
+        "Stage: [ Raw Loaf ] → → → → ",
+        "Stage: [ Slice Ready ] → → → → ",
+        "Stage 2: [ Bread ] -> [ In Toaster ] -> [ ] -> [ ] -> [ ]",
+        "Stage 3: [ Bread ] -> [ Toaster ] -> [ Heating ] -> [ ] -> [ ]",
+        "Stage 4: [ Bread ] -> [ Toaster ] -> [ Heating ] -> [ Crisp Toast ] -> [ ]",
+        "Stage 5: [ Bread ] -> [ Toaster ] -> [ Heating ] -> [ Toast ] -> [ Buttered Toast ]"
+    ];
+
     let currentLine = 0;
 
     function executeNext() {
+        const stateEl = document.getElementById('execution-state');
+        const iconEl = document.getElementById('toast-progress-icons');
+
         if (currentLine < 5) {
-            // Remove highlight from previous line
             if (currentLine > 0) {
                 document.getElementById('line' + currentLine).classList.remove('viz-highlight');
             }
             currentLine++;
-
-            // Highlight current line
             document.getElementById('line' + currentLine).classList.add('viz-highlight');
+            stateEl.textContent = steps[currentLine];
+            iconEl.textContent = iconProgress[currentLine];
 
-            // Update execution state
-            document.getElementById('execution-state').textContent = steps[currentLine];
+            if (currentLine === 5) {
+                stateEl.classList.add('viz-state-success');
+            }
+        } else {
+            resetExecution();
         }
     }
 
@@ -172,7 +204,10 @@ toast = toaster.remove()</pre>
         for (let i = 1; i <= 5; i++) {
             document.getElementById('line' + i).classList.remove('viz-highlight');
         }
-        document.getElementById('execution-state').textContent = steps[0];
+        const stateEl = document.getElementById('execution-state');
+        stateEl.classList.remove('viz-state-success');
+        stateEl.textContent = steps[0];
+        document.getElementById('toast-progress-icons').textContent = iconProgress[0];
     }
     </script>
 </body>

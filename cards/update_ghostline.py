@@ -1,127 +1,108 @@
-
 import os
 import re
+import glob
 
-cards_dir = '/home/kyotsketeh/python-zero2one/cards'
+ROOT_DIR = '/home/kyotsketeh/python-zero2one'
+CARDS_DIR = os.path.join(ROOT_DIR, 'cards')
 
-nav_template = """        <div class="bottom-nav">
-            <div class="nav-links">
-                <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
-                </button>
-                <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
-                </button>
-            </div>
-
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">##</span>............................] {card_num:02d}/15
-            </div>
-
-            <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='{prev_link}'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='{next_link}'"> NEXT &gt; </button>
-            </div>
-        </div>"""
-
-assistant_template = """    <!-- ASCII ASSISTANT -->
-    <div class="ascii-assistant">
-        <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            {message}
-        </div>
-        <div class="assistant-avatar">
- .--.
- |__| .-------.
- |=.| |.-----.|
- |--| ||     ||
- |  | |'-----'|
- |__|~')_____('
-        </div>
-    </div>
-    </div>"""
-
-messages = {
-    1: "Without variables, data is ephemeral. You'd have to re-type the universe every time it changes.",
-    2: "You can't multiply a sentence by a sandwich. Types define the laws of physics for data.",
-    3: "Data is potential energy. Operations convert it into kinetic action.",
-    4: "A program that doesn't talk back is just a heater. I/O is the voice of the machine.",
-    5: "Without conditionals, every day would be the exact same. Decisions create history.",
-    6: "Logic is the bedrock. Truth is binary. There is no 'maybe' in the core.",
-    7: "Doing it once is human. Doing it a billion times is machine. Loops leverage the machine's patience.",
-    8: "Some tasks have no end. While loops are the heartbeat of the infinite.",
-    9: "A variable holds a thought. A list holds a culture. Organizing data is organizing the mind.",
-    10: "Iterating is visiting every house in the village. You don't miss a single one.",
-    11: "Keys open doors. Dictionaries let you find the data without searching the whole world.",
-    12: "Functions are tools you build yourself. Don't reinvent the wheel—call the function.",
-    13: "Scope protects you from yourself. What happens in the function stays in the function.",
-    14: "Standing on the shoulders of giants. Libraries let you use code you didn't have to write.",
-    15: "Transformation complete. You are no longer a user. You are an architect."
+# Concise, concept-matched insights for every page & card (zero emojis, low cognitive load)
+WIZARD_TIPS = {
+    'index': "Welcome, apprentice. Use the Left and Right arrow keys to move between cards, click the sun in the top corner to switch lighting, or choose a custom pixel cursor.",
+    'browse': "Follow the cards in sequence from 0 to 15 to build your mental model step by step, or filter by topic to revisit any concept.",
+    0: "A computer has zero common sense—it does literally what you say, never what you mean. Define every step explicitly.",
+    1: "Think of a program as a scroll read strictly from top to bottom. Order is the first law of code.",
+    2: "A variable is a labeled container for data. In Python, = is not a balance scale—it pours the value on the right into the label on the left.",
+    3: "Data types tell Python whether '25' is text to read or a number to count. Type casting (int(), str()) converts one into the other.",
+    4: "Use print() to speak and input() to listen. Always store input() inside a variable, and wrap it in int() when you need math.",
+    5: "Comparisons ask a yes-or-no question and always return True or False. Remember: = stores a value, while == checks if two values match.",
+    6: "Logical operators combine conditions: 'and' requires both to be True, 'or' accepts either one, and 'not' flips True and False.",
+    7: "An if-elif-else chain is a branching tree. Python takes the first branch whose condition is True and skips the rest.",
+    8: "Nested conditionals place one check inside another. The inner check only runs when the outer gate is already True.",
+    9: "A while loop repeats as long as its condition stays True. Always update the checked variable inside the loop so it can eventually stop.",
+    10: "When you know how many steps to run, use a for loop with range(). Remember that range(5) counts 0, 1, 2, 3, 4—stopping before 5.",
+    11: "Lists hold ordered collections under one name. Every slot is numbered starting at [0], so the final item is at len(list) - 1.",
+    12: "A function packages reusable logic: parameters receive the inputs, the body processes them, and return sends back the result.",
+    13: "Lists look up items by position, while dictionaries look them up by key. Pairing values with clear keys makes data self-explanatory.",
+    14: "Like a bonsai where every branch is a smaller tree, recursion shrinks a problem step by step until it reaches a simple base case.",
+    15: "Your core mental models are complete. Languages change, but variables, flow control, data structures, and abstraction remain constant."
 }
 
-def update_card(filename):
-    path = os.path.join(cards_dir, filename)
-    with open(path, 'r') as f:
-        content = f.read()
+SVG_GRID = '<svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>'
+SVG_HOME = '<svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>'
+SVG_LEFT = '<svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>'
+SVG_RIGHT = '<svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>'
+SVG_EXT = '<svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>'
 
-    # Extract card number
-    match = re.search(r'card_(\d+)\.html', filename)
-    if not match: return
-    card_num = int(match.group(1))
-    
-    # Calculate Progress
-    total_ascii_width = 30
-    filled_chars = int((card_num / 15) * total_ascii_width)
-    empty_chars = total_ascii_width - filled_chars
-    ascii_bar = "#" * filled_chars + "." * empty_chars
-    
-    css_param = (card_num / 15) * 100
-    css_width = f"{css_param:.1f}%"
+SVG_USER_LARGE = '<svg viewBox="0 0 24 24" width="36" height="36" stroke="var(--accent-secondary)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>'
+SVG_COMP_LARGE = '<svg viewBox="0 0 24 24" width="36" height="36" stroke="var(--accent-primary)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>'
 
-    # Template with dynamic ASCII bar
-    prev_link = f"card_{card_num-1}.html" if card_num > 0 else "card_0.html"
-    next_link = f"card_{card_num+1}.html" if card_num < 15 else "../index.html"
-    if card_num == 0: prev_link = "../index.html" # Just in case
+EMOJI_PATTERN = re.compile(r'[✦✨🌱🌳🌸💧🚀🔄🧭🥪🧙🌾🍞📥🔥🧈📦👆🧪👤💻🖥⚫💡🔒🛑🪨⚡🔑🌿✅❌⬜♨⚠\ufe0f]+ ?')
 
-    new_nav = nav_template.format(
-        card_num=card_num, 
-        prev_link=prev_link, 
-        next_link=next_link,
-        ascii_bar=ascii_bar
-    )
-    
-    # 2. Update Navigation (ASCII Bar in nav)
-    # We first replace the nav template in the script global scope to use {ascii_bar}
-    # Then we substitute the nav block in content
-    
-    # Regex to capture the bottom nav
-    # We must be aggressive because the previous script might have left it in a varying state
-    # We look for <div class="bottom-nav"> ... </div> ... <div class="progress-bar"> ... </div>
-    # Actually, let's just replace the whole bottom section up to Close of hypercard-stack
-    
-    # Strategy: Find <div class="bottom-nav"> and everything until <div class="ascii-assistant"> or next identifiable block
-    # But wait, progress bar is separate.
-    
-    # Let's rebuild the bottom section entirely: Navigation + CSS Progress Bar
-    bottom_section = f"""        <div class="bottom-nav">
+
+def strip_emojis_and_fix_icons(content, filename):
+    # Specific visual icon replacements before general emoji strip
+    if filename == 'card_4.html':
+        content = content.replace('<div style="font-size: 40px;">👤</div>', f'<div>{SVG_USER_LARGE}</div>')
+        content = content.replace('<div style="font-size: 40px;">💻</div>', f'<div>{SVG_COMP_LARGE}</div>')
+        content = content.replace('# ❌ WRONG', '# [AVOID] ')
+        content = content.replace('# ✅ CORRECT', '# [GOOD] ')
+    if filename == 'card_6.html':
+        content = content.replace(
+            "${result ? '💡' : '⚫'}",
+            "${result ? 'ON' : 'OFF'}"
+        )
+    if filename == 'card_1.html':
+        content = content.replace('"Stage: [ 🌾 Raw Ingredients Ready ] → ⬜ → ⬜ → ⬜ → ⬜"', '"Stage 0: [ Ready ] -> [ ] -> [ ] -> [ ] -> [ ]"')
+        content = content.replace('"Stage: [ 🍞 Bread Slice ] → ⬜ → ⬜ → ⬜ → ⬜"', '"Stage 1: [ Bread Slice ] -> [ ] -> [ ] -> [ ] -> [ ]"')
+        content = content.replace('"Stage: 🍞 → [ 📥 In Toaster ] → ⬜ → ⬜ → ⬜"', '"Stage 2: [ Bread ] -> [ In Toaster ] -> [ ] -> [ ] -> [ ]"')
+        content = content.replace('"Stage: 🍞 → 📥 → [ 🔥 Toasting... ] → ⬜ → ⬜"', '"Stage 3: [ Bread ] -> [ Toaster ] -> [ Heating ] -> [ ] -> [ ]"')
+        content = content.replace('"Stage: 🍞 → 📥 → 🔥 → [ ♨️ Crisp Toast ] → ⬜"', '"Stage 4: [ Bread ] -> [ Toaster ] -> [ Heating ] -> [ Crisp Toast ] -> [ ]"')
+        content = content.replace('"Stage: 🍞 → 📥 → 🔥 → ♨️ → [ 🧈✨ Golden Buttered Toast! ]"', '"Stage 5: [ Bread ] -> [ Toaster ] -> [ Heating ] -> [ Toast ] -> [ Buttered Toast ]"')
+
+    # Strip remaining emojis
+    content = EMOJI_PATTERN.sub('', content)
+
+    # Clean up terminal-style // HEADERS if any remain
+    content = content.replace('// CORE_PRINCIPLES', 'Core Principles')
+    content = content.replace('// SYSTEM_UPGRADE_PATH', 'Where to Go Next')
+    content = content.replace('// ARCHITECT_PROTOCOLS', 'Starter Projects')
+    return content
+
+
+def build_bottom_nav(is_card, card_num=None):
+    prefix = '../' if is_card else ''
+    if is_card:
+        prev_link = f"card_{card_num - 1}.html" if card_num > 0 else "../index.html"
+        next_link = f"card_{card_num + 1}.html" if card_num < 15 else "../index.html"
+        prev_attr = f'onclick="window.location.href=\'{prev_link}\'"'
+        next_attr = f'onclick="window.location.href=\'{next_link}\'"'
+        css_width = f"{(card_num / 15) * 100:.1f}%"
+    elif card_num == 'index':
+        prev_attr = 'disabled'
+        next_attr = 'onclick="window.location.href=\'cards/card_0.html\'"'
+        css_width = "0%"
+    else:  # browse
+        prev_attr = 'onclick="window.location.href=\'index.html\'"'
+        next_attr = 'onclick="window.location.href=\'cards/card_0.html\'"'
+        css_width = "100%"
+
+    return f"""        <div class="bottom-nav">
             <div class="nav-links">
-                <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                <button class="hc-button" onclick="window.location.href='{prefix}browse.html'">
+                    {SVG_GRID} Browse
                 </button>
-                <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                <button class="hc-button" onclick="window.location.href='{prefix}index.html'">
+                    {SVG_HOME} Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">{ascii_bar}</span>] {card_num:02d}/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz {SVG_EXT}</a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='{prev_link}'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='{next_link}'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" {prev_attr}>{SVG_LEFT} Prev</button>
+                <button class="arrow-button" data-nav="next" {next_attr}>Next {SVG_RIGHT}</button>
             </div>
         </div>
 
@@ -130,46 +111,65 @@ def update_card(filename):
         </div>
     </div>"""
 
-    # We need to find where to insert this.
-    # It replaces the existing bottom-nav and progress-bar and closing div.
-    # This roughly matches: <div class="bottom-nav"> ... </div> ... <div class="progress-bar">...</div> ... </div>
-    
-    # Let's try to match from <div class="bottom-nav"> to the closing </div> of hypercard-stack (which is usually followed by ascii-assistant)
-    
-    regex = r'<div class="bottom-nav">[\s\S]*?    </div>(?=\s*<!-- ASCII ASSISTANT -->)'
-    
-    # If ascii assistant is NOT there (should be there from last run), we look for <script>
-    if "<!-- ASCII ASSISTANT -->" not in content:
-         # Fallback for fresh files (unlikely now)
-         pass
-         
-    replacement = bottom_section
-    content = re.sub(regex, replacement, content)
 
-    # 3. Add Assistant & Close Wrapper (If not present)
-    if "<!-- ASCII ASSISTANT -->" not in content:
-        # This part handles the first run logic, but we are primarily updating now.
-        # But let's keep the logic if we need to fix broken files.
-        pass
+def build_assistant(is_card, key):
+    static_prefix = '../static' if is_card else 'static'
+    tip = WIZARD_TIPS[key]
+    return f"""    <div class="ascii-assistant">
+        <div class="assistant-bubble">
+            {tip}
+        </div>
+        <div class="assistant-avatar">
+            <img src="{static_prefix}/images/mascot.png" alt="Wizard Guide" />
+        </div>
+    </div>
+    </div>"""
+
+
+def update_file(filepath):
+    filename = os.path.basename(filepath)
+    with open(filepath, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    is_card = filename.startswith('card_')
+    if is_card:
+        card_num = int(re.search(r'card_(\d+)\.html', filename).group(1))
+        key = card_num
+        badge_text = f"{card_num} / 15"
+    elif filename == 'index.html':
+        card_num = 'index'
+        key = 'index'
+        badge_text = "Start"
     else:
-        # If assistant IS present, we might want to ensure it's outside the layout wrapper?
-        # Current structure: <div class="layout-wrapper"> <div class="hypercard-stack"> ... </div> <div class="ascii-assistant"> ... </div> </div>
-        # My regex above replaced the closing </div> of hypercard-stack.
-        # So structure becomes: <div class="layout-wrapper"> <div class="hypercard-stack"> ... [New Bottom Section with closing div] <div class="ascii-assistant">
-        pass
+        card_num = 'browse'
+        key = 'browse'
+        badge_text = "16 Cards"
 
-    # Revert Sticky Nav (zero2one -> Home)
-    content = content.replace('class="sticky-nav-link">zero2one</a>', 'class="sticky-nav-link">Home</a>')
+    content = strip_emojis_and_fix_icons(content, filename)
 
-    # Add Favicon if missing
-    if "static/favicon.svg" not in content:
-        favicon_link = '    <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">\n    <link rel="stylesheet"'
-        content = content.replace('<link rel="stylesheet"', favicon_link)
+    # Simplify .card-header (just title and clean badge)
+    header_regex = r'<div class="card-header">[\s\S]*?</div>\s*(?=<div class="card-content">)'
+    title_match = re.search(r'<div class="card-title">(.*?)</div>', content)
+    card_title = title_match.group(1).strip() if title_match else "Python Zero2One"
+    clean_header = f"""<div class="card-header">
+            <div class="card-title">{card_title}</div>
+            <div class="card-number">{badge_text}</div>
+        </div>
+        """
+    content = re.sub(header_regex, clean_header, content, count=1)
 
-    with open(path, 'w') as f:
+    # Replace from <div class="bottom-nav"> through the end of .layout-wrapper (right before <script src="...navigation.js">)
+    bottom_and_assistant = build_bottom_nav(is_card, card_num) + "\n\n" + build_assistant(is_card, key) + "\n\n    "
+    footer_regex = r'<div class="bottom-nav">[\s\S]*?(?=<script src="[^"]*navigation\.js"></script>)'
+    content = re.sub(footer_regex, bottom_and_assistant, content, count=1)
+
+    with open(filepath, 'w', encoding='utf-8') as f:
         f.write(content)
-    print(f"Updated {filename} with Progress {css_width}")
+    print(f"Refined {filename}")
 
-# Run for 1 to 15
-for i in range(1, 16):
-    update_card(f"card_{i}.html")
+
+if __name__ == '__main__':
+    update_file(os.path.join(ROOT_DIR, 'index.html'))
+    update_file(os.path.join(ROOT_DIR, 'browse.html'))
+    for i in range(16):
+        update_file(os.path.join(CARDS_DIR, f'card_{i}.html'))

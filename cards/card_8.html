@@ -25,9 +25,8 @@
         <div class="hypercard-stack">
         <div class="card-header">
             <div class="card-title">Nested Conditionals - Decisions Within Decisions</div>
-            <div class="card-number">Card 8 of 15</div>
+            <div class="card-number">8 / 15</div>
         </div>
-
         <div class="card-content">
             <h2>What Are Nested Conditionals?</h2>
 
@@ -44,126 +43,130 @@
                     </div>
 
                     <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                        <div style="flex: 1; min-width: 250px;">
+                        <div style="flex: 1; min-width: 200px;">
                             <div class="viz-box viz-state-success" style="margin-bottom: 10px; text-align: center;">
                                 <strong>IF raining = True</strong>
                             </div>
                             <div class="viz-box">
                                 <div style="margin-bottom: 10px;"><strong>Second Decision:</strong></div>
-                                <div class="viz-display-area" style="margin-bottom: 5px;">
-                                    IF have_umbrella: walk
-                                </div>
-                                <div class="viz-display-area">
-                                    ELSE: stay_home
-                                </div>
+                                <div class="viz-display-area" style="margin-bottom: 5px;">IF have_umbrella: walk</div>
+                                <div class="viz-display-area">ELSE: stay_home</div>
                             </div>
                         </div>
 
-                        <div style="flex: 1; min-width: 250px;">
+                        <div style="flex: 1; min-width: 200px;">
                             <div class="viz-box viz-state-error" style="margin-bottom: 10px; text-align: center;">
                                 <strong>ELSE (not raining)</strong>
                             </div>
-                            <div class="viz-display-area">
-                                Just walk outside!
-                            </div>
+                            <div class="viz-display-area">Just walk outside!</div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <h3>Code Structure</h3>
-
-            <pre class="viz-code-block">
-if condition1:
-    # First level decision
-    print("Condition 1 is true")
-
-    if condition2:
-        # Second level - NESTED inside first
-        print("Both conditions true!")
-    else:
-        print("Only condition 1 true")
-else:
-    print("Condition 1 is false")</pre>
 
             <div class="key-concept">
                 <strong>Key Insight:</strong> Each level of nesting adds another layer of indentation. The deeper the indent, the more conditions must be True to reach that code.
             </div>
 
-            <h3>Interactive Example: Access Control</h3>
+            <h3>Interactive Example: Fortress Gate Access Control</h3>
 
             <div class="visualization">
                 <div class="viz-container">
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 18px;">
+                        <label style="display: flex; align-items: center; gap: 8px;">
                             <input type="checkbox" id="hasTicket" onchange="checkAccess()" style="width: 20px; height: 20px;">
-                            <span style="font-weight: bold;">Has Ticket?</span>
+                            <span style="font-weight: bold;">Has Ticket? (Outer Gate)</span>
                         </label>
 
-                        <label style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                        <label style="display: flex; align-items: center; gap: 8px;">
                             <input type="checkbox" id="isAdult" onchange="checkAccess()" style="width: 20px; height: 20px;">
-                            <span style="font-weight: bold;">Is Adult (18+)?</span>
+                            <span style="font-weight: bold;">Is Adult (18+)? (Inner Gate 1)</span>
                         </label>
 
                         <label style="display: flex; align-items: center; gap: 8px;">
                             <input type="checkbox" id="hasGuardian" onchange="checkAccess()" style="width: 20px; height: 20px;">
-                            <span style="font-weight: bold;">Has Guardian?</span>
+                            <span style="font-weight: bold;">Has Guardian? (Inner Gate 2)</span>
                         </label>
                     </div>
 
-                    <div id="access-result" class="viz-display-area" style="min-height: 100px;">
+                    <!-- Nested Fortress Gates Diagram -->
+                    <div id="gate-outer-ticket" class="viz-box" style="margin-bottom: 15px;">
+                        <div class="viz-box-header">Outer Gate: <code>if has_ticket:</code></div>
+                        <div id="gate-outer-status" style="margin-bottom: 12px; font-weight: bold; text-align: center;">Checking ticket...</div>
+
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; padding-left: 12px; border-left: 3px dashed var(--border-color);">
+                            <div id="gate-inner-adult" class="viz-box">
+                                <div class="viz-box-header">Inner Gate A: <code>if is_adult:</code></div>
+                                <div id="gate-adult-status" style="font-size: 0.9rem; text-align: center;">Not reached</div>
+                            </div>
+                            <div id="gate-inner-guardian" class="viz-box">
+                                <div class="viz-box-header">Inner Gate B: <code>elif has_guardian:</code></div>
+                                <div id="gate-guardian-status" style="font-size: 0.9rem; text-align: center;">Not reached</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="access-result" class="viz-display-area" style="min-height: 90px; display: flex; align-items: center; justify-content: center;">
                         <!-- Result will appear here -->
                     </div>
 
-                    <div class="viz-code-block" style="margin-top: 15px; font-size: 12px; min-height: 80px;">
-                        <div id="code-execution">Check the boxes to see nested logic</div>
-                    </div>
+                    <div class="viz-code-block" style="margin-top: 15px; font-size: 13px; min-height: 80px;"><div id="code-execution">Check the boxes to see nested logic</div></div>
                 </div>
             </div>
 
-            <h3>Real Example: Age and Permission Check</h3>
-
-            <pre class="viz-code-block">
-age = 16
+            <details class="hc-disclosure">
+                <summary class="hc-disclosure-summary">
+                    <span class="hc-disclosure-summary-left">
+                        <span class="hc-disclosure-badge badge-code">CODE EXAMPLES</span>
+                        <span>Nested Indentation Structure &amp; Permission Check Example</span>
+                    </span>
+                    <span class="hc-disclosure-chevron">+ Explore</span>
+                </summary>
+                <div class="hc-disclosure-body">
+                    <pre class="viz-code-block">age = 16
 has_permission = True
 
 if age >= 18:
     # Adult - can decide alone
     print("Access granted (adult)")
 else:
-    # Not adult - need to check permission
+    # Not adult - need to check permission (NESTED inside else)
     if has_permission:
         print("Access granted (with permission)")
     else:
         print("Access denied (no permission)")</pre>
 
-            <div class="narrative">
-                "Nested conditionals let you make refined decisions. First, check the big picture. Then, within each case, check the details."
-            </div>
+                    <div class="key-concept" style="margin-bottom: 0;">
+                        <strong>Mental Model:</strong> Think of nested conditionals like a security checkpoint with multiple gates. You only reach the inner gates if you pass the outer ones first.
+                    </div>
+                </div>
+            </details>
 
-            <div class="key-concept">
-                <strong>Mental Model:</strong> Think of nested conditionals like a security checkpoint with multiple gates. You only reach the inner gates if you pass the outer ones first.
+            <div class="flower-encouragement">
+                <img src="../static/images/cursors/flower_9.png" alt="Meadow Daisies">
+                <div>
+                    <strong>Woodland Milestone:</strong> You've mastered multi-layered decisions! Next, let's discover how to repeat actions automatically with <code>while</code> loops.
+                </div>
             </div>
         </div>
 
-                                                                <div class="bottom-nav">
+                <div class="bottom-nav">
             <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">################..............</span>] 08/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='card_7.html'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='card_9.html'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='card_7.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='card_9.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
@@ -172,14 +175,12 @@ else:
         </div>
     </div>
 
-        <!-- ASCII ASSISTANT -->
     <div class="ascii-assistant">
         <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            Life isn't black and white. Nested logic handles the grey areas—the exceptions to the rule.
+            Nested conditionals place one check inside another. The inner check only runs when the outer gate is already True.
         </div>
         <div class="assistant-avatar">
-            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
+            <img src="../static/images/mascot.png" alt="Wizard Guide" />
         </div>
     </div>
     </div>
@@ -193,44 +194,77 @@ else:
         const result = document.getElementById('access-result');
         const codeExec = document.getElementById('code-execution');
 
-        let message = '';
-        let bgColor = '';
-        let code = '';
+        const outerGate = document.getElementById('gate-outer-ticket');
+        const innerAdult = document.getElementById('gate-inner-adult');
+        const innerGuardian = document.getElementById('gate-inner-guardian');
+        const outerStatus = document.getElementById('gate-outer-status');
+        const adultStatus = document.getElementById('gate-adult-status');
+        const guardianStatus = document.getElementById('gate-guardian-status');
 
-        code = `if has_ticket:\n`;
+        [outerGate, innerAdult, innerGuardian].forEach(el => {
+            if (el) {
+                el.classList.remove('viz-state-success', 'viz-state-error', 'viz-highlight');
+                el.style.opacity = '1';
+            }
+        });
+
+        let message = '';
+        let code = `if has_ticket:  # ${hasTicket ? 'True ✓' : 'False ✗'}\n`;
 
         if (hasTicket) {
-            code += `    # Ticket check passed ✓\n    if is_adult:\n`;
+            if (outerGate) outerGate.classList.add('viz-highlight');
+            if (outerStatus) outerStatus.innerHTML = '✓ Outer Gate OPEN (<code>has_ticket == True</code>) → Stepping inside nested checks...';
+            code += `    # Outer gate passed ✓\n    if is_adult:  # ${isAdult ? 'True ✓' : 'False ✗'}\n`;
 
             if (isAdult) {
-                message = '✓ ACCESS GRANTED<br><br>Has ticket AND is adult';
+                if (innerAdult) innerAdult.classList.add('viz-state-success');
+                if (adultStatus) adultStatus.innerHTML = '<strong>✓ TRUE</strong> → Adult admitted!';
+                if (innerGuardian) innerGuardian.style.opacity = '0.55';
+                if (guardianStatus) guardianStatus.innerHTML = 'Skipped (already admitted as adult)';
+
+                message = '✓ ACCESS GRANTED<br><span style="font-size: 18px;">Outer Gate (Ticket) ✓ → Inner Gate A (Adult) ✓</span>';
                 result.classList.add('viz-state-success');
                 result.classList.remove('viz-state-error');
-                code += `        # Adult check passed ✓\n        print("Access granted (adult)")`;
+                code += `        # Inner check 1 passed ✓\n        print("Access granted (adult)")`;
             } else {
-                code += `    # Adult check failed ✗\n    else:\n        if has_guardian:\n`;
+                if (innerAdult) innerAdult.classList.add('viz-state-error');
+                if (adultStatus) adultStatus.innerHTML = '✗ FALSE → Check <code>else</code> branch';
+                code += `        # Not adult, checking nested else:\n    else:\n        if has_guardian:  # ${hasGuardian ? 'True ✓' : 'False ✗'}\n`;
 
                 if (hasGuardian) {
-                    message = '✓ ACCESS GRANTED<br><br>Has ticket, not adult, but has guardian';
+                    if (innerGuardian) innerGuardian.classList.add('viz-state-success');
+                    if (guardianStatus) guardianStatus.innerHTML = '<strong>✓ TRUE</strong> → Admitted with guardian!';
+
+                    message = '✓ ACCESS GRANTED<br><span style="font-size: 18px;">Outer Gate (Ticket) ✓ → Not Adult → Inner Gate B (Guardian) ✓</span>';
                     result.classList.add('viz-state-success');
                     result.classList.remove('viz-state-error');
-                    code += `            # Guardian check passed ✓\n            print("Access granted (with guardian)")`;
+                    code += `            # Inner check 2 passed ✓\n            print("Access granted (with guardian)")`;
                 } else {
-                    message = '✗ ACCESS DENIED<br><br>Has ticket, not adult, no guardian';
+                    if (innerGuardian) innerGuardian.classList.add('viz-state-error');
+                    if (guardianStatus) guardianStatus.innerHTML = '<strong>✗ FALSE</strong> → Denied (no guardian)';
+
+                    message = '✗ ACCESS DENIED<br><span style="font-size: 18px;">Outer Gate (Ticket) ✓ → Not Adult ✗ → No Guardian ✗</span>';
                     result.classList.add('viz-state-error');
                     result.classList.remove('viz-state-success');
-                    code += `        # Guardian check failed ✗\n        else:\n            print("Access denied (minor without guardian)")`;
+                    code += `            # Inner check 2 failed ✗\n        else:\n            print("Access denied (minor without guardian)")`;
                 }
             }
         } else {
-            message = '✗ ACCESS DENIED<br><br>No ticket - other conditions don\'t matter';
+            if (outerGate) outerGate.classList.add('viz-state-error');
+            if (outerStatus) outerStatus.innerHTML = '✗ Outer Gate LOCKED (<code>has_ticket == False</code>) → Inner gates are never tested!';
+            if (innerAdult) innerAdult.style.opacity = '0.45';
+            if (innerGuardian) innerGuardian.style.opacity = '0.45';
+            if (adultStatus) adultStatus.innerHTML = 'Unreached (Outer gate locked)';
+            if (guardianStatus) guardianStatus.innerHTML = 'Unreached (Outer gate locked)';
+
+            message = '✗ ACCESS DENIED<br><span style="font-size: 18px;">Stopped at Outer Gate (No Ticket) — inner checks skipped!</span>';
             result.classList.add('viz-state-error');
             result.classList.remove('viz-state-success');
-            code += `    # Ticket check failed ✗\n    print("No ticket")\n# ELSE block not reached - never checked adult/guardian`;
+            code += `    # Outer check failed ✗ (inner blocks skipped)\nelse:\n    print("No ticket - access denied")`;
         }
 
-        result.innerHTML = `<div style="font-size: 32px; font-weight: bold; text-align: center;">${message}</div>`;
-        codeExec.innerHTML = code;
+        result.innerHTML = `<div style="font-size: 26px; font-weight: bold; text-align: center; line-height: 1.4;">${message}</div>`;
+        codeExec.textContent = code;
     }
 
     // Initialize

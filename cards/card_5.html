@@ -25,9 +25,8 @@
         <div class="hypercard-stack">
         <div class="card-header">
             <div class="card-title">Comparison Operators - Making Judgments</div>
-            <div class="card-number">Card 5 of 15</div>
+            <div class="card-number">5 / 15</div>
         </div>
-
         <div class="card-content">
             <h2>Why Do We Need to Compare Things?</h2>
 
@@ -88,9 +87,9 @@
             <div class="visualization">
                 <div class="viz-container">
                     <div style="display: flex; gap: 15px; margin-bottom: 15px; align-items: center; flex-wrap: wrap;">
-                        <input type="number" id="num1" value="5" class="viz-input" style="width: 80px; padding: 8px; font-size: 16px; font-family: monospace;">
+                        <input type="number" id="num1" value="5" class="viz-input" style="width: 90px; padding: 8px; font-size: 16px; font-family: monospace;">
 
-                        <select id="operator" class="viz-input" style="padding: 8px; font-size: 16px; font-family: monospace;">
+                        <select id="operator" class="viz-input" style="width: auto; min-width: 80px; padding: 8px 12px; font-size: 16px; font-family: monospace;">
                             <option value="<">&lt;</option>
                             <option value=">">&gt;</option>
                             <option value="==">==</option>
@@ -99,24 +98,57 @@
                             <option value=">=">&gt;=</option>
                         </select>
 
-                        <input type="number" id="num2" value="10" class="viz-input" style="width: 80px; padding: 8px; font-size: 16px; font-family: monospace;">
+                        <input type="number" id="num2" value="10" class="viz-input" style="width: 90px; padding: 8px; font-size: 16px; font-family: monospace;">
 
                         <button class="hc-button" onclick="compare()">Compare</button>
                     </div>
 
-                    <div id="compare-result" class="viz-display-area" style="text-align: center; font-size: 24px; font-weight: bold; min-height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <div id="compare-result" class="viz-display-area" style="text-align: center; font-size: 24px; font-weight: bold; min-height: 80px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;">
                         Click Compare to see result
                     </div>
                 </div>
             </div>
 
-            <h3>Expressing Relationships</h3>
+            <h3>Classic Trap: <code>=</code> (Assign) vs <code>==</code> (Compare)</h3>
 
-            <div class="key-concept">
-                <strong>Mental Model:</strong> Comparisons are questions that always have True/False answers. They express relationships between values.
+            <div class="visualization">
+                <div class="viz-container">
+                    <p style="margin-top: 0; margin-bottom: 12px;">Click a button below to test the difference between <strong>storing a value</strong> with <code>=</code> and <strong>asking a question</strong> with <code>==</code>:</p>
+                    <div class="viz-button-group" style="justify-content: flex-start; margin-bottom: 16px;">
+                        <button type="button" class="hc-button" onclick="exploreEquals('assign')">1. Run <code>x = 5</code> (Assign)</button>
+                        <button type="button" class="hc-button" onclick="exploreEquals('compare_true')">2. Run <code>x == 5</code> (Compare)</button>
+                        <button type="button" class="hc-button" onclick="exploreEquals('compare_false')">3. Run <code>x == 99</code> (Compare)</button>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
+                        <div id="eq-assign-box" class="viz-box viz-highlight">
+                            <div class="viz-box-header">= (Single Equals: Assignment)</div>
+                            <div style="font-family: var(--font-stack); font-size: 1.05rem; margin-bottom: 8px;"><code>x = 5</code></div>
+                            <div style="font-size: 0.92rem;"><strong>Action:</strong> Puts <code>5</code> inside the variable box named <code>x</code>. Does not produce True/False!</div>
+                        </div>
+                        <div id="eq-compare-box" class="viz-box">
+                            <div class="viz-box-header">== (Double Equals: Question)</div>
+                            <div style="font-family: var(--font-stack); font-size: 1.05rem; margin-bottom: 8px;"><code id="eq-compare-code">x == 5</code></div>
+                            <div id="eq-compare-desc" style="font-size: 0.92rem;"><strong>Question:</strong> "Is the value inside <code>x</code> equal to <code>5</code>?" → Evaluates to <strong>True</strong>!</div>
+                        </div>
+                    </div>
+                    <div id="eq-explorer-output" class="viz-display-area" style="margin-top: 14px; font-size: 0.95rem;">> Step 1: x = 5  (Memory box [x] now holds 5)</div>
+                </div>
             </div>
 
-            <pre class="viz-code-block"># Real-world examples
+            <details class="hc-disclosure">
+                <summary class="hc-disclosure-summary">
+                    <span class="hc-disclosure-summary-left">
+                        <span class="hc-disclosure-badge badge-code">CODE EXAMPLES</span>
+                        <span>Expressing Relationships &amp; Real-World Comparison Patterns</span>
+                    </span>
+                    <span class="hc-disclosure-chevron">+ Explore</span>
+                </summary>
+                <div class="hc-disclosure-body">
+                    <div class="key-concept" style="margin-top: 0;">
+                        <strong>Mental Model:</strong> Comparisons are questions that always have True/False answers. They express relationships between values.
+                    </div>
+
+                    <pre class="viz-code-block"># Real-world examples
 age = 18
 is_adult = age >= 18  # True
 
@@ -127,37 +159,41 @@ perfect = score == 100  # False
 temperature = 32
 is_freezing = temperature <= 32  # True</pre>
 
-            <div class="narrative">
-                "Every comparison evaluates to a Boolean - True or False. This is the foundation for making decisions in your programs."
-            </div>
+                    <h4>Common Use Cases</h4>
+                    <ul>
+                        <li><strong>Checking age requirements:</strong> <code>age >= 18</code></li>
+                        <li><strong>Testing equality:</strong> <code>password == correct_password</code></li>
+                        <li><strong>Finding differences:</strong> <code>current_score != previous_score</code></li>
+                        <li><strong>Range checking:</strong> <code>0 <= score <= 100</code></li>
+                    </ul>
+                </div>
+            </details>
 
-            <h3>Common Use Cases</h3>
-            <ul>
-                <li><strong>Checking age requirements:</strong> age >= 18</li>
-                <li><strong>Testing equality:</strong> password == correct_password</li>
-                <li><strong>Finding differences:</strong> current_score != previous_score</li>
-                <li><strong>Range checking:</strong> 0 <= score <= 100</li>
-            </ul>
+            <div class="flower-encouragement">
+                <img src="../static/images/cursors/flower_6.png" alt="Marigold Bundle">
+                <div>
+                    <strong>Woodland Milestone:</strong> You've unlocked the power of judgment! Next, we'll combine multiple True/False questions together using Logical Operators.
+                </div>
+            </div>
         </div>
 
-                                                                <div class="bottom-nav">
+                <div class="bottom-nav">
             <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">##########....................</span>] 05/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='card_4.html'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='card_6.html'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='card_4.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='card_6.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
@@ -166,14 +202,12 @@ is_freezing = temperature <= 32  # True</pre>
         </div>
     </div>
 
-        <!-- ASCII ASSISTANT -->
     <div class="ascii-assistant">
         <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            Without conditionals, every day would be the exact same. Decisions create history.
+            Comparisons ask a yes-or-no question and always return True or False. Remember: = stores a value, while == checks if two values match.
         </div>
         <div class="assistant-avatar">
-            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
+            <img src="../static/images/mascot.png" alt="Wizard Guide" />
         </div>
     </div>
     </div>
@@ -199,9 +233,9 @@ is_freezing = temperature <= 32  # True</pre>
         // Remove all state classes first
         result.classList.remove('viz-state-success', 'viz-state-error');
 
-        result.innerHTML = num1 + ' ' + op + ' ' + num2 + '<br><br>' +
-                          '<span style="font-size: 36px;">' +
-                          answer + '</span>';
+        result.innerHTML = '<div>' + num1 + ' ' + op + ' ' + num2 + '</div>' +
+                          '<div style="font-size: 34px;">' +
+                          (answer ? 'True ✓' : 'False ✗') + '</div>';
 
         // Add appropriate state class
         if (answer) {
@@ -210,6 +244,34 @@ is_freezing = temperature <= 32  # True</pre>
             result.classList.add('viz-state-error');
         }
     }
+
+    function exploreEquals(mode) {
+        const assignBox = document.getElementById('eq-assign-box');
+        const compareBox = document.getElementById('eq-compare-box');
+        const compareCode = document.getElementById('eq-compare-code');
+        const compareDesc = document.getElementById('eq-compare-desc');
+        const output = document.getElementById('eq-explorer-output');
+
+        assignBox.classList.remove('viz-highlight', 'viz-state-success', 'viz-state-error');
+        compareBox.classList.remove('viz-highlight', 'viz-state-success', 'viz-state-error');
+
+        if (mode === 'assign') {
+            assignBox.classList.add('viz-highlight');
+            output.textContent = '> x = 5\n# Action: Stored 5 inside box [x]. (No True/False returned)';
+        } else if (mode === 'compare_true') {
+            compareBox.classList.add('viz-state-success');
+            compareCode.textContent = 'x == 5';
+            compareDesc.innerHTML = '<strong>Question:</strong> "Does <code>x</code> (5) equal <code>5</code>?" → Evaluates to <strong>True ✓</strong>!';
+            output.textContent = '> x == 5\nTrue  # Because x holds 5, and 5 matches 5!';
+        } else {
+            compareBox.classList.add('viz-state-error');
+            compareCode.textContent = 'x == 99';
+            compareDesc.innerHTML = '<strong>Question:</strong> "Does <code>x</code> (5) equal <code>99</code>?" → Evaluates to <strong>False ✗</strong>!';
+            output.textContent = '> x == 99\nFalse  # Because x still holds 5, which does not match 99!';
+        }
+    }
+
+    compare();
     </script>
 </body>
 </html>

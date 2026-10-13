@@ -25,9 +25,8 @@
         <div class="hypercard-stack">
         <div class="card-header">
             <div class="card-title">While Loops - Persistent Patterns</div>
-            <div class="card-number">Card 9 of 15</div>
+            <div class="card-number">9 / 15</div>
         </div>
-
         <div class="card-content">
             <h2>Why Do We Need Loops?</h2>
 
@@ -38,8 +37,7 @@
 
             <h3>The Problem of Repetition</h3>
 
-            <pre class="viz-code-block">
-# Without loops - tedious and error-prone
+            <pre class="viz-code-block"># Without loops - tedious and error-prone
 print("Hello")
 print("Hello")
 print("Hello")
@@ -52,15 +50,15 @@ print("Hello")
 
             <div class="visualization">
                 <div class="viz-container" style="text-align: center;">
-                    <div class="viz-box viz-state-error" style="display: inline-block; margin-bottom: 20px; max-width: 400px;">
+                    <div class="viz-box viz-highlight" style="display: inline-block; margin-bottom: 20px; max-width: 400px;">
                         <strong style="font-size: 18px;">WHILE condition is True:</strong><br>
-                        <span style="font-size: 14px;">Keep executing this block</span>
+                        <span style="font-size: 14px;">Keep executing this block &amp; boomerang back!</span>
                     </div>
 
-                    <div style="font-size: 48px; margin: 20px 0;">↻</div>
+                    <div style="font-size: 48px; margin: 16px 0; color: var(--accent-primary);">↻</div>
 
                     <div class="viz-box viz-state-success" style="display: inline-block; max-width: 400px;">
-                        <strong>Think:</strong> "Keep doing this AS LONG AS the condition is true"
+                        <strong>Think:</strong> "Keep doing this AS LONG AS the condition is True"
                     </div>
                 </div>
             </div>
@@ -74,48 +72,60 @@ print("Hello")
             <div class="visualization">
                 <div class="viz-container">
                     <div style="margin-bottom: 15px;">
-                        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Count up to:</label>
+                        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Count up to (stop when <code>counter == N</code>):</label>
                         <input type="number" id="countTo" value="5" min="1" max="20" class="viz-input" style="width: 100%; font-size: 16px; font-family: monospace;">
                     </div>
 
                     <div class="viz-button-group" style="margin-bottom: 15px;">
-                        <button class="hc-button" onclick="runWhileLoop()" style="width: 100%; margin-bottom: 8px;">Run While Loop</button>
-                        <button class="hc-button" onclick="stepWhileLoop()" style="width: 100%; margin-bottom: 8px;">Step Through (One at a Time)</button>
-                        <button class="hc-button" onclick="resetLoop()" style="width: 100%;">Reset</button>
+                        <button class="hc-button" onclick="runWhileLoop()" style="flex: 1; min-width: 160px;">Run While Loop</button>
+                        <button class="hc-button" onclick="stepWhileLoop()" style="flex: 1; min-width: 200px;">Step Through (One at a Time)</button>
+                        <button class="hc-button" onclick="resetLoop()" style="flex: 0 0 auto;">Reset</button>
                     </div>
 
                     <div id="loop-visualization" class="viz-display-area" style="min-height: 150px; margin-bottom: 15px;">
-                        <div style="text-align: center; color: #999;">Click 'Run' or 'Step Through' to begin</div>
+                        <div style="text-align: center; color: var(--text-muted);">Click 'Run While Loop' or 'Step Through' to begin</div>
                     </div>
 
-                    <div class="viz-code-block" style="font-size: 13px; min-height: 80px;">
-                        <div id="code-output">Output will appear here...</div>
-                    </div>
+                    <div class="viz-code-block" style="font-size: 13px; min-height: 80px;"><div id="code-output">Output will appear here...</div></div>
                 </div>
             </div>
 
-            <h3>The Anatomy of a While Loop</h3>
-
-            <pre class="viz-code-block">
-counter = 0           # 1. Initialize variable
-while counter < 5:    # 2. Check condition
+            <details class="hc-disclosure">
+                <summary class="hc-disclosure-summary">
+                    <span class="hc-disclosure-summary-left">
+                        <span class="hc-disclosure-badge badge-pitfall">PITFALL WATCH</span>
+                        <span>Anatomy of a While Loop &amp; The Infinite Loop Trap</span>
+                    </span>
+                    <span class="hc-disclosure-chevron">+ Explore</span>
+                </summary>
+                <div class="hc-disclosure-body">
+                    <pre class="viz-code-block">counter = 0           # 1. Initialize variable
+while counter < 5:    # 2. Check condition before each pass
     print(counter)    # 3. Execute code block
     counter += 1      # 4. Update variable (crucial!)
 
 # Output: 0, 1, 2, 3, 4</pre>
 
-            <div class="key-concept">
-                <strong>Critical Pitfall:</strong> Forgetting to update the variable leads to an <strong>infinite loop</strong> - the program never stops!
-            </div>
+                    <div class="key-concept" style="margin-bottom: 0;">
+                        <strong>Critical Pitfall:</strong> Forgetting Step 4 (updating the checked variable) leads to an <strong>infinite loop</strong> — the condition stays True forever!
+                    </div>
+                </div>
+            </details>
 
-            <h3>When to Use While Loops</h3>
+            <details class="hc-disclosure">
+                <summary class="hc-disclosure-summary">
+                    <span class="hc-disclosure-summary-left">
+                        <span class="hc-disclosure-badge badge-code">CODE EXAMPLES</span>
+                        <span>When to Use While Loops (Passwords &amp; Game Loops)</span>
+                    </span>
+                    <span class="hc-disclosure-chevron">+ Explore</span>
+                </summary>
+                <div class="hc-disclosure-body">
+                    <div class="narrative" style="margin-top: 0;">
+                        "While loops are best for repeating an indefinite number of times — when you don't know ahead of time how many tries it will take."
+                    </div>
 
-            <div class="narrative">
-                "While loops are best for repeating an indefinite number of times - when you don't know how long it's going to take."
-            </div>
-
-            <pre class="viz-code-block">
-# Good use case: Keep asking until valid input
+                    <pre class="viz-code-block"># Good use case: Keep asking until valid input
 password = ""
 while password != "secret":
     password = input("Enter password: ")
@@ -127,30 +137,34 @@ while game_running:
     play_turn()
     if player_won():
         game_running = False</pre>
+                </div>
+            </details>
 
-            <div class="key-concept">
-                <strong>Mental Model:</strong> A while loop is like a security guard checking your ID. As long as the condition is True, they let you pass through again. Once it's False, the loop stops.
+            <div class="flower-encouragement">
+                <img src="../static/images/cursors/flower_10.png" alt="Royal Pansies">
+                <div>
+                    <strong>Woodland Milestone:</strong> You've tamed the boomerang of <code>while</code> loops! Next, let's see how <code>for</code> loops and <code>range()</code> make counted repetition effortless.
+                </div>
             </div>
         </div>
 
-                                                                <div class="bottom-nav">
+                <div class="bottom-nav">
             <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">##################............</span>] 09/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='card_8.html'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='card_10.html'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='card_8.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='card_10.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
@@ -159,14 +173,12 @@ while game_running:
         </div>
     </div>
 
-        <!-- ASCII ASSISTANT -->
     <div class="ascii-assistant">
         <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            Doing it once is human. Doing it a billion times is machine. Loops leverage the machine's patience.
+            A while loop repeats as long as its condition stays True. Always update the checked variable inside the loop so it can eventually stop.
         </div>
         <div class="assistant-avatar">
-            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
+            <img src="../static/images/mascot.png" alt="Wizard Guide" />
         </div>
     </div>
     </div>
@@ -175,11 +187,11 @@ while game_running:
     <script>
     let loopCounter = 0;
     let loopMax = 5;
-    let isRunning = false;
+    let isStepping = false;
 
     function runWhileLoop() {
         resetLoop();
-        loopMax = parseInt(document.getElementById('countTo').value);
+        loopMax = Math.min(20, Math.max(1, parseInt(document.getElementById('countTo').value) || 5));
         const viz = document.getElementById('loop-visualization');
         const output = document.getElementById('code-output');
 
@@ -187,56 +199,63 @@ while game_running:
         let outputText = '> counter = 0\n';
 
         for (let i = 0; i < loopMax; i++) {
-            steps += `<div class="viz-box ${i % 2 === 0 ? 'viz-state-success' : 'viz-state-error'}" style="margin: 5px 0;">
-                <strong>Iteration ${i + 1}:</strong> counter = ${i}, condition (${i} &lt; ${loopMax}) is True ✓
-            </div>`;
+            steps += `<div class="viz-box viz-state-success" style="margin: 6px 0; padding: 12px 16px;">` +
+                `<strong>Iteration ${i + 1}:</strong> <code>counter = ${i}</code> → Check <code>${i} &lt; ${loopMax}</code> is <strong>True ✓</strong> (Print ${i}, then <code>counter += 1</code>)` +
+            `</div>`;
             outputText += `> print(${i})\n${i}\n`;
         }
 
-        steps += `<div class="viz-box viz-state-error" style="margin: 5px 0;">
-            <strong>Loop ends:</strong> counter = ${loopMax}, condition (${loopMax} &lt; ${loopMax}) is False ✗
-        </div>`;
+        steps += `<div class="viz-box viz-state-error" style="margin: 8px 0; padding: 12px 16px;">` +
+            `<strong>Termination Check:</strong> <code>counter = ${loopMax}</code> → Check <code>${loopMax} &lt; ${loopMax}</code> is <strong>False ✗</strong> (Loop exits cleanly!)` +
+        `</div>`;
 
+        outputText += `> # counter is now ${loopMax} (${loopMax} < ${loopMax} is False -> Loop finished!)`;
         viz.innerHTML = steps;
         output.textContent = outputText;
     }
 
     function stepWhileLoop() {
-        if (!isRunning) {
-            resetLoop();
-            loopMax = parseInt(document.getElementById('countTo').value);
-            isRunning = true;
-        }
-
         const viz = document.getElementById('loop-visualization');
         const output = document.getElementById('code-output');
 
-        if (loopCounter < loopMax) {
-            const step = `<div class="viz-box viz-highlight" style="margin: 5px 0;">
-                <strong>→ Current Step ${loopCounter + 1}:</strong> counter = ${loopCounter}<br>
-                Condition: ${loopCounter} &lt; ${loopMax} is True ✓<br>
-                Execute: print(${loopCounter})
-            </div>`;
+        if (!isStepping) {
+            loopCounter = 0;
+            loopMax = Math.min(20, Math.max(1, parseInt(document.getElementById('countTo').value) || 5));
+            isStepping = true;
+            viz.innerHTML = '';
+            output.textContent = '> counter = 0\n';
+        }
 
-            viz.innerHTML = (viz.innerHTML === '<div style="text-align: center; color: #999;">Click \'Run\' or \'Step Through\' to begin</div>' ? '' : viz.innerHTML) + step;
-            output.textContent += `${loopCounter}\n`;
+        // Convert previous active highlight to completed success state
+        viz.querySelectorAll('.viz-highlight').forEach(el => {
+            el.classList.remove('viz-highlight');
+            el.classList.add('viz-state-success');
+        });
+
+        if (loopCounter < loopMax) {
+            const step = `<div class="viz-box viz-highlight" style="margin: 6px 0; padding: 12px 16px;">` +
+                `<strong>→ Step ${loopCounter + 1}:</strong> <code>counter = ${loopCounter}</code> | Condition <code>${loopCounter} &lt; ${loopMax}</code> is <strong>True ✓</strong><br>` +
+                `<span style="font-size: 0.9rem;">Action: <code>print(${loopCounter})</code>, then <code>counter += 1</code> (becomes ${loopCounter + 1})</span>` +
+            `</div>`;
+
+            viz.innerHTML += step;
+            output.textContent += `> print(${loopCounter})\n${loopCounter}\n`;
             loopCounter++;
         } else if (loopCounter === loopMax) {
-            const step = `<div class="viz-box viz-state-error" style="margin: 5px 0;">
-                <strong>Loop Complete:</strong> counter = ${loopCounter}<br>
-                Condition: ${loopCounter} &lt; ${loopMax} is False ✗<br>
-                Exit loop
-            </div>`;
+            const step = `<div class="viz-box viz-state-error" style="margin: 8px 0; padding: 12px 16px;">` +
+                `<strong>Loop Complete:</strong> <code>counter = ${loopCounter}</code> | Condition <code>${loopCounter} &lt; ${loopMax}</code> is <strong>False ✗</strong><br>` +
+                `<span style="font-size: 0.9rem;">Action: Exit <code>while</code> loop and continue program</span>` +
+            `</div>`;
             viz.innerHTML += step;
-            output.textContent += '\n> Loop finished';
+            output.textContent += `> # ${loopCounter} < ${loopMax} is False -> Loop finished!`;
             loopCounter++;
         }
     }
 
     function resetLoop() {
         loopCounter = 0;
-        isRunning = false;
-        document.getElementById('loop-visualization').innerHTML = '<div style="text-align: center; color: #999;">Click \'Run\' or \'Step Through\' to begin</div>';
+        isStepping = false;
+        document.getElementById('loop-visualization').innerHTML = '<div style="text-align: center; color: var(--text-muted);">Click \'Run While Loop\' or \'Step Through\' to begin</div>';
         document.getElementById('code-output').textContent = 'Output will appear here...';
     }
     </script>

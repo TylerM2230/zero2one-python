@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recursion - Problems Within Problems</title>
-        <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../static/css/hypercard.css">
 </head>
 <body class="has-sticky-nav">
@@ -23,164 +23,190 @@
 
     <div class="layout-wrapper">
         <div class="hypercard-stack">
-        <div class="card-header">
+            <div class="card-header">
             <div class="card-title">Recursion - Problems Within Problems</div>
-            <div class="card-number">Card 14 of 15</div>
+            <div class="card-number">14 / 15</div>
         </div>
-
         <div class="card-content">
-            <h2>What Is Recursion?</h2>
+                <h2>What Is Recursion?</h2>
 
-            <div class="narrative">
-                "An approach to solving problems that involves breaking down a problem into smaller ones until we find a simple problem that we can solve - then cascade the solution back up."
-            </div>
+                <div class="narrative">
+                    "An approach to solving problems that breaks a complex problem down into smaller, self-similar copies of itself until it reaches a simple base case—then cascades the answers back up."
+                </div>
 
-            <h3>The Recursive Mindset</h3>
-
-            <div class="visualization">
-                <div class="viz-container" style="text-align: center;">
-                    <div style="font-size: 18px; font-weight: bold; margin-bottom: 20px;">
-                        Counting: factorial(5) = 5 × 4 × 3 × 2 × 1
-                    </div>
-
-                    <div class="viz-display-area" style="display: inline-block; text-align: left;">
-                        <div class="viz-box" style="margin: 10px 0;">
-                            <strong>factorial(5)</strong> = 5 × factorial(4)
-                        </div>
-                        <div class="viz-box" style="margin: 10px 0 10px 30px;">
-                            <strong>factorial(4)</strong> = 4 × factorial(3)
-                        </div>
-                        <div class="viz-box" style="margin: 10px 0 10px 60px;">
-                            <strong>factorial(3)</strong> = 3 × factorial(2)
-                        </div>
-                        <div class="viz-box" style="margin: 10px 0 10px 90px;">
-                            <strong>factorial(2)</strong> = 2 × factorial(1)
-                        </div>
-                        <div class="viz-box viz-state-success viz-highlight" style="margin: 10px 0 10px 120px;">
-                            <strong>factorial(1)</strong> = 1 BASE CASE!
-                        </div>
-                    </div>
-
-                    <div style="font-size: 24px; margin: 20px 0;">↓ CASCADE BACK UP ↓</div>
-
-                    <div class="viz-display-area" style="display: inline-block; text-align: left;">
-                        <div class="viz-box" style="margin: 10px 0 10px 120px;">
-                            factorial(1) = 1
-                        </div>
-                        <div class="viz-box" style="margin: 10px 0 10px 90px;">
-                            factorial(2) = 2 × 1 = 2
-                        </div>
-                        <div class="viz-box" style="margin: 10px 0 10px 60px;">
-                            factorial(3) = 3 × 2 = 6
-                        </div>
-                        <div class="viz-box" style="margin: 10px 0 10px 30px;">
-                            factorial(4) = 4 × 6 = 24
-                        </div>
-                        <div class="viz-box viz-state-success viz-highlight" style="margin: 10px 0;">
-                            <strong>factorial(5) = 5 × 24 = 120</strong>
-                        </div>
+                <div class="bonsai-feature-badge" style="width: 100%;">
+                    <img src="../static/images/bonsai.png" alt="Pixel Bonsai Tree - Natural Recursion">
+                    <div>
+                        <strong style="display: block; margin-bottom: 4px;">Nature's Recursive Fractal: The Bonsai Tree</strong>
+                        <span style="font-size: 0.95rem; color: var(--text-secondary);">
+                            Look closely at a bonsai tree: its main trunk splits into branches, each branch splits into smaller twigs, and each twig looks like a miniature tree—until finally reaching a single leaf (the <strong>base case</strong> where branching stops!).
+                        </span>
                     </div>
                 </div>
-            </div>
 
-            <h3>Three Characteristics of Recursion</h3>
+                <h3>The Recursive Mindset</h3>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin: 20px 0;">
-                <div class="viz-box" style="background: rgba(191, 97, 106, 0.25); border: 2px solid rgba(191, 97, 106, 0.4); padding: 18px;">
-                    <h4 style="margin: 0 0 10px 0; color: var(--text-primary);">1. Base Case</h4>
-                    <p style="font-size: 14px; margin: 0; color: var(--text-secondary); line-height: 1.5;">A simple problem that can be solved directly. Recursion must stop somewhere!</p>
-                    <code style="display: block; margin-top: 10px; padding: 10px; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 8px; color: var(--accent-primary);">if n == 1: return 1</code>
+                <div class="visualization">
+                    <div class="viz-container" style="text-align: center;">
+                        <div style="font-size: 18px; font-weight: bold; margin-bottom: 18px; color: var(--accent-secondary);">
+                            Calculating <code>factorial(5)</code> = 5 × 4 × 3 × 2 × 1
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; text-align: left;">
+                            <div class="viz-display-area" style="margin-top: 0;">
+                                <div style="font-weight: 700; color: var(--accent-secondary); margin-bottom: 10px;">↓ 1. Call Stack Descent (Calling)</div>
+                                <div class="viz-box" style="margin: 8px 0; padding: 10px;">
+                                    <strong>factorial(5)</strong> = 5 × factorial(4)
+                                </div>
+                                <div class="viz-box" style="margin: 8px 0 8px calc(1 * var(--step-indent, 16px)); padding: 10px;">
+                                    <strong>factorial(4)</strong> = 4 × factorial(3)
+                                </div>
+                                <div class="viz-box" style="margin: 8px 0 8px calc(2 * var(--step-indent, 16px)); padding: 10px;">
+                                    <strong>factorial(3)</strong> = 3 × factorial(2)
+                                </div>
+                                <div class="viz-box" style="margin: 8px 0 8px calc(3 * var(--step-indent, 16px)); padding: 10px;">
+                                    <strong>factorial(2)</strong> = 2 × factorial(1)
+                                </div>
+                                <div class="viz-box viz-state-success viz-highlight" style="margin: 8px 0 0 calc(4 * var(--step-indent, 16px)); padding: 10px;">
+                                    <strong>factorial(1)</strong> = 1 (BASE CASE!)
+                                </div>
+                            </div>
+
+                            <div class="viz-display-area" style="margin-top: 0;">
+                                <div style="font-weight: 700; color: var(--accent-primary); margin-bottom: 10px;">↑ 2. Base-Case Return Cascade (Returning)</div>
+                                <div class="viz-box" style="margin: 8px 0 8px calc(4 * var(--step-indent, 16px)); padding: 10px;">
+                                    factorial(1) → returns <strong>1</strong>
+                                </div>
+                                <div class="viz-box" style="margin: 8px 0 8px calc(3 * var(--step-indent, 16px)); padding: 10px;">
+                                    factorial(2) = 2 × 1 → returns <strong>2</strong>
+                                </div>
+                                <div class="viz-box" style="margin: 8px 0 8px calc(2 * var(--step-indent, 16px)); padding: 10px;">
+                                    factorial(3) = 3 × 2 → returns <strong>6</strong>
+                                </div>
+                                <div class="viz-box" style="margin: 8px 0 8px calc(1 * var(--step-indent, 16px)); padding: 10px;">
+                                    factorial(4) = 4 × 6 → returns <strong>24</strong>
+                                </div>
+                                <div class="viz-box viz-state-success viz-highlight" style="margin: 8px 0 0 0; padding: 10px;">
+                                    <strong>factorial(5) = 5 × 24 = 120</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="viz-box" style="background: rgba(136, 192, 208, 0.25); border: 2px solid rgba(136, 192, 208, 0.4); padding: 18px;">
-                    <h4 style="margin: 0 0 10px 0; color: var(--text-primary);">2. Move Toward Base</h4>
-                    <p style="font-size: 14px; margin: 0; color: var(--text-secondary); line-height: 1.5;">Each recursive call must get closer to the base case</p>
-                    <code style="display: block; margin-top: 10px; padding: 10px; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 8px; color: var(--accent-primary);">factorial(n-1)</code>
+                <div class="key-concept">
+                    <strong>Critical Rule:</strong> Without a reachable <strong>base case</strong>, recursion never stops—leading to a <code>RecursionError</code> (stack overflow)!
                 </div>
 
-                <div class="viz-box" style="background: rgba(235, 203, 139, 0.25); border: 2px solid rgba(235, 203, 139, 0.4); padding: 18px;">
-                    <h4 style="margin: 0 0 10px 0; color: var(--text-primary);">3. Call Itself</h4>
-                    <p style="font-size: 14px; margin: 0; color: var(--text-secondary); line-height: 1.5;">Function must call itself with a smaller problem</p>
-                    <code style="display: block; margin-top: 10px; padding: 10px; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 8px; color: var(--accent-primary);">return n * factorial(n-1)</code>
+                <h3>Interactive Recursion Call-Stack Visualizer</h3>
+
+                <div class="visualization">
+                    <div class="viz-container">
+                        <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 15px;">
+                            <div style="flex: 1; min-width: 180px;">
+                                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Calculate <code>factorial(n)</code> for <code>n</code> (1–8):</label>
+                                <input type="number" id="factInput" value="5" min="1" max="8" class="viz-input" style="width: 100%;" onchange="visualizeRecursion()">
+                            </div>
+                            <button class="hc-button" onclick="visualizeRecursion()">
+                                ▶ Trace Call Stack
+                            </button>
+                        </div>
+
+                        <div id="recursion-steps" class="viz-display-area" style="margin-bottom: 15px; min-height: 200px; max-height: 440px; overflow-y: auto;">
+                            Enter a number and click "Trace Call Stack"
+                        </div>
+
+                        <div id="recursion-result" class="viz-terminal viz-state-success" style="text-align: center; font-size: 18px; min-height: 56px;">
+                            Result will appear here
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="key-concept">
-                <strong>Critical:</strong> Without a base case, recursion never stops - infinite loop!
-            </div>
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge badge-code">CORE LAWS &amp; CODE</span>
+                            <span>Three Laws of Recursion &amp; Python Implementation</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 16px;">
+                            <div class="viz-box">
+                                <div class="viz-box-header">1. Base Case</div>
+                                <p style="font-size: 13px; margin: 0 0 8px 0; color: var(--text-secondary);">A simple problem answered directly without further recursion.</p>
+                                <code style="display: block; padding: 6px; text-align: center;">if n == 1: return 1</code>
+                            </div>
 
-            <h3>Recursive Code Example</h3>
+                            <div class="viz-box">
+                                <div class="viz-box-header">2. Move Toward Base</div>
+                                <p style="font-size: 13px; margin: 0 0 8px 0; color: var(--text-secondary);">Every step must shrink the input closer to the base case.</p>
+                                <code style="display: block; padding: 6px; text-align: center;">factorial(n - 1)</code>
+                            </div>
 
-            <pre class="viz-code-block">
-def factorial(n):
-    # 1. BASE CASE - stop condition
+                            <div class="viz-box">
+                                <div class="viz-box-header">3. Recursive Call</div>
+                                <p style="font-size: 13px; margin: 0 0 8px 0; color: var(--text-secondary);">The function calls itself to solve the smaller sub-problem.</p>
+                                <code style="display: block; padding: 6px; text-align: center;">return n * factorial(n - 1)</code>
+                            </div>
+                        </div>
+
+                        <pre class="viz-code-block">def factorial(n):
+    # 1. BASE CASE - stop condition (the leaf of the bonsai)
     if n == 1:
         return 1
 
-    # 2. RECURSIVE CASE - call itself
-    # 3. MOVE TOWARD BASE - n-1 is smaller than n
+    # 2. RECURSIVE CASE - call itself with a smaller input (n - 1)
     return n * factorial(n - 1)
 
-# Call it
 result = factorial(5)  # 120</pre>
-
-            <h3>Interactive Recursion Visualizer</h3>
-
-            <div class="visualization">
-                <div class="viz-container">
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Calculate factorial of:</label>
-                        <input type="number" id="factInput" value="5" min="1" max="8" class="viz-input" style="width: 100%;">
                     </div>
+                </details>
 
-                    <button class="hc-button" onclick="visualizeRecursion()" style="width: 100%; margin-bottom: 15px;">Visualize Recursion</button>
-
-                    <div id="recursion-steps" class="viz-display-area" style="margin-bottom: 15px; min-height: 200px; overflow-y: auto; max-height: 400px;">
-                        Enter a number and click visualize
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge">DEEP DIVE</span>
+                            <span>When to Use Recursion in Real Systems</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <ul>
+                            <li><strong>Tree &amp; folder structures:</strong> Navigating nested directories, HTML DOM trees, or family trees</li>
+                            <li><strong>Divide and conquer:</strong> Breaking a large puzzle into smaller identical puzzles (Merge Sort, Quick Sort)</li>
+                            <li><strong>Mathematical sequences:</strong> Factorials, Fibonacci numbers, fractal geometry</li>
+                            <li><strong>Self-similar problems:</strong> Whenever a problem is naturally defined in terms of smaller versions of itself</li>
+                        </ul>
                     </div>
+                </details>
 
-                    <div id="recursion-result" class="viz-terminal" style="text-align: center; font-size: 20px; min-height: 60px;">
-                        Result will appear here
+                <div class="flower-encouragement">
+                    <img src="../static/images/cursors/flower_15.png" alt="Twin Sunflowers Encouragement">
+                    <div>
+                        <strong>Twin Sunflowers Collected! (15 / 16)</strong><br>
+                        <span>You've conquered every core concept from variables to recursion! Turn to the final card to celebrate your full 16-flower garden and claim your printable Certificate of Mastery.</span>
                     </div>
                 </div>
             </div>
 
-            <h3>When to Use Recursion</h3>
-
-            <ul>
-                <li><strong>Naturally recursive problems:</strong> Tree traversal, file systems</li>
-                <li><strong>Divide and conquer:</strong> Breaking big problems into smaller ones</li>
-                <li><strong>Mathematical sequences:</strong> Factorials, Fibonacci</li>
-                <li><strong>When the problem can be defined in terms of itself</strong></li>
-            </ul>
-
-            <div class="narrative">
-                "Recursion is powerful but can be tricky. The key insight: solve the smallest version first (base case), then define bigger versions in terms of smaller ones."
-            </div>
-
-            <div class="key-concept">
-                <strong>Mental Model:</strong> Recursion is like Russian nesting dolls. You open one doll to find a smaller one inside. Keep opening until you find the smallest doll (base case), then close them all back up (cascade the solution).
-            </div>
-        </div>
-
-                                                                <div class="bottom-nav">
+                    <div class="bottom-nav">
             <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">############################..</span>] 14/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='card_13.html'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='card_15.html'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='card_13.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='card_15.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
@@ -189,14 +215,12 @@ result = factorial(5)  # 120</pre>
         </div>
     </div>
 
-        <!-- ASCII ASSISTANT -->
     <div class="ascii-assistant">
         <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            To understand recursion, you must first understand recursion. The mirror reflects the mirror, but each reflection is smaller.
+            Like a bonsai where every branch is a smaller tree, recursion shrinks a problem step by step until it reaches a simple base case.
         </div>
         <div class="assistant-avatar">
-            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
+            <img src="../static/images/mascot.png" alt="Wizard Guide" />
         </div>
     </div>
     </div>
@@ -204,52 +228,53 @@ result = factorial(5)  # 120</pre>
     <script src="../static/js/navigation.js"></script>
     <script>
     function visualizeRecursion() {
-        const n = parseInt(document.getElementById('factInput').value);
+        const n = parseInt(document.getElementById('factInput').value, 10);
         const stepsDiv = document.getElementById('recursion-steps');
         const resultDiv = document.getElementById('recursion-result');
 
-        if (n < 1 || n > 8) {
-            stepsDiv.innerHTML = '<div style="color: #dc3545; text-align: center; padding: 20px;">Please enter a number between 1 and 8</div>';
+        if (isNaN(n) || n < 1 || n > 8) {
+            stepsDiv.innerHTML = '<div class="viz-box viz-state-error" style="text-align: center; padding: 16px;">Please enter a number between 1 and 8 so the call stack fits comfortably on screen.</div>';
+            resultDiv.textContent = 'Awaiting valid input (1..8)';
             return;
         }
 
-        let html = '<div style="font-family: monospace;">';
-        html += '<div style="font-weight: bold; margin-bottom: 15px; font-size: 16px;">DIVING DOWN (Making recursive calls):</div>';
+        let html = '<div style="font-family: var(--font-stack);">';
+        html += '<div style="font-weight: 700; color: var(--accent-secondary); margin-bottom: 12px; font-size: 15px;">↓ PHASE 1: CALL STACK DESCENT (↓ Calling smaller sub-problems)</div>';
 
-        // Down phase
+        // Down phase (Calling)
         for (let i = n; i >= 1; i--) {
-            const indent = (n - i) * 30;
-            const classes = i === 1 ? 'viz-box viz-state-success viz-highlight' : 'viz-box';
+            const depth = n - i;
+            const isBase = i === 1;
+            const classes = isBase ? 'viz-box viz-state-success viz-highlight' : 'viz-box';
 
-            html += `<div class="${classes}" style="margin-left: ${indent}px; margin-bottom: 10px;">`;
-
-            if (i === 1) {
-                html += `<strong>factorial(${i})</strong> → BASE CASE! Return 1`;
+            html += `<div class="${classes}" style="margin-left: calc(${depth} * var(--step-indent, 20px)); margin-bottom: 8px; padding: 10px 14px;">`;
+            if (isBase) {
+                html += `<span>↓ Calling <strong>factorial(1)</strong> → <strong>BASE CASE REACHED!</strong> Returns <code>1</code></span>`;
             } else {
-                html += `<strong>factorial(${i})</strong> = ${i} × factorial(${i-1}) ... waiting`;
+                html += `<span>↓ Calling <strong>factorial(${i})</strong> → pauses to compute <code>${i} * factorial(${i - 1})</code>...</span>`;
             }
-
             html += '</div>';
         }
 
-        html += '<div style="font-size: 24px; text-align: center; margin: 20px 0;">⬆ CASCADING BACK UP ⬆</div>';
+        html += '<div style="font-weight: 700; color: var(--accent-primary); text-align: center; margin: 18px 0 12px 0; font-size: 15px;">↑ PHASE 2: BASE-CASE RETURN CASCADE (↑ Returning solutions back up)</div>';
 
-        // Up phase
+        // Up phase (Returning)
         let result = 1;
         for (let i = 1; i <= n; i++) {
-            const indent = (n - i) * 30;
-            const classes = i === n ? 'viz-box viz-state-success viz-highlight' : 'viz-box';
+            const depth = n - i;
+            const isFinal = i === n;
+            const classes = isFinal ? 'viz-box viz-state-success viz-highlight' : 'viz-box';
 
             if (i === 1) {
-                html += `<div class="${classes}" style="margin-left: ${indent}px; margin-bottom: 10px;">`;
-                html += `<strong>factorial(1)</strong> = 1`;
+                html += `<div class="${classes}" style="margin-left: calc(${depth} * var(--step-indent, 20px)); margin-bottom: 8px; padding: 10px 14px;">`;
+                html += `<span>↑ Returning <strong>factorial(1)</strong> = <strong>1</strong></span>`;
                 html += '</div>';
             } else {
                 const prevResult = result;
                 result = result * i;
 
-                html += `<div class="${classes}" style="margin-left: ${indent}px; margin-bottom: 10px;">`;
-                html += `<strong>factorial(${i})</strong> = ${i} × ${prevResult} = <strong>${result}</strong>`;
+                html += `<div class="${classes}" style="margin-left: calc(${depth} * var(--step-indent, 20px)); margin-bottom: 8px; padding: 10px 14px;">`;
+                html += `<span>↑ Returning <strong>factorial(${i})</strong> = ${i} × ${prevResult} = <strong>${result}</strong></span>`;
                 html += '</div>';
             }
         }
@@ -257,7 +282,7 @@ result = factorial(5)  # 120</pre>
         html += '</div>';
         stepsDiv.innerHTML = html;
 
-        resultDiv.innerHTML = `<div>factorial(${n}) = <strong style="font-size: 32px;">${result}</strong></div>`;
+        resultDiv.innerHTML = `Final Return Value: <code>factorial(${n})</code> = <strong style="font-size: 24px;">${result}</strong>`;
     }
 
     // Initialize

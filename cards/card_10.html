@@ -24,10 +24,9 @@
     <div class="layout-wrapper">
         <div class="hypercard-stack">
         <div class="card-header">
-            <div class="card-title">For Loops & Range - Counted Repetition</div>
-            <div class="card-number">Card 10 of 15</div>
+            <div class="card-title">For Loops &amp; Range - Counted Repetition</div>
+            <div class="card-number">10 / 15</div>
         </div>
-
         <div class="card-content">
             <h2>Repeating a Specific Number of Times</h2>
 
@@ -40,37 +39,40 @@
             <div class="visualization">
                 <div class="viz-container">
                     <div style="text-align: center; margin-bottom: 20px;">
-                        <strong style="font-size: 18px;">range() generates a sequence of numbers</strong>
+                        <strong style="font-size: 18px;"><code>range()</code> generates a sequence of stepping-stone numbers</strong>
                     </div>
 
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                        <div class="viz-box" style="background-color: var(--viz-bg, #3a4a5a); border: 2px solid var(--viz-border, #4a5a6a);">
+                        <div class="viz-box">
+                            <div class="viz-box-header">1 Argument: <code>range(stop)</code></div>
                             <code style="font-size: 16px;">range(5)</code>
-                            <div style="margin-top: 10px; font-size: 14px;">
+                            <div style="margin-top: 10px; font-size: 15px; font-weight: bold; color: var(--accent-primary);">
                                 0, 1, 2, 3, 4
                             </div>
-                            <div style="margin-top: 10px; font-size: 12px; opacity: 0.8;">
-                                Starts at 0, stops before 5
+                            <div style="margin-top: 8px; font-size: 12px; color: var(--text-secondary);">
+                                Starts at 0, stops <strong>before</strong> 5
                             </div>
                         </div>
 
-                        <div class="viz-box" style="background-color: var(--viz-bg, #4a3a4a); border: 2px solid var(--viz-border, #5a4a5a);">
+                        <div class="viz-box">
+                            <div class="viz-box-header">2 Arguments: <code>range(start, stop)</code></div>
                             <code style="font-size: 16px;">range(2, 7)</code>
-                            <div style="margin-top: 10px; font-size: 14px;">
+                            <div style="margin-top: 10px; font-size: 15px; font-weight: bold; color: var(--accent-primary);">
                                 2, 3, 4, 5, 6
                             </div>
-                            <div style="margin-top: 10px; font-size: 12px; opacity: 0.8;">
-                                Starts at 2, stops before 7
+                            <div style="margin-top: 8px; font-size: 12px; color: var(--text-secondary);">
+                                Starts at 2, stops <strong>before</strong> 7
                             </div>
                         </div>
 
-                        <div class="viz-box" style="background-color: var(--viz-bg, #3a4a4a); border: 2px solid var(--viz-border, #4a6a6a);">
+                        <div class="viz-box">
+                            <div class="viz-box-header">3 Arguments: <code>range(start, stop, step)</code></div>
                             <code style="font-size: 16px;">range(0, 10, 2)</code>
-                            <div style="margin-top: 10px; font-size: 14px;">
+                            <div style="margin-top: 10px; font-size: 15px; font-weight: bold; color: var(--accent-primary);">
                                 0, 2, 4, 6, 8
                             </div>
-                            <div style="margin-top: 10px; font-size: 12px; opacity: 0.8;">
-                                Step by 2 each time
+                            <div style="margin-top: 8px; font-size: 12px; color: var(--text-secondary);">
+                                Leaps by 2, stops <strong>before</strong> 10
                             </div>
                         </div>
                     </div>
@@ -78,114 +80,134 @@
             </div>
 
             <div class="key-concept">
-                <strong>Critical Detail:</strong> range() is non-inclusive - it stops BEFORE the end number. If you want numbers 1-10, use range(1, 11).
+                <strong>Critical Detail:</strong> <code>range()</code> is non-inclusive - it stops BEFORE the end number. If you want numbers 1–10, use <code>range(1, 11)</code>.
             </div>
 
             <h3>How For Loops Work</h3>
 
             <div class="visualization">
                 <div class="viz-container">
-                    <pre class="viz-code-block" style="margin-bottom: 15px;">
-for ii in range(5):
+                    <pre class="viz-code-block" style="margin-bottom: 15px;">for ii in range(5):
     print(ii)</pre>
 
-                    <div class="viz-code-block">
-                        <strong>What's happening:</strong><br><br>
-                        # Iteration 1: ii = 0<br>
-                        0<br><br>
-                        # Iteration 2: ii = 1<br>
-                        1<br><br>
-                        # Iteration 3: ii = 2<br>
-                        2<br><br>
-                        # Iteration 4: ii = 3<br>
-                        3<br><br>
-                        # Iteration 5: ii = 4<br>
-                        4
-                    </div>
+                    <div class="viz-code-block"><strong>What's happening:</strong>
+
+# Iteration 1: ii = 0
+0
+
+# Iteration 2: ii = 1
+1
+
+# Iteration 3: ii = 2
+2
+
+# Iteration 4: ii = 3
+3
+
+# Iteration 5: ii = 4
+4</div>
                 </div>
             </div>
 
-            <h3>Interactive For Loop Explorer</h3>
+            <h3>Interactive For Loop &amp; Stepping Stones Explorer</h3>
 
             <div class="visualization">
                 <div class="viz-container">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 15px;">
                         <div>
                             <label style="display: block; font-weight: bold; margin-bottom: 5px;">Start:</label>
-                            <input type="number" id="rangeStart" value="0" class="viz-input" style="width: 100%;">
+                            <input type="number" id="rangeStart" value="0" oninput="runForLoop()" class="viz-input" style="width: 100%;">
                         </div>
                         <div>
-                            <label style="display: block; font-weight: bold; margin-bottom: 5px;">Stop:</label>
-                            <input type="number" id="rangeStop" value="5" class="viz-input" style="width: 100%;">
+                            <label style="display: block; font-weight: bold; margin-bottom: 5px;">Stop (Non-Inclusive):</label>
+                            <input type="number" id="rangeStop" value="5" oninput="runForLoop()" class="viz-input" style="width: 100%;">
                         </div>
                         <div>
                             <label style="display: block; font-weight: bold; margin-bottom: 5px;">Step:</label>
-                            <input type="number" id="rangeStep" value="1" class="viz-input" style="width: 100%;">
+                            <input type="number" id="rangeStep" value="1" oninput="runForLoop()" class="viz-input" style="width: 100%;">
                         </div>
                     </div>
 
                     <button class="hc-button" onclick="runForLoop()" style="width: 100%; margin-bottom: 15px;">Run For Loop</button>
 
                     <div class="viz-display-area" style="margin-bottom: 15px;">
-                        <div id="loop-code" style="font-family: monospace; margin-bottom: 10px;"></div>
+                        <div id="loop-code" style="font-family: var(--font-stack); margin-bottom: 12px;"></div>
+                        <div style="font-size: 0.85rem; color: var(--accent-secondary); font-weight: bold; margin-bottom: 8px;">Woodland Stepping Stones Generated by <code>range()</code>:</div>
+                        <div id="stepping-stones" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;"></div>
                     </div>
 
-                    <div id="for-output" class="viz-code-block" style="min-height: 100px;">
-                        Configure range and click Run
-                    </div>
+                    <div id="for-output" class="viz-code-block" style="min-height: 100px;">Configure range and click Run</div>
                 </div>
             </div>
 
-            <h3>For Loop vs While Loop</h3>
-
-            <pre class="viz-code-block">
-# For Loop - when you know how many times
+            <details class="hc-disclosure">
+                <summary class="hc-disclosure-summary">
+                    <span class="hc-disclosure-summary-left">
+                        <span class="hc-disclosure-badge badge-code">COMPARISON</span>
+                        <span>For Loop vs. While Loop — Which Should You Choose?</span>
+                    </span>
+                    <span class="hc-disclosure-chevron">+ Explore</span>
+                </summary>
+                <div class="hc-disclosure-body">
+                    <pre class="viz-code-block"># For Loop - when you know how many times
 for ii in range(5):
     print(ii)
 
-# While Loop - when you don't know
+# While Loop - when you don't know ahead of time
 counter = 0
 while counter < 5:
     print(counter)
-    counter += 1
+    counter += 1</pre>
 
-# Same output, different use cases!</pre>
+                    <div class="key-concept" style="margin-bottom: 0;">
+                        <strong>Mental Model:</strong> A <code>for</code> loop is like a ticket dispenser that counts automatically. A <code>while</code> loop is best when the stopping condition depends on changing events.
+                    </div>
+                </div>
+            </details>
 
-            <div class="narrative">
-                "For loops are cleaner when you know the count. While loops are better when the condition might change in unpredictable ways."
+            <details class="hc-disclosure">
+                <summary class="hc-disclosure-summary">
+                    <span class="hc-disclosure-summary-left">
+                        <span class="hc-disclosure-badge">CHEAT SHEET</span>
+                        <span>Common <code>for</code> &amp; <code>range()</code> Loop Patterns</span>
+                    </span>
+                    <span class="hc-disclosure-chevron">+ Explore</span>
+                </summary>
+                <div class="hc-disclosure-body">
+                    <ul>
+                        <li><strong>Count to N:</strong> <code>for ii in range(n)</code></li>
+                        <li><strong>Count from A to B:</strong> <code>for ii in range(a, b)</code></li>
+                        <li><strong>Count by steps:</strong> <code>for ii in range(0, 10, 2)</code> # evens</li>
+                        <li><strong>Countdown:</strong> <code>for ii in range(10, 0, -1)</code></li>
+                    </ul>
+                </div>
+            </details>
+
+            <div class="flower-encouragement">
+                <img src="../static/images/cursors/flower_11.png" alt="Calla Lilies">
+                <div>
+                    <strong>Woodland Milestone:</strong> You've crossed the stepping stones of <code>for</code> and <code>range()</code>! Next, let's package reusable spells into Functions.
+                </div>
             </div>
-
-            <div class="key-concept">
-                <strong>Mental Model:</strong> A for loop is like a ticket dispenser. You know exactly how many tickets (iterations) you'll get. The machine automatically counts for you.
-            </div>
-
-            <h3>Common For Loop Patterns</h3>
-            <ul>
-                <li><strong>Count to N:</strong> for ii in range(n)</li>
-                <li><strong>Count from A to B:</strong> for ii in range(a, b)</li>
-                <li><strong>Count by steps:</strong> for ii in range(0, 10, 2) # evens</li>
-                <li><strong>Countdown:</strong> for ii in range(10, 0, -1)</li>
-            </ul>
         </div>
 
-                                                                <div class="bottom-nav">
+                <div class="bottom-nav">
             <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">####################..........</span>] 10/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='card_9.html'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='card_11.html'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='card_9.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='card_11.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
@@ -194,14 +216,12 @@ while counter < 5:
         </div>
     </div>
 
-        <!-- ASCII ASSISTANT -->
     <div class="ascii-assistant">
         <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            Iterating is visiting every house in the village. You don't miss a single one.
+            When you know how many steps to run, use a for loop with range(). Remember that range(5) counts 0, 1, 2, 3, 4—stopping before 5.
         </div>
         <div class="assistant-avatar">
-            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
+            <img src="../static/images/mascot.png" alt="Wizard Guide" />
         </div>
     </div>
     </div>
@@ -209,53 +229,73 @@ while counter < 5:
     <script src="../static/js/navigation.js"></script>
     <script>
     function runForLoop() {
-        const start = parseInt(document.getElementById('rangeStart').value);
-        const stop = parseInt(document.getElementById('rangeStop').value);
+        const start = parseInt(document.getElementById('rangeStart').value) || 0;
+        const stop = parseInt(document.getElementById('rangeStop').value) || 0;
         const step = parseInt(document.getElementById('rangeStep').value);
         const output = document.getElementById('for-output');
         const codeDisplay = document.getElementById('loop-code');
+        const stonesContainer = document.getElementById('stepping-stones');
 
-        if (step === 0) {
-            output.innerHTML = '<span style="color: #ff6b6b;">Error: Step cannot be 0!</span>';
+        if (isNaN(step) || step === 0) {
+            output.innerHTML = '<span style="color: var(--state-error);">Error: Step cannot be 0! (Python raises ValueError: range() arg 3 must not be zero)</span>';
+            if (stonesContainer) stonesContainer.innerHTML = '<span class="viz-box viz-state-error" style="padding: 6px 12px;">Invalid step: 0</span>';
             return;
         }
 
         if ((step > 0 && start >= stop) || (step < 0 && start <= stop)) {
-            output.innerHTML = '<span style="color: #ff6b6b;">Warning: This range produces no values!</span>';
-            codeDisplay.innerHTML = `for ii in range(${start}, ${stop}, ${step}):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(ii)<br><br># No iterations - range is empty`;
+            output.innerHTML = '<span style="color: var(--state-error);">Warning: This range produces 0 values because start (' + start + ') has already passed stop (' + stop + ')!</span>';
+            codeDisplay.innerHTML = `for ii in range(${start}, ${stop}, ${step}):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(ii)<br><span style="color: var(--text-muted);"># 0 iterations — loop body never runs</span>`;
+            if (stonesContainer) {
+                stonesContainer.innerHTML = `<span class="viz-box viz-state-error" style="padding: 6px 12px;">Empty range — stops immediately before ${stop}</span>`;
+            }
             return;
         }
 
         // Generate the code display
-        if (step === 1) {
+        if (start === 0 && step === 1) {
+            codeDisplay.innerHTML = `for ii in range(${stop}): &nbsp;<span style="color: var(--text-muted);"># same as range(0, ${stop}, 1)</span>`;
+        } else if (step === 1) {
             codeDisplay.innerHTML = `for ii in range(${start}, ${stop}):`;
         } else {
             codeDisplay.innerHTML = `for ii in range(${start}, ${stop}, ${step}):`;
         }
         codeDisplay.innerHTML += `<br>&nbsp;&nbsp;&nbsp;&nbsp;print(ii)`;
 
-        // Generate output
+        // Generate output & Woodland Stepping Stones
         let result = '> Running loop...\n\n';
         let count = 0;
-        const maxIterations = 50; // Safety limit
+        const maxIterations = 30; // Safety limit
+        const values = [];
 
         if (step > 0) {
             for (let i = start; i < stop && count < maxIterations; i += step) {
-                result += `# ii = ${i}\n${i}\n\n`;
+                values.push(i);
+                result += `# Iteration ${count + 1}: ii = ${i}\n${i}\n\n`;
                 count++;
             }
         } else {
             for (let i = start; i > stop && count < maxIterations; i += step) {
-                result += `# ii = ${i}\n${i}\n\n`;
+                values.push(i);
+                result += `# Iteration ${count + 1}: ii = ${i}\n${i}\n\n`;
                 count++;
             }
+        }
+
+        if (stonesContainer) {
+            const stoneHtml = values.map((val, idx) =>
+                `<span class="viz-box viz-state-success" style="padding: 6px 12px; font-family: var(--font-stack); font-weight: bold;">[${val}]</span>` +
+                (idx < values.length - 1 ? `<span style="color: var(--accent-secondary); font-weight: bold;">→</span>` : '')
+            ).join('');
+            const stopBadge = `<span style="color: var(--text-muted); font-weight: bold;">→</span>` +
+                `<span class="viz-box viz-state-error" style="padding: 6px 12px; font-family: var(--font-stack); font-size: 0.85rem;">stop=${stop} (excluded)</span>`;
+            stonesContainer.innerHTML = stoneHtml + stopBadge;
         }
 
         if (count >= maxIterations) {
             result += '\n... (truncated for display)';
         }
 
-        result += `\n> Loop complete! ${count} iterations`;
+        result += `> Loop complete! (${count} stepping stones visited; stopped before ${stop})`;
         output.textContent = result;
     }
 

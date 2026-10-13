@@ -23,118 +23,122 @@
 
     <div class="layout-wrapper">
         <div class="hypercard-stack">
-        <div class="card-header">
+            <div class="card-header">
             <div class="card-title">The Computational Mindset</div>
-            <div class="card-number">Card 0 of 15</div>
+            <div class="card-number">0 / 15</div>
         </div>
-
         <div class="card-content">
-            <!-- ASCII Header -->
-            <div style="display: flex; justify-content: center; width: 100%;">
-            <pre class="ascii-art" style="font-size: 10px; line-height: 10px;">
-   ______                            __        __  _                   __   
-  / ____/___  ____ ___  ____  __  __/ /_____ _/ /_(_)___  ____  ____ _/ /   
- / /   / __ \/ __ `__ \/ __ \/ / / / __/ __ `/ __/ / __ \/ __ \/ __ `/ /    
-/ /___/ /_/ / / / / / / /_/ / /_/ / /_/ /_/ / /_/ / /_/ / /_/ / / / / /_/ / /     
-\____/\____/_/ /_/ /_/ .___/\__,_/\__/\__,_/\__/_/\____/_/ /_/\__,_/_/      
-   /  |/  (_)___  ____/ /_______  / /_                                      
-  / /|_/ / / __ \/ __  / ___/ _ \/ __/                                      
- / /  / / / / / / /_/ (__  )  __/ /_                                        
-/_/  /_/_/_/ /_/\__,_/____/\___/\__/                                        
-            </pre>
-            </div>
+                <h2>Thinking Like an Apprentice Golem</h2>
 
-            <div class="narrative">
-                <strong>> SYSTEM MSG:</strong> Entities [Computers] possess 0% intuition. Obedience protocol is 100%.
-            </div>
+                <div class="narrative">
+                    "A computer possesses 0% intuition and 100% literal obedience. It never does what you <em>mean</em>—only exactly what you <em>say</em>."
+                </div>
 
-            <!-- Terminal-style Visualization -->
-            <div class="visualization">
-                <div style="width: 100%;">
-                    <div style="border-bottom: 1px dashed var(--phosphor); margin-bottom: 15px; padding-bottom: 5px;">
-                        <strong>> SANDWICH_SIM_v1.0.exe</strong>
-                    </div>
-                    
-                    <p style="font-size: 0.9em; margin-bottom: 15px;">OBJ: INSTRUCT_ENTITY >> MAKE_SANDWICH</p>
-                    
-                    <div class="viz-terminal" style="margin-bottom: 20px;">
-                        <div style="margin-bottom: 10px;">> AWAITING INPUT...</div>
-                        <div style="margin-bottom: 10px;">
-                            <span style="opacity: 0.7;">USER >> </span>
-                            <span id="current-instruction">"Open the jar"</span>
-                        </div>
-                        
-                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dotted #333;">
-                            <span style="opacity: 0.7;">KERNEL_RESPONSE >> </span>
-                            <span id="instruction-result" class="viz-state-error" style="background: none; border: none; padding: 0;">
-                                [FATAL_ERR]: LINK_MISSING (Which jar? Coordinates null.)
+                <p>
+                    When you ask a human friend to "make a peanut butter sandwich," their brain automatically fills in dozens of unstated steps. When you instruct a computer, every single assumption you leave out becomes a bug.
+                </p>
+
+                <!-- Apprentice Golem Sandwich Simulator -->
+                <div class="visualization">
+                    <div class="viz-container">
+                        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--border-color); margin-bottom: 15px; padding-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+                            <strong>Apprentice Golem Sandwich Simulator</strong>
+                            <span id="golem-step-badge" style="font-family: var(--font-stack); font-size: 0.85rem; color: var(--accent-secondary); font-weight: 700;">
+                                Step 1/5
                             </span>
                         </div>
+
+                        <p style="font-size: 0.95rem; margin-bottom: 14px;">
+                            Test how the Apprentice Golem reacts to vague human wishes versus crystal-clear computational instructions:
+                        </p>
+
+                        <div class="viz-terminal" style="margin-bottom: 18px;">
+                            <div style="margin-bottom: 10px; color: var(--text-secondary);">
+                                <span>APPRENTICE COMMAND &gt;&gt; </span>
+                                <strong id="current-instruction" style="color: var(--text-primary);">"Open the jar"</strong>
+                            </div>
+
+                            <div id="instruction-result" class="viz-display-area viz-state-error" style="margin-top: 12px;">
+                                Golem Confusion: "Which jar? Where is it on the table? My hands are grasping at empty air!"
+                            </div>
+                        </div>
+
+                        <div class="viz-button-group">
+                            <button type="button" class="hc-button" onclick="cycleInstructions()" style="width: 100%;">
+                                ▶ Test Next Instruction (Step through 1–5)
+                            </button>
+                        </div>
                     </div>
-                    
-                    <button class="hc-button" onclick="cycleInstructions()" style="width: 100%;">
-                        > EXECUTE_NEXT_ATTEMPT
-                    </button>
+                </div>
+
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge">CORE LAWS</span>
+                            <span>Three Laws of Computational Thinking</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <ul>
+                            <li>
+                                <strong>Precision is Everything:</strong><br>
+                                Computers need exact names and locations—never "that thing over there."
+                            </li>
+                            <li>
+                                <strong>Zero Unspoken Intuition:</strong><br>
+                                A program doesn't know what a sandwich, a score, or a user is until you define it explicitly.
+                            </li>
+                            <li>
+                                <strong>Sequence Matters:</strong><br>
+                                You cannot spread peanut butter before you twist open the lid of the jar.
+                            </li>
+                        </ul>
+                    </div>
+                </details>
+
+                <div class="flower-encouragement">
+                    <img src="../static/images/cursors/flower_1.png" alt="Lavender Tulips">
+                    <div>
+                        <strong>Card 0 Takeaway (Lavender Tulips Unlocked!):</strong>
+                        Programming isn't about memorizing arcane symbols—it is the art of <em>translating</em> a human goal into steps small and clear enough for a literal-minded machine to follow.
+                    </div>
                 </div>
             </div>
 
-            <h3>// CORE_PRINCIPLES</h3>
-            
-            <ul style="font-size: 1.2rem;">
-                <li>
-                    <strong>Precision is everything.</strong><br>
-                    <span style="font-size: 0.9em; opacity: 0.8;">Computers need exact coordinates, not "over there."</span>
-                </li>
-                <li>
-                    <strong>No intuition.</strong><br>
-                    <span style="font-size: 0.9em; opacity: 0.8;">They don't know what a sandwich <em>is</em> until you define it.</span>
-                </li>
-                <li>
-                    <strong>Sequence matters.</strong><br>
-                    <span style="font-size: 0.9em; opacity: 0.8;">You can't spread peanut butter before opening the jar.</span>
-                </li>
-            </ul>
-
-            <div class="key-concept">
-                <strong>Takeaway</strong>
-                Programming is just <em>translating</em> your thoughts into steps small enough for a machine to follow.
-            </div>
-        </div>
-
-        <div class="bottom-nav">
+                    <div class="bottom-nav">
             <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);"></span>..............................] 00/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='../index.html'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='card_1.html'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='../index.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='card_1.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
         <div class="progress-bar">
-            <div class="progress-fill" style="width: 0%"></div>
+            <div class="progress-fill" style="width: 0.0%"></div>
         </div>
     </div>
 
     <div class="ascii-assistant">
         <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            If you assume the computer "knows" what a sandwich is, you will introduce 99% of your bugs.
+            A computer has zero common sense—it does literally what you say, never what you mean. Define every step explicitly.
         </div>
         <div class="assistant-avatar">
-            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
+            <img src="../static/images/mascot.png" alt="Wizard Guide" />
         </div>
+    </div>
     </div>
 
     <script src="../static/js/navigation.js"></script>
@@ -142,27 +146,27 @@
     const instructions = [
         {
             instruction: '"Open the jar"',
-            result: '[FATAL_ERR]: LINK_MISSING (Which jar? Coordinates null.)',
+            result: 'Golem Confusion: "Which jar? Where is it on the table? My hands are grasping at empty air!"',
             correct: false
         },
         {
-            instruction: 'LOCATE(JAR, COORDS: 10, 5)',
-            result: '> SUCCESS: TARGET_ACQUIRED [x:10, y:5]',
+            instruction: 'locate(item="peanut_butter_jar", shelf=2, slot=1)',
+            result: '✔ Golem Action: Target acquired! Picked up the peanut butter jar from Shelf 2, Slot 1.',
             correct: true
         },
         {
-            instruction: 'GRAB(LID) && ROTATE(CCW, UNTIL_DETACHED)',
-            result: '> SUCCESS: CONTAINER_OPEN',
+            instruction: 'grip(jar_lid) and rotate(direction="counter_clockwise", turns=3)',
+            result: '✔ Golem Action: Lid unscrewed cleanly! The peanut butter jar is now open.',
             correct: true
         },
         {
-            instruction: '"Put peanut butter on bread"',
-            result: '[ERR]: AMBIGUOUS_PARAM (Entire jar? How much? Which bread?)',
+            instruction: '"Put peanut butter on the bread"',
+            result: 'Golem Mishap: Golem placed the entire heavy glass jar upside-down on top of the loaf!',
             correct: false
         },
         {
-            instruction: 'EXTRACT(KNIFE, 2CM); APPLY(BREAD_1, SWEEP)',
-            result: '> SUCCESS: DEPLOYMENT_COMPLETE',
+            instruction: 'scoop_with_knife(amount="2_tbsp") -> spread_evenly(target="bread_slice_1")',
+            result: '✔ Golem Masterpiece: Smoothly spread 2 tablespoons of peanut butter across Slice 1!',
             correct: true
         }
     ];
@@ -173,11 +177,14 @@
         currentIdx = (currentIdx + 1) % instructions.length;
         const instr = instructions[currentIdx];
         const resultEl = document.getElementById('instruction-result');
+        const stepBadge = document.getElementById('golem-step-badge');
 
         document.getElementById('current-instruction').textContent = instr.instruction;
         resultEl.textContent = instr.result;
+        if (stepBadge) {
+            stepBadge.textContent = `Step ${currentIdx + 1}/${instructions.length}`;
+        }
 
-        // Toggle state classes
         if (instr.correct) {
             resultEl.classList.remove('viz-state-error');
             resultEl.classList.add('viz-state-success');

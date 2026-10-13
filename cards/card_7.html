@@ -25,9 +25,8 @@
         <div class="hypercard-stack">
         <div class="card-header">
             <div class="card-title">Conditionals - The Decision Tree</div>
-            <div class="card-number">Card 7 of 15</div>
+            <div class="card-number">7 / 15</div>
         </div>
-
         <div class="card-content">
             <h2>How Do Programs Make Decisions?</h2>
 
@@ -39,22 +38,32 @@
 
             <div class="visualization">
                 <div class="viz-container" style="text-align: center;">
-                    <div class="viz-box" style="display: inline-block; margin-bottom: 20px; max-width: 400px;">
-                        <strong style="font-size: 18px;">IF condition is True?</strong>
+                    <div class="bonsai-feature-badge">
+                        <img src="../static/images/bonsai.png" alt="Pixel Bonsai Decision Tree">
+                        <div style="text-align: left;">
+                            <strong style="color: var(--accent-primary);">The Bonsai Decision Tree:</strong><br>
+                            <span style="font-size: 0.92rem; color: var(--text-secondary);">Execution starts at the trunk (<code>if</code>) and branches outward (<code>elif</code> / <code>else</code>). Only <strong>one</strong> branch blooms per run!</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="viz-box" style="display: inline-block; margin-bottom: 20px; max-width: 400px;">
+                            <strong style="font-size: 18px;">IF condition is True?</strong>
+                        </div>
                     </div>
 
                     <div style="display: flex; justify-content: space-around; gap: 20px; flex-wrap: wrap;">
                         <div style="flex: 1; min-width: 200px;">
-                            <div style="font-size: 24px; margin-bottom: 10px;">✓ YES</div>
+                            <div style="font-size: 20px; margin-bottom: 10px; color: var(--accent-primary); font-weight: bold;">✓ YES (True)</div>
                             <div class="viz-box viz-state-success">
-                                <strong>Execute this code</strong>
+                                <strong>Execute this branch's indented code</strong>
                             </div>
                         </div>
 
                         <div style="flex: 1; min-width: 200px;">
-                            <div style="font-size: 24px; margin-bottom: 10px;">✗ NO</div>
+                            <div style="font-size: 20px; margin-bottom: 10px; color: var(--state-error); font-weight: bold;">✗ NO (False)</div>
                             <div class="viz-box viz-state-error">
-                                <strong>Skip this code</strong>
+                                <strong>Skip this branch &amp; check next</strong>
                             </div>
                         </div>
                     </div>
@@ -63,8 +72,7 @@
 
             <h3>The If-Elif-Else Chain</h3>
 
-            <pre class="viz-code-block">
-if condition1:
+            <pre class="viz-code-block">if condition1:
     # Execute if condition1 is True
 elif condition2:
     # Execute if condition1 False, condition2 True
@@ -77,31 +85,55 @@ else:
                 <strong>Critical Concept:</strong> Indentation creates hierarchy. The indented code belongs to the condition above it. This is how Python knows what code to run when a condition is True.
             </div>
 
-            <h3>Interactive Decision Tree</h3>
+            <h3>Interactive Bonsai Decision Tree</h3>
 
             <div class="visualization">
                 <div class="viz-container">
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Enter a number:</label>
-                        <input type="number" id="numInput" value="0" class="viz-input" style="width: 100%; font-size: 16px; font-family: monospace;">
+                    <div style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 15px;">
+                        <div style="flex: 1; min-width: 180px;">
+                            <label style="display: block; font-weight: bold; margin-bottom: 5px;">Enter a number:</label>
+                            <input type="number" id="numInput" value="0" oninput="evaluateNumber()" class="viz-input" style="width: 100%; font-size: 16px; font-family: monospace;">
+                        </div>
+                        <button class="hc-button" onclick="evaluateNumber()">Evaluate</button>
+                        <button class="hc-button" onclick="document.getElementById('numInput').value=42; evaluateNumber();">Try +42</button>
+                        <button class="hc-button" onclick="document.getElementById('numInput').value=-7; evaluateNumber();">Try -7</button>
+                        <button class="hc-button" onclick="document.getElementById('numInput').value=0; evaluateNumber();">Try 0</button>
                     </div>
 
-                    <button class="hc-button" onclick="evaluateNumber()" style="width: 100%; margin-bottom: 15px;">Evaluate</button>
+                    <!-- Visual Branch Diagram Highlighted by evaluateNumber() -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-bottom: 15px;">
+                        <div id="diagram-branch-if" class="viz-box" style="text-align: center;">
+                            <div class="viz-box-header">Branch 1: <code>if num &gt; 0</code></div>
+                            <div id="diagram-status-if" style="font-size: 0.9rem;">Waiting...</div>
+                        </div>
+                        <div id="diagram-branch-elif" class="viz-box" style="text-align: center;">
+                            <div class="viz-box-header">Branch 2: <code>elif num &lt; 0</code></div>
+                            <div id="diagram-status-elif" style="font-size: 0.9rem;">Waiting...</div>
+                        </div>
+                        <div id="diagram-branch-else" class="viz-box" style="text-align: center;">
+                            <div class="viz-box-header">Branch 3: <code>else</code></div>
+                            <div id="diagram-status-else" style="font-size: 0.9rem;">Waiting...</div>
+                        </div>
+                    </div>
 
                     <div id="decision-path" class="viz-display-area" style="min-height: 100px;">
                         <!-- Decision path will appear here -->
                     </div>
 
-                    <div class="viz-code-block" style="margin-top: 15px; min-height: 60px;">
-                        <div id="code-trace">Enter a number and click Evaluate</div>
-                    </div>
+                    <div class="viz-code-block" style="margin-top: 15px; min-height: 60px;"><div id="code-trace">Enter a number and click Evaluate</div></div>
                 </div>
             </div>
 
-            <h3>Real-World Example: Grade Calculator</h3>
-
-            <pre class="viz-code-block">
-score = 85
+            <details class="hc-disclosure">
+                <summary class="hc-disclosure-summary">
+                    <span class="hc-disclosure-summary-left">
+                        <span class="hc-disclosure-badge badge-code">CODE EXAMPLES</span>
+                        <span>Real-World Waterfall: Grade Calculator &amp; Key Principles</span>
+                    </span>
+                    <span class="hc-disclosure-chevron">+ Explore</span>
+                </summary>
+                <div class="hc-disclosure-body">
+                    <pre class="viz-code-block">score = 85
 
 if score >= 90:
     grade = "A"
@@ -114,41 +146,45 @@ else:
 
 print(grade)  # Output: "B"</pre>
 
-            <div class="narrative">
-                "Once a condition is True, the rest are skipped. It's like a waterfall - water flows down the first path it finds."
-            </div>
+                    <div class="narrative">
+                        "Once a condition is True, the rest are skipped. It's like a waterfall — water flows down the first path it finds."
+                    </div>
 
-            <h3>Key Principles</h3>
-            <ul>
-                <li><strong>if:</strong> Always comes first, tests one condition</li>
-                <li><strong>elif:</strong> Optional, can have many, tests additional conditions</li>
-                <li><strong>else:</strong> Optional, comes last, catches everything else</li>
-                <li><strong>Only ONE block executes</strong> - first True condition wins</li>
-            </ul>
+                    <h4>Key Principles</h4>
+                    <ul>
+                        <li><strong>if:</strong> Always comes first, tests one condition</li>
+                        <li><strong>elif:</strong> Optional, can have many, tests additional conditions</li>
+                        <li><strong>else:</strong> Optional, comes last, catches everything else</li>
+                        <li><strong>Only ONE block executes</strong> — first True condition wins</li>
+                    </ul>
+                </div>
+            </details>
 
-            <div class="key-concept">
-                <strong>Mental Model:</strong> A conditional is like a choose-your-own-adventure book. Based on the condition (your choice), you follow one path and skip the others.
+            <div class="flower-encouragement">
+                <img src="../static/images/cursors/flower_8.png" alt="Ivory Tulip">
+                <div>
+                    <strong>Woodland Milestone:</strong> Your programs can now think and choose paths! Next, we'll place decisions inside decisions with Nested Conditionals.
+                </div>
             </div>
         </div>
 
-                                                                <div class="bottom-nav">
+                <div class="bottom-nav">
             <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">##############................</span>] 07/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='card_6.html'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='card_8.html'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='card_6.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='card_8.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
@@ -157,14 +193,12 @@ print(grade)  # Output: "B"</pre>
         </div>
     </div>
 
-        <!-- ASCII ASSISTANT -->
     <div class="ascii-assistant">
         <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            The ability to choose is what makes code intelligent. With conditionals, the machine listens and responds.
+            An if-elif-else chain is a branching tree. Python takes the first branch whose condition is True and skips the rest.
         </div>
         <div class="assistant-avatar">
-            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
+            <img src="../static/images/mascot.png" alt="Wizard Guide" />
         </div>
     </div>
     </div>
@@ -172,43 +206,71 @@ print(grade)  # Output: "B"</pre>
     <script src="../static/js/navigation.js"></script>
     <script>
     function evaluateNumber() {
-        const num = parseFloat(document.getElementById('numInput').value);
+        const rawVal = document.getElementById('numInput').value;
+        const num = rawVal === '' ? 0 : parseFloat(rawVal);
         const path = document.getElementById('decision-path');
         const trace = document.getElementById('code-trace');
 
+        const branchIf = document.getElementById('diagram-branch-if');
+        const branchElif = document.getElementById('diagram-branch-elif');
+        const branchElse = document.getElementById('diagram-branch-else');
+        const statusIf = document.getElementById('diagram-status-if');
+        const statusElif = document.getElementById('diagram-status-elif');
+        const statusElse = document.getElementById('diagram-status-else');
+
+        [branchIf, branchElif, branchElse].forEach(el => {
+            if (el) el.classList.remove('viz-state-success', 'viz-state-error', 'viz-highlight');
+        });
+
         let result = '';
         let pathHTML = '';
-        let codeTrace = '';
-
-        codeTrace = `> number = ${num}\n\n`;
+        let codeTrace = `> num = ${num}\n\n`;
 
         pathHTML = '<div style="text-align: left;">';
 
         if (num > 0) {
-            result = 'POSITIVE';
-            pathHTML += '<div class="viz-box viz-state-success" style="margin: 10px 0;"><strong>✓ if num > 0:</strong> TRUE - Execute this block</div>';
-            pathHTML += '<div class="viz-box" style="margin: 10px 0;"><strong>elif num < 0:</strong> SKIPPED</div>';
-            pathHTML += '<div class="viz-box" style="margin: 10px 0;"><strong>else:</strong> SKIPPED</div>';
-            codeTrace += `> if num > 0:\n>     print("POSITIVE")\nPOSITIVE`;
+            result = 'POSITIVE (Branch 1 Taken)';
+            if (branchIf) branchIf.classList.add('viz-state-success');
+            if (statusIf) statusIf.innerHTML = '<strong>✓ TRUE</strong> → Branch Taken!';
+            if (statusElif) statusElif.innerHTML = 'Skipped (already matched)';
+            if (statusElse) statusElse.innerHTML = 'Skipped (already matched)';
+
+            pathHTML += '<div class="viz-box viz-state-success" style="margin: 10px 0;"><strong>✓ if num &gt; 0:</strong> TRUE (' + num + ' &gt; 0) — Execute this block!</div>';
+            pathHTML += '<div class="viz-box" style="margin: 10px 0; opacity: 0.65;"><strong>elif num &lt; 0:</strong> SKIPPED (first True branch already won)</div>';
+            pathHTML += '<div class="viz-box" style="margin: 10px 0; opacity: 0.65;"><strong>else:</strong> SKIPPED</div>';
+            codeTrace += `> if num > 0:        # ${num} > 0 is True ✓\n>     print("POSITIVE")\nPOSITIVE`;
         } else if (num < 0) {
-            result = 'NEGATIVE';
-            pathHTML += '<div class="viz-box viz-state-error" style="margin: 10px 0;"><strong>if num > 0:</strong> FALSE - Skip</div>';
-            pathHTML += '<div class="viz-box viz-state-success" style="margin: 10px 0;"><strong>✓ elif num < 0:</strong> TRUE - Execute this block</div>';
-            pathHTML += '<div class="viz-box" style="margin: 10px 0;"><strong>else:</strong> SKIPPED</div>';
-            codeTrace += `> if num > 0:\n>     print("POSITIVE")\n(skipped)\n\n> elif num < 0:\n>     print("NEGATIVE")\nNEGATIVE`;
+            result = 'NEGATIVE (Branch 2 Taken)';
+            if (branchIf) branchIf.classList.add('viz-state-error');
+            if (branchElif) branchElif.classList.add('viz-state-success');
+            if (statusIf) statusIf.innerHTML = '✗ FALSE → Check next';
+            if (statusElif) statusElif.innerHTML = '<strong>✓ TRUE</strong> → Branch Taken!';
+            if (statusElse) statusElse.innerHTML = 'Skipped (already matched)';
+
+            pathHTML += '<div class="viz-box viz-state-error" style="margin: 10px 0;"><strong>✗ if num &gt; 0:</strong> FALSE (' + num + ' &gt; 0) — Skip</div>';
+            pathHTML += '<div class="viz-box viz-state-success" style="margin: 10px 0;"><strong>✓ elif num &lt; 0:</strong> TRUE (' + num + ' &lt; 0) — Execute this block!</div>';
+            pathHTML += '<div class="viz-box" style="margin: 10px 0; opacity: 0.65;"><strong>else:</strong> SKIPPED</div>';
+            codeTrace += `> if num > 0:        # ${num} > 0 is False ✗\n>     print("POSITIVE")  # (skipped)\n\n> elif num < 0:      # ${num} < 0 is True ✓\n>     print("NEGATIVE")\nNEGATIVE`;
         } else {
-            result = 'ZERO';
-            pathHTML += '<div class="viz-box viz-state-error" style="margin: 10px 0;"><strong>if num > 0:</strong> FALSE - Skip</div>';
-            pathHTML += '<div class="viz-box viz-state-error" style="margin: 10px 0;"><strong>elif num < 0:</strong> FALSE - Skip</div>';
-            pathHTML += '<div class="viz-box viz-state-success" style="margin: 10px 0;"><strong>✓ else:</strong> Execute this block (default)</div>';
-            codeTrace += `> if num > 0:\n>     print("POSITIVE")\n(skipped)\n\n> elif num < 0:\n>     print("NEGATIVE")\n(skipped)\n\n> else:\n>     print("ZERO")\nZERO`;
+            result = 'ZERO (Branch 3 Taken)';
+            if (branchIf) branchIf.classList.add('viz-state-error');
+            if (branchElif) branchElif.classList.add('viz-state-error');
+            if (branchElse) branchElse.classList.add('viz-state-success');
+            if (statusIf) statusIf.innerHTML = '✗ FALSE → Check next';
+            if (statusElif) statusElif.innerHTML = '✗ FALSE → Check next';
+            if (statusElse) statusElse.innerHTML = '<strong>✓ DEFAULT</strong> → Branch Taken!';
+
+            pathHTML += '<div class="viz-box viz-state-error" style="margin: 10px 0;"><strong>✗ if num &gt; 0:</strong> FALSE (0 &gt; 0) — Skip</div>';
+            pathHTML += '<div class="viz-box viz-state-error" style="margin: 10px 0;"><strong>✗ elif num &lt; 0:</strong> FALSE (0 &lt; 0) — Skip</div>';
+            pathHTML += '<div class="viz-box viz-state-success" style="margin: 10px 0;"><strong>✓ else:</strong> All above False — Execute default fallback block!</div>';
+            codeTrace += `> if num > 0:        # False ✗ (skipped)\n> elif num < 0:      # False ✗ (skipped)\n> else:              # Default branch runs ✓\n>     print("ZERO")\nZERO`;
         }
 
-        pathHTML += `<div class="viz-code-block" style="margin-top: 20px; text-align: center; font-size: 24px;"><strong>Result: ${result}</strong></div>`;
+        pathHTML += `<div class="viz-code-block" style="margin-top: 16px; text-align: center; font-size: 20px;"><strong>Output: ${result}</strong></div>`;
         pathHTML += '</div>';
 
         path.innerHTML = pathHTML;
-        trace.innerHTML = codeTrace;
+        trace.textContent = codeTrace;
     }
 
     // Initialize

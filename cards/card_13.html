@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dictionaries - Meaning Over Position</title>
-        <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../static/css/hypercard.css">
 </head>
 <body class="has-sticky-nav">
@@ -23,169 +23,189 @@
 
     <div class="layout-wrapper">
         <div class="hypercard-stack">
-        <div class="card-header">
+            <div class="card-header">
             <div class="card-title">Dictionaries - Meaning Over Position</div>
-            <div class="card-number">Card 13 of 15</div>
+            <div class="card-number">13 / 15</div>
         </div>
-
         <div class="card-content">
-            <h2>What Is a Dictionary?</h2>
+                <h2>What Is a Dictionary?</h2>
 
-            <div class="narrative">
-                "A collection of key-value pairs. Unlike lists where position matters, dictionaries use meaningful names (keys) to access values."
-            </div>
+                <div class="narrative">
+                    "A collection of key-value pairs. Unlike lists where numeric position matters, dictionaries use meaningful names (keys) to unlock values directly."
+                </div>
 
-            <h3>Lists vs Dictionaries</h3>
+                <h3>Lists vs Dictionaries</h3>
 
-            <div class="visualization">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div class="viz-container">
-                        <h4 style="text-align: center; margin-bottom: 15px;">LIST</h4>
-                        <code style="display: block; margin-bottom: 15px;">["John", 25, "Engineer"]</code>
+                <div class="visualization">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+                        <div class="viz-box">
+                            <div class="viz-box-header">LIST (Position-Based)</div>
+                            <code style="display: block; margin-bottom: 12px; text-align: center;">["John", 25, "Engineer"]</code>
 
-                        <div class="viz-display-area" style="margin-bottom: 10px;">
-                            <strong>[0]</strong> → "John"<br>
-                            <strong>[1]</strong> → 25<br>
-                            <strong>[2]</strong> → "Engineer"
+                            <div class="viz-display-area" style="margin-bottom: 10px;">
+                                <strong>[0]</strong> → "John"<br>
+                                <strong>[1]</strong> → 25<br>
+                                <strong>[2]</strong> → "Engineer"
+                            </div>
+
+                            <div class="viz-display-area viz-state-success" style="font-size: 13px;">
+                                Access by <strong>index number</strong><br>
+                                Ordered sequence<br>
+                                <em>Wait—what does <code>[1]</code> represent?</em>
+                            </div>
                         </div>
 
-                        <div class="viz-display-area viz-state-success" style="font-size: 12px;">
-                            Access by <strong>position</strong><br>
-                            Ordered collection<br>
-                            What does [1] mean?
-                        </div>
-                    </div>
+                        <div class="viz-box">
+                            <div class="viz-box-header">DICTIONARY (Key-Based)</div>
+                            <code style="display: block; margin-bottom: 12px; text-align: center; font-size: 0.84em;">{"name": "John", "age": 25, "job": "Engineer"}</code>
 
-                    <div class="viz-container">
-                        <h4 style="text-align: center; margin-bottom: 15px;">DICTIONARY</h4>
-                        <code style="display: block; margin-bottom: 15px; font-size: 11px;">{"name": "John", "age": 25, "job": "Engineer"}</code>
+                            <div class="viz-display-area" style="margin-bottom: 10px;">
+                                <strong>["name"]</strong> → "John"<br>
+                                <strong>["age"]</strong> → 25<br>
+                                <strong>["job"]</strong> → "Engineer"
+                            </div>
 
-                        <div class="viz-display-area" style="margin-bottom: 10px;">
-                            <strong>["name"]</strong> → "John"<br>
-                            <strong>["age"]</strong> → 25<br>
-                            <strong>["job"]</strong> → "Engineer"
-                        </div>
-
-                        <div class="viz-display-area viz-state-success" style="font-size: 12px;">
-                            Access by <strong>key</strong><br>
-                            Unordered bag<br>
-                            Self-documenting!
+                            <div class="viz-display-area viz-state-success" style="font-size: 13px;">
+                                Access by <strong>meaningful key</strong><br>
+                                Instant key → value lookup<br>
+                                <strong>Self-documenting code!</strong>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="key-concept">
-                <strong>Key Difference:</strong> Lists use numbers (indices), dictionaries use meaningful names (keys). Dictionaries are self-documenting - the key tells you what the value means.
-            </div>
+                <div class="key-concept">
+                    <strong>Key Difference:</strong> Lists use numbers (indices), while dictionaries use meaningful labels (keys). Dictionaries are self-documenting—the key tells you immediately what the value means.
+                </div>
 
-            <h3>Interactive Dictionary Builder</h3>
+                <h3>Interactive Dictionary Builder &amp; Key Lookup</h3>
 
-            <div class="visualization">
-                <div class="viz-container" style="width: 100%; max-width: 100%;">
-                    <div style="margin-bottom: 15px;">
-                        <div class="viz-button-group" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-                            <input type="text" id="newKey" placeholder="Key" class="viz-input" style="flex: 1; min-width: 80px;">
-                            <input type="text" id="newValue" placeholder="Value" class="viz-input" style="flex: 1; min-width: 80px;">
-                            <button class="hc-button" onclick="addPair()" style="white-space: nowrap; flex-grow: 1;">Add</button>
+                <div class="visualization">
+                    <div class="viz-container" style="width: 100%; max-width: 100%;">
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; font-weight: bold; margin-bottom: 5px;">Add or Update Key-Value Pair (<code>person[key] = value</code>):</label>
+                            <div class="viz-button-group" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+                                <input type="text" id="newKey" placeholder="Key (e.g. city)" class="viz-input" style="flex: 1; min-width: 110px;">
+                                <input type="text" id="newValue" placeholder="Value (e.g. Kyoto)" class="viz-input" style="flex: 1; min-width: 110px;" onkeydown="if(event.key==='Enter') addPair()">
+                                <button class="hc-button" onclick="addPair()" style="white-space: nowrap;">+ Set Pair</button>
+                                <button class="hc-button" onclick="resetDict()" style="white-space: nowrap;">Reset</button>
+                            </div>
                         </div>
-                    </div>
 
-                    <div style="margin-bottom: 15px;">
-                        <div class="viz-button-group" style="display: flex; flex-wrap: wrap; gap: 8px;">
-                            <input type="text" id="lookupKey" placeholder="Look up key" class="viz-input" style="flex: 1; min-width: 150px;">
-                            <button class="hc-button" onclick="lookupValue()" style="white-space: nowrap;">Get</button>
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; font-weight: bold; margin-bottom: 5px;">Look Up by Key:</label>
+                            <div class="viz-button-group" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                <input type="text" id="lookupKey" placeholder="Enter key name (e.g. name)" class="viz-input" style="flex: 1; min-width: 150px;" onkeydown="if(event.key==='Enter') lookupValue()">
+                                <button class="hc-button" onclick="lookupValue()" style="white-space: nowrap;">Lookup person[key]</button>
+                            </div>
                         </div>
-                    </div>
 
-                    <div id="dict-display" class="viz-display-area" style="margin-bottom: 15px; min-height: 120px; max-height: 250px; overflow-y: auto;">
-                        <!-- Dictionary visualization -->
-                    </div>
+                        <div style="margin-bottom: 15px;">
+                            <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent-secondary); margin-bottom: 6px;">
+                                Interactive Key Lookup Bar (click to test <code>person[key]</code> live):
+                            </div>
+                            <div id="key-lookup-bar" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <!-- Populated dynamically by renderDict() -->
+                            </div>
+                        </div>
 
-                    <div id="dict-output" class="viz-terminal" style="min-height: 50px; max-height: 120px; overflow-y: auto; font-size: 13px; word-break: break-word;">
-                        Add key-value pairs to build dictionary
+                        <div id="dict-display" class="viz-display-area" style="margin-bottom: 15px; min-height: 120px;">
+                            <!-- Dictionary visualization -->
+                        </div>
+
+                        <div id="dict-output" class="viz-terminal" style="min-height: 65px; font-size: 13px; word-break: break-word;">
+                            Add or click key-value pairs to inspect dictionary operations!
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <h3>Dictionary Operations</h3>
-
-            <pre class="viz-code-block">
-# Creating a dictionary
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge badge-code">CHEAT SHEET</span>
+                            <span>Dictionary Operations (Access, Update, <code>in</code>, <code>.keys()</code>, <code>.values()</code>)</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <pre class="viz-code-block"># Creating a dictionary
 person = {
     "name": "Alice",
     "age": 30,
     "job": "Engineer"
 }
 
-# Accessing values
+# Accessing values by key
 name = person["name"]        # "Alice"
 age = person["age"]          # 30
 
-# Adding/updating values
-person["city"] = "Boston"    # Add new key-value
-person["age"] = 31           # Update existing
+# Adding or updating values
+person["city"] = "Boston"    # Adds new key-value pair
+person["age"] = 31           # Updates existing key
 
-# Checking if key exists
+# Checking if a key exists before accessing
 has_job = "job" in person    # True
 
-# Getting all keys/values
-keys = person.keys()         # ["name", "age", "job", "city"]
-values = person.values()     # ["Alice", 31, "Engineer", "Boston"]</pre>
+# Inspecting all keys or values
+keys = person.keys()         # dict_keys(["name", "age", "job", "city"])
+values = person.values()     # dict_values(["Alice", 31, "Engineer", "Boston"])</pre>
+                    </div>
+                </details>
 
-            <h3>When to Use Dictionaries</h3>
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge">CODE EXAMPLES</span>
+                            <span>When to Use Dictionaries &amp; Student Gradebook Example</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <ul>
+                            <li><strong>Named records:</strong> When attributes have clear labels (<code>"name"</code>, <code>"score"</code>, <code>"email"</code>)</li>
+                            <li><strong>Lookup tables:</strong> Mapping one thing directly to another (word → definition, item → price)</li>
+                            <li><strong>Configuration &amp; state:</strong> Storing settings or player inventory by name</li>
+                            <li><strong>Structured data:</strong> Working with JSON responses and API payloads</li>
+                        </ul>
 
-            <ul>
-                <li><strong>Named data:</strong> When values have meaningful labels</li>
-                <li><strong>Lookup tables:</strong> Map one thing to another (word → definition)</li>
-                <li><strong>Configuration:</strong> Settings with names, not positions</li>
-                <li><strong>JSON-like data:</strong> Nested, structured information</li>
-            </ul>
-
-            <div class="narrative">
-                "Dictionaries trade order for meaning. Position doesn't matter - the key's name tells you what the value represents. This makes code more readable and maintainable."
-            </div>
-
-            <h3>Real-World Example</h3>
-
-            <pre class="viz-code-block">
-# Student grades - dictionary makes sense
+                        <pre class="viz-code-block"># Student grades - dictionary is crystal clear
 grades = {
     "Alice": 95,
     "Bob": 87,
     "Charlie": 92
 }
 
-# Look up by name (not position)
-alice_grade = grades["Alice"]  # 95
+# Look up directly by student name
+alice_grade = grades["Alice"]  # 95</pre>
+                    </div>
+                </details>
 
-# vs List approach (confusing!)
-# grades = [95, 87, 92]
-# alice_grade = grades[0]  # Who is index 0?</pre>
-
-            <div class="key-concept">
-                <strong>Mental Model:</strong> A dictionary is like a real dictionary or phone book. You look things up by name (key), not by page number (index). The name tells you what you're looking for.
+                <div class="flower-encouragement">
+                    <img src="../static/images/cursors/flower_14.png" alt="Forget-Me-Nots Encouragement">
+                    <div>
+                        <strong>Forget-Me-Nots Collected! (14 / 16)</strong><br>
+                        <span>You've mastered pairing meaningful keys with values. Next up: solving self-similar problems with Recursion!</span>
+                    </div>
+                </div>
             </div>
-        </div>
 
-                                                                <div class="bottom-nav">
+                    <div class="bottom-nav">
             <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">##########################....</span>] 13/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='card_12.html'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='card_14.html'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='card_12.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='card_14.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
@@ -194,14 +214,12 @@ alice_grade = grades["Alice"]  # 95
         </div>
     </div>
 
-        <!-- ASCII ASSISTANT -->
     <div class="ascii-assistant">
         <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            Keys open doors. Dictionaries let you find the data without searching the whole world.
+            Lists look up items by position, while dictionaries look them up by key. Pairing values with clear keys makes data self-explanatory.
         </div>
         <div class="assistant-avatar">
-            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
+            <img src="../static/images/mascot.png" alt="Wizard Guide" />
         </div>
     </div>
     </div>
@@ -210,59 +228,69 @@ alice_grade = grades["Alice"]  # 95
     <script>
     let myDict = {
         "name": "Alice",
-        "age": 25
+        "age": "25",
+        "role": "Mage"
     };
+    let activeKey = "name";
 
     function renderDict() {
         const display = document.getElementById('dict-display');
         const output = document.getElementById('dict-output');
+        const lookupBar = document.getElementById('key-lookup-bar');
 
-        if (Object.keys(myDict).length === 0) {
-            display.innerHTML = '<div style="text-align: center; color: #999; padding: 20px;">Dictionary is empty</div>';
-            output.textContent = 'my_dict = {}';
+        const entries = Object.entries(myDict);
+
+        if (entries.length === 0) {
+            activeKey = null;
+            lookupBar.innerHTML = '<span style="color: var(--text-muted); font-size: 13px;">Dictionary is empty — add a key-value pair above!</span>';
+            display.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 20px;">Dictionary is empty (<code>person = {}</code>)</div>';
+            output.textContent = 'person = {}';
             return;
         }
 
-        let html = '<div class="viz-code-block" style="margin-bottom: 15px;">';
-        html += 'my_dict = {<br>';
+        // Build quick Key Lookup button bar
+        let barHtml = '';
+        entries.forEach(([key]) => {
+            const isSelected = activeKey === key;
+            barHtml += `<button type="button" class="hc-button ${isSelected ? 'viz-highlight' : ''}" style="padding: 6px 12px; font-size: 0.85rem;" onclick="quickLookupKey('${key}')">person["${key}"]</button>`;
+        });
+        barHtml += `<button type="button" class="hc-button" style="padding: 6px 12px; font-size: 0.85rem; border-color: var(--state-error);" onclick="quickLookupKey('missing_key')">person["missing_key"] (Test KeyError)</button>`;
+        lookupBar.innerHTML = barHtml;
 
-        const entries = Object.entries(myDict);
+        let html = '<div class="viz-code-block" style="margin-top: 0; margin-bottom: 15px;">';
+        html += 'person = {<br>';
         entries.forEach(([key, value], index) => {
             const isLast = index === entries.length - 1;
             html += `&nbsp;&nbsp;&nbsp;&nbsp;"${key}": "${value}"${isLast ? '' : ','}<br>`;
         });
+        html += '}</div>';
 
-        html += '}';
-        html += '</div>';
-
-        html += '<div style="display: grid; gap: 8px;">';
-        Object.entries(myDict).forEach(([key, value]) => {
+        html += '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px;">';
+        entries.forEach(([key, value]) => {
+            const isSelected = activeKey === key;
             html += `
-                <div class="viz-box" style="display: flex; align-items: center; gap: 8px; padding: 12px;">
+                <div class="viz-box ${isSelected ? 'viz-highlight' : ''}" onclick="quickLookupKey('${key}')" style="display: flex; align-items: center; gap: 10px; padding: 12px; cursor: pointer;">
                     <div style="flex: 1; min-width: 0;">
-                        <div class="viz-box-header" style="font-size: 11px; margin-bottom: 3px;">KEY</div>
-                        <div class="viz-box-content" style="font-size: 14px; overflow: hidden; text-overflow: ellipsis;">"${key}"</div>
+                        <div style="font-size: 11px; font-family: var(--font-stack); color: var(--accent-secondary); font-weight: 700;">KEY</div>
+                        <div style="font-family: var(--font-stack); font-size: 15px; font-weight: 700; color: var(--text-primary); overflow: hidden; text-overflow: ellipsis;">"${key}"</div>
                     </div>
-                    <div style="font-size: 18px; flex-shrink: 0;">→</div>
+                    <div style="font-size: 18px; color: var(--accent-primary); flex-shrink: 0;">→</div>
                     <div style="flex: 1; min-width: 0;">
-                        <div class="viz-box-header" style="font-size: 11px; margin-bottom: 3px;">VALUE</div>
-                        <div class="viz-box-content" style="font-size: 14px; overflow: hidden; text-overflow: ellipsis;">"${value}"</div>
+                        <div style="font-size: 11px; font-family: var(--font-stack); color: var(--accent-secondary); font-weight: 700;">VALUE</div>
+                        <div style="font-family: var(--font-stack); font-size: 15px; font-weight: 700; color: var(--accent-primary); overflow: hidden; text-overflow: ellipsis;">"${value}"</div>
                     </div>
-                    <button onclick="deletePair('${key}')" class="viz-state-error" style="padding: 4px 8px; cursor: pointer; font-size: 14px; flex-shrink: 0; border: none; border-radius: 6px;">✗</button>
+                    <button type="button" onclick="event.stopPropagation(); deletePair('${key}')" class="viz-state-error" title="Delete key '${key}'" style="padding: 5px 10px; cursor: pointer; font-size: 14px; font-weight: 700; flex-shrink: 0; color: #ffd2c9; border: 1px solid var(--state-error); border-radius: 4px;">✗</button>
                 </div>
             `;
         });
         html += '</div>';
 
         display.innerHTML = html;
+    }
 
-        let outputText = 'my_dict = {\n';
-        Object.entries(myDict).forEach(([key, value], index) => {
-            const isLast = index === entries.length - 1;
-            outputText += `    "${key}": "${value}"${isLast ? '' : ','}\n`;
-        });
-        outputText += '}';
-        output.textContent = outputText;
+    function quickLookupKey(key) {
+        document.getElementById('lookupKey').value = key;
+        lookupValue();
     }
 
     function addPair() {
@@ -271,18 +299,19 @@ alice_grade = grades["Alice"]  # 95
         const output = document.getElementById('dict-output');
 
         if (key === '' || value === '') {
-            output.textContent = 'Error: Both key and value required';
+            output.textContent = 'Error: Both key and value are required to set a dictionary entry.';
             return;
         }
 
         const isUpdate = key in myDict;
         myDict[key] = value;
+        activeKey = key;
 
         document.getElementById('newKey').value = '';
         document.getElementById('newValue').value = '';
 
         renderDict();
-        output.textContent = `> my_dict["${key}"] = "${value}"\n${isUpdate ? 'Updated' : 'Added'} key-value pair`;
+        output.textContent = `> person["${key}"] = "${value}"\n${isUpdate ? 'Updated existing' : 'Added new'} key-value pair!`;
     }
 
     function lookupValue() {
@@ -290,25 +319,44 @@ alice_grade = grades["Alice"]  # 95
         const output = document.getElementById('dict-output');
 
         if (key === '') {
-            output.textContent = 'Error: Enter a key to look up';
+            output.textContent = 'Error: Enter a key name to look up.';
             return;
         }
 
         if (key in myDict) {
-            output.textContent = `> my_dict["${key}"]\n"${myDict[key]}"`;
+            activeKey = key;
+            renderDict();
+            output.textContent = `> person["${key}"]\n"${myDict[key]}"  (Unlocked directly via key "${key}"!)`;
         } else {
-            output.textContent = `> my_dict["${key}"]\nKeyError: '${key}' not found in dictionary`;
+            activeKey = null;
+            renderDict();
+            output.textContent = `> person["${key}"]\nKeyError: '${key}' not found! Tip: Use person.get("${key}", "default") or check "${key}" in person first.`;
         }
     }
 
     function deletePair(key) {
         delete myDict[key];
+        if (activeKey === key) {
+            activeKey = Object.keys(myDict)[0] || null;
+        }
         renderDict();
-        document.getElementById('dict-output').textContent = `> del my_dict["${key}"]\nRemoved key-value pair`;
+        document.getElementById('dict-output').textContent = `> del person["${key}"]\nRemoved key "${key}" and its associated value.`;
+    }
+
+    function resetDict() {
+        myDict = {
+            "name": "Alice",
+            "age": "25",
+            "role": "Mage"
+        };
+        activeKey = "name";
+        renderDict();
+        quickLookupKey("name");
     }
 
     // Initialize
     renderDict();
+    quickLookupKey("name");
     </script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lists - Organizing Related Data</title>
-        <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../static/css/hypercard.css">
 </head>
 <body class="has-sticky-nav">
@@ -23,22 +23,20 @@
 
     <div class="layout-wrapper">
         <div class="hypercard-stack">
-        <div class="card-header">
+            <div class="card-header">
             <div class="card-title">Lists - Organizing Related Data</div>
-            <div class="card-number">Card 11 of 15</div>
+            <div class="card-number">11 / 15</div>
         </div>
-
         <div class="card-content">
-            <h2>What Is a List?</h2>
+                <h2>What Is a List?</h2>
 
-            <div class="narrative">
-                "A list is an ordered collection of items. Instead of having separate variables for related data, group them together."
-            </div>
+                <div class="narrative">
+                    "A list is an ordered collection of items. Instead of juggling separate variables for related data, pack them into a numbered row of slots."
+                </div>
 
-            <h3>The Problem Lists Solve</h3>
+                <h3>The Problem Lists Solve</h3>
 
-            <pre class="viz-code-block">
-# Without lists - messy and unscalable
+                <pre class="viz-code-block"># Without lists - messy and unscalable
 fruit1 = "apple"
 fruit2 = "banana"
 fruit3 = "orange"
@@ -48,149 +46,163 @@ fruit4 = "grape"
 # With lists - organized and scalable
 fruits = ["apple", "banana", "orange", "grape"]</pre>
 
-            <h3>List Structure: Position Matters</h3>
+                <h3>List Structure: Position Matters</h3>
 
-            <div class="visualization">
-                <div class="viz-container">
-                    <div style="text-align: center; margin-bottom: 20px;">
-                        <code style="font-size: 18px;">fruits = ["apple", "banana", "orange"]</code>
-                    </div>
+                <div class="visualization">
+                    <div class="viz-container">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <code style="font-size: 1.05rem;">fruits = ["apple", "banana", "orange"]</code>
+                        </div>
 
-                    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                        <div style="text-align: center;">
-                            <div class="viz-box">
-                                <div style="font-size: 24px; margin-bottom: 10px;">"apple"</div>
+                        <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+                            <div class="viz-box" style="min-width: 145px; text-align: center;">
+                                <div class="viz-box-header">Index [0] / [-3]</div>
+                                <div class="viz-box-content">"apple"</div>
+                                <div style="font-size: 12px; color: var(--text-muted); font-family: var(--font-stack);">First Item</div>
                             </div>
-                            <div class="viz-terminal" style="margin-top: 5px;">
-                                <strong>Index: 0</strong>
+
+                            <div class="viz-box" style="min-width: 145px; text-align: center;">
+                                <div class="viz-box-header">Index [1] / [-2]</div>
+                                <div class="viz-box-content">"banana"</div>
+                                <div style="font-size: 12px; color: var(--text-muted); font-family: var(--font-stack);">Middle Item</div>
+                            </div>
+
+                            <div class="viz-box" style="min-width: 145px; text-align: center;">
+                                <div class="viz-box-header">Index [2] / [-1]</div>
+                                <div class="viz-box-content">"orange"</div>
+                                <div style="font-size: 12px; color: var(--text-muted); font-family: var(--font-stack);">Last Item</div>
                             </div>
                         </div>
 
-                        <div style="text-align: center;">
-                            <div class="viz-box">
-                                <div style="font-size: 24px; margin-bottom: 10px;">"banana"</div>
-                            </div>
-                            <div class="viz-terminal" style="margin-top: 5px;">
-                                <strong>Index: 1</strong>
-                            </div>
+                        <div class="viz-display-area viz-state-success" style="margin-top: 20px; text-align: center;">
+                            <strong>Important:</strong> Lists start at index <code>0</code>, not <code>1</code>!<br>
+                            The final index is always <code>len(list) - 1</code> (or shorthand <code>list[-1]</code>).
                         </div>
-
-                        <div style="text-align: center;">
-                            <div class="viz-box">
-                                <div style="font-size: 24px; margin-bottom: 10px;">"orange"</div>
-                            </div>
-                            <div class="viz-terminal" style="margin-top: 5px;">
-                                <strong>Index: 2</strong>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="viz-display-area viz-state-success" style="margin-top: 20px; text-align: center;">
-                        <strong>Important:</strong> Lists start at index 0, not 1!<br>
-                        Last index is always: <code>len(list) - 1</code>
                     </div>
                 </div>
-            </div>
 
-            <div class="key-concept">
-                <strong>Critical Concept:</strong> Lists are ordered - position matters. Each item has an index (position number) starting at 0.
-            </div>
+                <div class="key-concept">
+                    <strong>Critical Concept:</strong> Lists are ordered—position matters. Each item sits in a numbered slot called an <strong>index</strong> starting at <code>0</code>.
+                </div>
 
-            <h3>Interactive List Explorer</h3>
+                <h3>Interactive List Builder &amp; Index Lookup Tester</h3>
 
-            <div class="visualization">
-                <div class="viz-container">
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Add item to list:</label>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <input type="text" id="newItem" placeholder="Enter item" class="viz-input" style="flex: 1; min-width: 150px;">
-                            <button class="hc-button" onclick="addItem()">Add</button>
+                <div class="visualization">
+                    <div class="viz-container">
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; font-weight: bold; margin-bottom: 5px;">Add item to list (<code>.append()</code>):</label>
+                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                <input type="text" id="newItem" placeholder="Enter item (e.g. mango)" class="viz-input" style="flex: 1; min-width: 150px;" onkeydown="if(event.key==='Enter') addItem()">
+                                <button class="hc-button" onclick="addItem()">+ Append Item</button>
+                                <button class="hc-button" onclick="resetList()">Reset</button>
+                            </div>
                         </div>
-                    </div>
 
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Access by index:</label>
-                        <div class="viz-button-group" style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <input type="number" id="accessIndex" placeholder="Index" value="0" class="viz-input" style="width: 100px; flex-grow: 1;">
-                            <button class="hc-button" onclick="accessItem()" style="flex-grow: 1;">Get Item</button>
-                            <button class="hc-button viz-state-error" onclick="removeItem()" style="flex-grow: 1;">Remove</button>
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; font-weight: bold; margin-bottom: 5px;">Access or remove by index:</label>
+                            <div class="viz-button-group" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-start;">
+                                <input type="number" id="accessIndex" placeholder="Index" value="0" class="viz-input" style="width: 110px;">
+                                <button class="hc-button" onclick="accessItem()" style="flex-grow: 1;">Get my_list[i]</button>
+                                <button class="hc-button viz-state-error" onclick="removeItem()" style="flex-grow: 1;">Pop Index</button>
+                            </div>
                         </div>
-                    </div>
 
-                    <div id="list-display" class="viz-display-area" style="margin-bottom: 15px; min-height: 100px;">
-                        <!-- List visualization -->
-                    </div>
+                        <div style="margin-bottom: 15px;">
+                            <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent-secondary); margin-bottom: 6px;">
+                                Quick Index Lookup Tester (click any button or slot below):
+                            </div>
+                            <div id="index-lookup-bar" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <!-- Quick index lookup buttons populated by JS -->
+                            </div>
+                        </div>
 
-                    <div id="list-output" class="viz-terminal" style="min-height: 60px;">
-                        <!-- Output -->
+                        <div id="list-display" class="viz-display-area" style="margin-bottom: 15px; min-height: 115px;">
+                            <!-- List visualization -->
+                        </div>
+
+                        <div id="list-output" class="viz-terminal" style="min-height: 70px;">
+                            <!-- Output -->
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <h3>Common List Operations</h3>
-
-            <pre class="viz-code-block">
-# Creating a list
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge badge-code">CHEAT SHEET</span>
+                            <span>Common List Operations (<code>append</code>, <code>insert</code>, <code>pop</code>, <code>len</code>)</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <pre class="viz-code-block"># Creating a list
 fruits = ["apple", "banana"]
 
-# Accessing items
-first = fruits[0]        # "apple"
-last = fruits[1]         # "banana"
+# Accessing items (positive &amp; negative index)
+first = fruits[0]         # "apple"
+last = fruits[-1]         # "banana" (always grabs the final item!)
 
 # Adding items
-fruits.append("orange")  # Add to end
-fruits.insert(1, "grape") # Insert at position 1
+fruits.append("orange")   # Add to end
+fruits.insert(1, "grape") # Insert at index 1
 
 # Removing items
-fruits.remove("apple")   # Remove by value
-item = fruits.pop()      # Remove and return last
+fruits.remove("apple")    # Remove by value
+item = fruits.pop()       # Remove and return last item
 
-# Getting length
-count = len(fruits)      # How many items?
-
-# Checking membership
+# Getting length &amp; checking membership
+count = len(fruits)            # How many items?
 has_apple = "apple" in fruits  # True or False</pre>
+                    </div>
+                </details>
 
-            <h3>Looping Through Lists</h3>
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge">CODE EXAMPLES</span>
+                            <span>Two Ways to Loop Through a List</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <pre class="viz-code-block">fruits = ["apple", "banana", "orange"]
 
-            <pre class="viz-code-block">
-fruits = ["apple", "banana", "orange"]
-
-# Method 1: Direct iteration
+# Method 1: Direct iteration (cleanest when you just need each value)
 for fruit in fruits:
     print(fruit)
 
-# Method 2: Using index
-for ii in range(len(fruits)):
-    print(ii, fruits[ii])</pre>
+# Method 2: Using range(len(...)) when you also need the index number
+for i in range(len(fruits)):
+    print(i, fruits[i])</pre>
+                    </div>
+                </details>
 
-            <div class="key-concept">
-                <strong>Mental Model:</strong> A list is like a row of numbered boxes. Each box holds one item. You can access any box by its number (index), but remember: the first box is #0, not #1.
+                <div class="flower-encouragement">
+                    <img src="../static/images/cursors/flower_12.png" alt="Twilight Tulip Encouragement">
+                    <div>
+                        <strong>Twilight Tulip Collected! (12 / 16)</strong><br>
+                        <span>Lists let you group related data together and process them systematically. Next up: packaging your logic into reusable Functions!</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="narrative">
-                "Lists let you group related data together and process them systematically. They're fundamental to working with multiple pieces of information."
-            </div>
-        </div>
-
-                                                                <div class="bottom-nav">
+                    <div class="bottom-nav">
             <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">######################........</span>] 11/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='card_10.html'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='card_12.html'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='card_10.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='card_12.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
@@ -199,14 +211,12 @@ for ii in range(len(fruits)):
         </div>
     </div>
 
-        <!-- ASCII ASSISTANT -->
     <div class="ascii-assistant">
         <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            A variable holds a thought. A list holds a culture. Organizing data is organizing the mind.
+            Lists hold ordered collections under one name. Every slot is numbered starting at [0], so the final item is at len(list) - 1.
         </div>
         <div class="assistant-avatar">
-            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
+            <img src="../static/images/mascot.png" alt="Wizard Guide" />
         </div>
     </div>
     </div>
@@ -214,35 +224,63 @@ for ii in range(len(fruits)):
     <script src="../static/js/navigation.js"></script>
     <script>
     let myList = ["apple", "banana", "orange"];
+    let selectedSlot = 0;
 
     function renderList() {
         const display = document.getElementById('list-display');
         const output = document.getElementById('list-output');
+        const lookupBar = document.getElementById('index-lookup-bar');
 
         if (myList.length === 0) {
-            display.innerHTML = '<div style="text-align: center; color: #999; padding: 20px;">List is empty</div>';
-            output.textContent = 'my_list = []';
+            selectedSlot = null;
+            lookupBar.innerHTML = '<span style="color: var(--text-muted); font-size: 13px;">Add an item to test index lookups!</span>';
+            display.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 20px;">List is empty — use "+ Append Item" above to add items!</div>';
+            output.textContent = 'my_list = []\nlen(my_list) -> 0';
             return;
         }
 
-        let html = '<div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">';
+        if (selectedSlot !== null && (selectedSlot < 0 || selectedSlot >= myList.length)) {
+            selectedSlot = myList.length - 1;
+        }
+
+        // Render Quick Index Lookup buttons (positive indices + negative -1 button)
+        let barHtml = '';
         myList.forEach((item, index) => {
+            const isSelected = selectedSlot === index;
+            barHtml += `<button type="button" class="hc-button ${isSelected ? 'viz-highlight' : ''}" style="padding: 6px 12px; font-size: 0.85rem;" onclick="inspectSlot(${index}, false)">my_list[${index}]</button>`;
+        });
+        barHtml += `<button type="button" class="hc-button" style="padding: 6px 12px; font-size: 0.85rem; border-color: var(--accent-secondary);" onclick="inspectSlot(${myList.length - 1}, true)">my_list[-1] (Last)</button>`;
+        lookupBar.innerHTML = barHtml;
+
+        let html = '<div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">';
+        myList.forEach((item, index) => {
+            const negIndex = index - myList.length;
+            const highlightClass = selectedSlot === index ? 'viz-highlight' : '';
             html += `
-                <div style="text-align: center;">
-                    <div class="viz-box">
-                        <div style="font-size: 18px;">"${item}"</div>
-                    </div>
-                    <div class="viz-terminal" style="margin-top: 5px;">
-                        [${index}]
-                    </div>
+                <div class="viz-box ${highlightClass}" onclick="inspectSlot(${index}, false)" style="text-align: center; min-width: 130px; cursor: pointer;" title="Click to inspect index [${index}]">
+                    <div class="viz-box-header">[${index}] <span style="opacity:0.75; font-size:0.8em;">(${negIndex})</span></div>
+                    <div class="viz-box-content">"${item}"</div>
                 </div>
             `;
         });
         html += '</div>';
-        html += `<div style="margin-top: 15px; text-align: center; font-family: monospace;">Length: ${myList.length}</div>`;
+        html += `<div style="margin-top: 14px; text-align: center; font-family: var(--font-stack); font-size: 0.9rem; color: var(--text-secondary);">Length: <code>len(my_list) == ${myList.length}</code> | Valid Indices: <code>0</code> to <code>${myList.length - 1}</code></div>`;
 
         display.innerHTML = html;
         output.textContent = 'my_list = [' + myList.map(item => '"' + item + '"').join(', ') + ']';
+    }
+
+    function inspectSlot(index, usedNegative) {
+        if (index < 0 || index >= myList.length) return;
+        selectedSlot = index;
+        document.getElementById('accessIndex').value = usedNegative ? -1 : index;
+        renderList();
+        const item = myList[index];
+        const negIndex = index - myList.length;
+        const output = document.getElementById('list-output');
+        output.textContent =
+            `> my_list[${index}]  -->  "${item}"\n` +
+            `> my_list[${negIndex}] -->  "${item}"  (Negative index counts from the end!)`;
     }
 
     function addItem() {
@@ -250,54 +288,72 @@ for ii in range(len(fruits)):
         const item = input.value.trim();
 
         if (item === '') {
-            document.getElementById('list-output').textContent = 'Error: Cannot add empty item';
+            document.getElementById('list-output').textContent = 'Error: Cannot add empty item — type a value first!';
             return;
         }
 
         myList.push(item);
+        selectedSlot = myList.length - 1;
         input.value = '';
         renderList();
-        document.getElementById('list-output').textContent += '\n> my_list.append("' + item + '")';
+        document.getElementById('list-output').textContent += `\n> my_list.append("${item}")  # Placed at index [${myList.length - 1}]`;
     }
 
     function accessItem() {
-        const index = parseInt(document.getElementById('accessIndex').value);
+        const rawIndex = parseInt(document.getElementById('accessIndex').value, 10);
         const output = document.getElementById('list-output');
 
-        if (isNaN(index)) {
-            output.textContent = 'Error: Invalid index';
+        if (isNaN(rawIndex)) {
+            output.textContent = 'Error: Please enter a valid integer index.';
             return;
         }
 
-        if (index < 0 || index >= myList.length) {
-            output.textContent = `Error: Index ${index} out of range (0-${myList.length - 1})`;
+        const resolvedIndex = rawIndex < 0 ? myList.length + rawIndex : rawIndex;
+
+        if (resolvedIndex < 0 || resolvedIndex >= myList.length) {
+            output.textContent = `IndexError: list index ${rawIndex} out of range (valid: 0 to ${myList.length - 1}, or -${myList.length} to -1)`;
             return;
         }
 
-        output.textContent = `> my_list[${index}]\n"${myList[index]}"`;
+        selectedSlot = resolvedIndex;
+        renderList();
+        const negIndex = resolvedIndex - myList.length;
+        output.textContent = `> my_list[${rawIndex}]\n"${myList[resolvedIndex]}"  (Positive index: [${resolvedIndex}], Negative index: [${negIndex}])`;
     }
 
     function removeItem() {
-        const index = parseInt(document.getElementById('accessIndex').value);
+        const rawIndex = parseInt(document.getElementById('accessIndex').value, 10);
         const output = document.getElementById('list-output');
 
-        if (isNaN(index)) {
-            output.textContent = 'Error: Invalid index';
+        if (isNaN(rawIndex)) {
+            output.textContent = 'Error: Please enter a valid integer index.';
             return;
         }
 
-        if (index < 0 || index >= myList.length) {
-            output.textContent = `Error: Index ${index} out of range (0-${myList.length - 1})`;
+        const resolvedIndex = rawIndex < 0 ? myList.length + rawIndex : rawIndex;
+
+        if (resolvedIndex < 0 || resolvedIndex >= myList.length) {
+            output.textContent = `IndexError: pop index ${rawIndex} out of range (0 to ${myList.length - 1})`;
             return;
         }
 
-        const removed = myList.splice(index, 1)[0];
+        const removed = myList.splice(resolvedIndex, 1)[0];
+        selectedSlot = Math.min(resolvedIndex, myList.length - 1);
         renderList();
-        output.textContent = `> my_list.pop(${index})\nRemoved: "${removed}"`;
+        output.textContent = `> my_list.pop(${rawIndex})\nRemoved: "${removed}"`;
+    }
+
+    function resetList() {
+        myList = ["apple", "banana", "orange"];
+        selectedSlot = 0;
+        document.getElementById('accessIndex').value = 0;
+        renderList();
+        inspectSlot(0, false);
     }
 
     // Initialize
     renderList();
+    inspectSlot(0, false);
     </script>
 </body>
 </html>

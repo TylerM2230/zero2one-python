@@ -1,177 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Types - Why Different Boxes?</title>
-        <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../static/css/hypercard.css" />
-  </head>
-  <body class="has-sticky-nav">
+    <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../static/css/hypercard.css">
+</head>
+<body class="has-sticky-nav">
     <!-- Sticky Top Navigation -->
     <div class="sticky-top-nav">
-      <div class="sticky-nav-left">
-        <button
-          class="sticky-nav-arrow"
-          onclick="window.location.href='card_2.html'"
-        >
-          ←
-        </button>
-        <button
-          class="sticky-nav-arrow"
-          onclick="window.location.href='card_4.html'"
-        >
-          →
-        </button>
-      </div>
-      <div class="sticky-nav-center">Card 3 / 15</div>
-      <div class="sticky-nav-right">
-        <a href="../browse.html" class="sticky-nav-link">Browse</a>
-        <a href="../index.html" class="sticky-nav-link">Home</a>
-      </div>
+        <div class="sticky-nav-left">
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_2.html'">←</button>
+            <button class="sticky-nav-arrow" onclick="window.location.href='card_4.html'">→</button>
+        </div>
+        <div class="sticky-nav-center">Card 3 / 15</div>
+        <div class="sticky-nav-right">
+            <a href="../browse.html" class="sticky-nav-link">Browse</a>
+            <a href="../index.html" class="sticky-nav-link">Home</a>
+        </div>
     </div>
 
     <div class="layout-wrapper">
         <div class="hypercard-stack">
-      <div class="card-header">
-        <div class="card-title">Data Types - Why Different Boxes?</div>
-        <div class="card-number">Card 3 of 15</div>
-      </div>
-
-      <div class="card-content">
-        <h2>Why Can't We Treat All Information the Same?</h2>
-
-        <div class="narrative">
-          "There are different types of information out there, and we have to
-          treat each one differently."
+            <div class="card-header">
+            <div class="card-title">Data Types - Why Different Boxes?</div>
+            <div class="card-number">3 / 15</div>
         </div>
+        <div class="card-content">
+                <h2>Why Can't We Treat All Information the Same?</h2>
 
-        <h3>The Three Fundamental Types</h3>
+                <div class="narrative">
+                    "There are different kinds of information in the world, and Python must know which kind is inside a box before it knows how to act on it."
+                </div>
 
-        <div class="visualization">
-          <div
-            style="
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-              gap: 15px;
-            "
-          >
-            <div class="viz-box">
-              <h4 style="margin-bottom: 10px">String (str)</h4>
-              <p style="font-size: 13px; margin-bottom: 10px">Text/Words</p>
-              <code style="display: block; padding: 5px">"Hello World"</code>
-              <p style="font-size: 12px; margin-top: 10px">
-                Strings are sequences of characters. Anything in quotes.
-              </p>
+                <h3>The Three Fundamental Types</h3>
+
+                <div class="visualization">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px;">
+                        <div class="viz-box">
+                            <div class="viz-box-header">String (str)</div>
+                            <p style="font-size: 0.9rem; margin-bottom: 8px; text-align: center;"><strong>Text &amp; Characters</strong></p>
+                            <div class="viz-box-content">"Hello World"</div>
+                            <p style="font-size: 0.88rem; margin: 10px 0 0 0;">
+                                Anything wrapped in quotes. Even <code>"25"</code> in quotes is treated as text, not a quantity!
+                            </p>
+                        </div>
+
+                        <div class="viz-box">
+                            <div class="viz-box-header">Integer (int)</div>
+                            <p style="font-size: 0.9rem; margin-bottom: 8px; text-align: center;"><strong>Whole Numbers</strong></p>
+                            <div class="viz-box-content">42</div>
+                            <p style="font-size: 0.88rem; margin: 10px 0 0 0;">
+                                Whole numbers without quotes or decimals. Ready for arithmetic: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>.
+                            </p>
+                        </div>
+
+                        <div class="viz-box">
+                            <div class="viz-box-header">Boolean (bool)</div>
+                            <p style="font-size: 0.9rem; margin-bottom: 8px; text-align: center;"><strong>Truth Switch</strong></p>
+                            <div class="viz-box-content">True / False</div>
+                            <p style="font-size: 0.88rem; margin: 10px 0 0 0;">
+                                Only two possible values: <code>True</code> or <code>False</code>. Powers every decision in code.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Why Types Matter: Operation Tester</h3>
+                <p>Notice how the <code>+</code> symbol changes meaning—or raises an error—depending on the data types involved:</p>
+
+                <div class="visualization">
+                    <div class="viz-container">
+                        <div class="viz-button-group">
+                            <button type="button" class="hc-button" onclick="tryOperation('valid1')" style="flex: 1 1 180px;">
+                                5 + 3 = ?
+                            </button>
+                            <button type="button" class="hc-button" onclick="tryOperation('valid2')" style="flex: 1 1 180px;">
+                                "Hello" + " World" = ?
+                            </button>
+                            <button type="button" class="hc-button" onclick="tryOperation('invalid')" style="flex: 1 1 180px;">
+                                "5" + 3 = ?
+                            </button>
+                            <button type="button" class="hc-button" onclick="tryOperation('invalid2')" style="flex: 1 1 180px;">
+                                True + "hello" = ?
+                            </button>
+                        </div>
+
+                        <div id="type-result" class="viz-display-area" style="margin-top: 15px; min-height: 64px;">
+                            Click an expression above to see how Python evaluates its types!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-concept">
+                    <strong>Mental Model:</strong> Types define the laws of physics for your data. Adding two numbers performs arithmetic (<code>5 + 3 → 8</code>), while adding two strings glues them together end-to-end (<code>"5" + "3" → "53"</code>).
+                </div>
+
+                <h3>Type Conversion (Casting): The Type Transfigurer</h3>
+                <p>
+                    When you have text like <code>"25"</code> and need to do math—or have a number like <code>25</code> and want to glue it into a sentence—you use <strong>casting functions</strong> (<code>int()</code>, <code>str()</code>, <code>bool()</code>) to transform its type:
+                </p>
+
+                <div class="visualization">
+                    <div class="viz-container">
+                        <h4 style="margin-top: 0; margin-bottom: 12px; text-align: center;">Interactive Type Casting Transfigurer</h4>
+                        <div class="viz-button-group">
+                            <button type="button" class="hc-button" onclick="tryCasting('to_int')">
+                                int("25") + 5
+                            </button>
+                            <button type="button" class="hc-button" onclick="tryCasting('to_str')">
+                                str(25) + "5"
+                            </button>
+                            <button type="button" class="hc-button" onclick="tryCasting('bad_int')">
+                                int("twenty")
+                            </button>
+                        </div>
+                        <div id="cast-result" class="viz-display-area" style="margin-top: 14px;">
+                            Select a casting spell above to see how <code>int()</code> and <code>str()</code> transform data!
+                        </div>
+                    </div>
+                </div>
+
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge badge-code">CHEAT SHEET</span>
+                            <span>Type Checking &amp; Casting Reference (<code>type()</code>, <code>int()</code>, <code>str()</code>)</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <pre class="viz-code-block"># Inspect any value's type using type()
+type("hello")   # &lt;class 'str'&gt;
+type(42)        # &lt;class 'int'&gt;
+type(True)      # &lt;class 'bool'&gt;
+
+# Convert between types explicitly
+age_num = int("25")              # "25" (str) -> 25 (int)
+msg = "Score: " + str(100)       # 100 (int)  -> "100" (str)</pre>
+                    </div>
+                </details>
+
+                <div class="flower-encouragement">
+                    <img src="../static/images/cursors/flower_4.png" alt="Crimson Rose">
+                    <div>
+                        <strong>Card 3 Takeaway (Crimson Rose Unlocked!):</strong>
+                        Whenever Python complains with a <code>TypeError</code>, ask yourself: <em>"What type is inside each box right now, and do I need <code>int()</code> or <code>str()</code> to bridge them?"</em>
+                    </div>
+                </div>
             </div>
 
-            <div class="viz-box">
-              <h4 style="margin-bottom: 10px">Integer (int)</h4>
-              <p style="font-size: 13px; margin-bottom: 10px">Whole Numbers</p>
-              <code style="display: block; padding: 5px">42</code>
-              <p style="font-size: 12px; margin-top: 10px">
-                Numbers without decimals. Can do math with them.
-              </p>
-            </div>
-
-            <div class="viz-box">
-              <h4 style="margin-bottom: 10px">Boolean (bool)</h4>
-              <p style="font-size: 13px; margin-bottom: 10px">True/False</p>
-              <code style="display: block; padding: 5px">True</code>
-              <p style="font-size: 12px; margin-top: 10px">
-                Only two values: True or False. Like a light switch (on/off).
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <h3>Why Types Matter</h3>
-        <p>Operations that work on one type don't work on others:</p>
-
-        <div class="visualization">
-          <div class="viz-container">
-            <div class="viz-button-group">
-              <button
-                class="hc-button"
-                onclick="tryOperation('valid1')"
-                style="width: 250px"
-              >
-                5 + 3 = ?
-              </button>
-              <button
-                class="hc-button"
-                onclick="tryOperation('valid2')"
-                style="width: 250px"
-              >
-                "Hello" + " World" = ?
-              </button>
-              <button
-                class="hc-button"
-                onclick="tryOperation('invalid')"
-                style="width: 250px"
-              >
-                "5" + 3 = ?
-              </button>
-              <button
-                class="hc-button"
-                onclick="tryOperation('invalid2')"
-                style="width: 250px"
-              >
-                True + "hello" = ?
-              </button>
-            </div>
-
-            <div
-              id="type-result"
-              class="viz-display-area"
-              style="margin-top: 15px; min-height: 50px; font-family: monospace"
-            >
-              Click operations to see results
-            </div>
-          </div>
-        </div>
-
-        <div class="key-concept">
-          <strong>Mental Model:</strong> Types are like tools. You can't hammer
-          in a screw. You can't saw with a screwdriver. Same data, different
-          tools, different results.
-        </div>
-
-        <h3>Type Conversion (Casting)</h3>
-        <p>Sometimes you need to convert between types:</p>
-        <pre class="viz-code-block">
-age = "25"        # This is a string
-age = int(age)    # Now it's a number: 25
-
-score = 100       # This is a number
-score = str(score) # Now it's a string: "100"</pre
-        >
-
-        <div class="narrative">
-          "Understanding types is understanding what operations make sense. You
-          don't 'add' words the way you add numbers. The computer needs to know
-          which 'add' you mean."
-        </div>
-      </div>
-
-                                                              <div class="bottom-nav">
+                    <div class="bottom-nav">
             <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">######........................</span>] 03/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='card_2.html'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='card_4.html'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='card_2.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='card_4.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
@@ -180,49 +176,68 @@ score = str(score) # Now it's a string: "100"</pre
         </div>
     </div>
 
-        <!-- ASCII ASSISTANT -->
     <div class="ascii-assistant">
         <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            Data is potential energy. Operations convert it into kinetic action.
+            Data types tell Python whether '25' is text to read or a number to count. Type casting (int(), str()) converts one into the other.
         </div>
         <div class="assistant-avatar">
-            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
+            <img src="../static/images/mascot.png" alt="Wizard Guide" />
         </div>
     </div>
     </div>
 
     <script src="../static/js/navigation.js"></script>
     <script>
-      function tryOperation(op) {
+    function tryOperation(op) {
         const result = document.getElementById("type-result");
-
-        // Remove all state classes first
         result.classList.remove("viz-state-success", "viz-state-error");
 
         switch (op) {
-          case "valid1":
-            result.innerHTML =
-              "✔ <strong>5 + 3 = 8</strong><br>Both are integers, addition works!";
-            result.classList.add("viz-state-success");
-            break;
-          case "valid2":
-            result.innerHTML =
-              '✔ <strong>"Hello" + " World" = "Hello World"</strong><br>Both are strings, concatenation works!';
-            result.classList.add("viz-state-success");
-            break;
-          case "invalid":
-            result.innerHTML =
-              '✘ <strong>TypeError: "5" + 3</strong><br>String + Integer doesn\'t make sense!<br>Did you mean "53" (concat) or 8 (addition)?';
-            result.classList.add("viz-state-error");
-            break;
-          case "invalid2":
-            result.innerHTML =
-              '✘ <strong>TypeError: True + "hello"</strong><br>Boolean + String doesn\'t make sense!<br>Computer needs clarity on what operation to perform.';
-            result.classList.add("viz-state-error");
-            break;
+            case "valid1":
+                result.innerHTML =
+                    "✔ <strong>5 + 3 → 8 (int)</strong><br>Both values are integers, so Python performs mathematical addition!";
+                result.classList.add("viz-state-success");
+                break;
+            case "valid2":
+                result.innerHTML =
+                    '✔ <strong>"Hello" + " World" → "Hello World" (str)</strong><br>Both values are strings, so Python concatenates (glues) the text together!';
+                result.classList.add("viz-state-success");
+                break;
+            case "invalid":
+                result.innerHTML =
+                    '✘ <strong>TypeError: can only concatenate str (not "int") to str</strong><br>Python refuses to guess whether <code>"5" + 3</code> means <code>"53"</code> or <code>8</code>!';
+                result.classList.add("viz-state-error");
+                break;
+            case "invalid2":
+                result.innerHTML =
+                    '✘ <strong>TypeError: unsupported operand type(s) for +: \'bool\' and \'str\'</strong><br>A boolean truth value cannot be glued directly onto a string without <code>str(True)</code>.';
+                result.classList.add("viz-state-error");
+                break;
         }
-      }
+    }
+
+    function tryCasting(mode) {
+        const castEl = document.getElementById("cast-result");
+        castEl.classList.remove("viz-state-success", "viz-state-error");
+
+        switch (mode) {
+            case "to_int":
+                castEl.innerHTML =
+                    '✔ <strong>int("25") + 5 → 25 + 5 → 30 (int)</strong><br><code>int("25")</code> strips away the quotes and turns the digits into a real number so math works!';
+                castEl.classList.add("viz-state-success");
+                break;
+            case "to_str":
+                castEl.innerHTML =
+                    '✔ <strong>str(25) + "5" → "25" + "5" → "255" (str)</strong><br><code>str(25)</code> wraps the number in quotes so it can be joined with other text!';
+                castEl.classList.add("viz-state-success");
+                break;
+            case "bad_int":
+                castEl.innerHTML =
+                    '✘ <strong>ValueError: invalid literal for int() with base 10: \'twenty\'</strong><br><code>int()</code> can convert digit strings like <code>"25"</code>, but not English words!';
+                castEl.classList.add("viz-state-error");
+                break;
+        }
+    }
     </script>
-  </body>
+</body>
 </html>

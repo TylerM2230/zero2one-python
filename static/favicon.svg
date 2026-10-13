@@ -1,10 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Void Background -->
-  <rect width="64" height="64" fill="#000000"/>
-  
-  <!-- Phosphor Arrow (>) -->
-  <path d="M12 16 L38 32 L12 48 L18 54 L48 32 L18 10 Z" fill="#ffffff"/>
-  
-  <!-- Phosphor Underscore (_) -->
-  <rect x="42" y="46" width="14" height="8" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">
+  <!-- Deep Woodland Frame -->
+  <rect width="16" height="16" rx="2" fill="#131f27"/>
+  <rect x="1" y="1" width="14" height="14" fill="none" stroke="#c89643" stroke-width="1"/>
+  <!-- Corner Pixel Sun -->
+  <rect x="11" y="2" width="3" height="3" fill="#f7b538"/>
+  <rect x="12" y="3" width="1" height="1" fill="#ffe169"/>
+  <!-- Pixel Bonsai Canopy -->
+  <rect x="5" y="3" width="5" height="2" fill="#66c032"/>
+  <rect x="4" y="4" width="7" height="2" fill="#388934"/>
+  <rect x="3" y="6" width="5" height="2" fill="#66c032"/>
+  <rect x="9" y="7" width="4" height="2" fill="#66c032"/>
+  <rect x="4" y="8" width="8" height="2" fill="#2d6e2e"/>
+  <!-- Pixel Bonsai Trunk & Base -->
+  <rect x="7" y="9" width="2" height="3" fill="#5a4228"/>
+  <rect x="6" y="10" width="1" height="2" fill="#3a2d1b"/>
+  <rect x="5" y="12" width="6" height="2" fill="#4b3a22"/>
 </svg>

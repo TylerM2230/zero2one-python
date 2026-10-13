@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Functions - Building Your Own Tools</title>
-        <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../static/css/hypercard.css">
 </head>
 <body class="has-sticky-nav">
@@ -23,127 +23,157 @@
 
     <div class="layout-wrapper">
         <div class="hypercard-stack">
-        <div class="card-header">
+            <div class="card-header">
             <div class="card-title">Functions - Building Your Own Tools</div>
-            <div class="card-number">Card 12 of 15</div>
+            <div class="card-number">12 / 15</div>
         </div>
-
         <div class="card-content">
-            <h2>What Is a Function?</h2>
+                <h2>What Is a Function?</h2>
 
-            <div class="narrative">
-                "A system that takes in an input, performs an operation, and gives out an output. Think of it as a black box - you don't need to know HOW it works, just WHAT it does."
-            </div>
+                <div class="narrative">
+                    "A system that takes in an input, performs an operation, and gives out an output. Think of it as a black box—you don't need to know HOW it works inside every time you use it, just WHAT it does."
+                </div>
 
-            <h3>The Black Box Concept</h3>
+                <h3>The Black Box Concept</h3>
 
-            <div class="visualization">
-                <div class="viz-container" style="text-align: center;">
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap;">
-                        <div style="text-align: center;">
-                            <div style="font-size: 18px; margin-bottom: 10px; font-weight: bold;">INPUT</div>
-                            <div class="viz-box">
-                                <div style="font-size: 24px;">2, 3</div>
+                <div class="visualization">
+                    <div class="viz-container" style="text-align: center;">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                            <div class="viz-box" style="min-width: 150px;">
+                                <div class="viz-box-header">1. INPUT</div>
+                                <div class="viz-box-content">2, 3</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">Arguments passed in</div>
+                            </div>
+
+                            <div class="viz-flow-arrow" style="font-size: 32px; color: var(--accent-secondary); font-weight: bold;">→</div>
+
+                            <div class="viz-box" style="min-width: 190px; border-color: var(--accent-secondary);">
+                                <div class="viz-box-header">2. FUNCTION</div>
+                                <div class="viz-box-content" style="color: var(--text-primary);">add(a, b)</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">Reusable Black Box</div>
+                            </div>
+
+                            <div class="viz-flow-arrow" style="font-size: 32px; color: var(--accent-primary); font-weight: bold;">→</div>
+
+                            <div class="viz-box viz-state-success" style="min-width: 150px;">
+                                <div class="viz-box-header">3. OUTPUT</div>
+                                <div class="viz-box-content">5</div>
+                                <div style="font-size: 12px; color: var(--text-secondary);">Returned value</div>
                             </div>
                         </div>
 
-                        <div style="font-size: 48px;">→</div>
-
-                        <div style="text-align: center;">
-                            <div style="font-size: 18px; margin-bottom: 10px; font-weight: bold;">FUNCTION</div>
-                            <div class="viz-terminal" style="padding: 30px; min-width: 150px;">
-                                <div style="font-size: 24px;">add(a, b)</div>
-                                <div style="font-size: 14px; margin-top: 10px;">Black Box</div>
-                            </div>
+                        <div class="viz-display-area" style="margin-top: 22px;">
+                            <strong>Abstraction in action:</strong> Once <code>add(a, b)</code> is defined, you can call it anywhere without rewriting its internal steps!
                         </div>
-
-                        <div style="font-size: 48px;">→</div>
-
-                        <div style="text-align: center;">
-                            <div style="font-size: 18px; margin-bottom: 10px; font-weight: bold;">OUTPUT</div>
-                            <div class="viz-box" style="background-color: var(--viz-bg, #3a4a5a); border: 2px solid var(--viz-border, #4a5a6a);">
-                                <div style="font-size: 24px;">5</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="viz-display-area" style="margin-top: 30px;">
-                        <strong>You don't need to know HOW it adds - just that it does!</strong>
                     </div>
                 </div>
-            </div>
 
-            <h3>Function Anatomy</h3>
+                <div class="key-concept">
+                    <strong>Two Parts of Every Function:</strong>
+                    <ul style="margin-top: 10px; margin-bottom: 0;">
+                        <li><strong>Function Header (<code>def</code>):</strong> The function's name and its parameters (input slots)</li>
+                        <li><strong>Function Body &amp; <code>return</code>:</strong> The indented instructions that execute and hand back a result</li>
+                    </ul>
+                </div>
 
-            <pre class="viz-code-block">
-def function_name(parameter1, parameter2):
-    # Function body - the code that runs
+                <h3>Interactive Function Machine</h3>
+
+                <div class="visualization">
+                    <div class="viz-container">
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; font-weight: bold; margin-bottom: 5px;">Select Function Spell:</label>
+                            <select id="functionType" onchange="updateFunction()" class="viz-input" style="width: 100%;">
+                                <option value="add">add(a, b) — Addition</option>
+                                <option value="multiply">multiply(a, b) — Multiplication</option>
+                                <option value="greet">greet(name) — Personalized Greeting</option>
+                                <option value="is_even">is_even(n) — Check if Number is Even</option>
+                            </select>
+                        </div>
+
+                        <div id="input-area" style="margin-bottom: 15px;">
+                            <!-- Dynamic inputs -->
+                        </div>
+
+                        <button class="hc-button" onclick="callFunction()" style="width: 100%; margin-bottom: 18px;">
+                            ▶ Call Function (Execute Pipeline)
+                        </button>
+
+                        <!-- Visual Pipeline: Input -> Function Body -> Return Output -->
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-bottom: 16px;">
+                            <div id="fn-stage-input" class="viz-box" style="text-align: center;">
+                                <div class="viz-box-header">1. INPUT ARGS</div>
+                                <div id="fn-stage-input-val" class="viz-box-content" style="font-size: 1.05rem;">a = 5, b = 3</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">Passed into parameters</div>
+                            </div>
+
+                            <div id="fn-stage-body" class="viz-box" style="text-align: center;">
+                                <div class="viz-box-header">2. FUNCTION BODY</div>
+                                <div id="fn-stage-body-val" class="viz-box-content" style="font-size: 1.05rem; color: var(--accent-secondary);">return 5 + 3</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">Evaluates expression</div>
+                            </div>
+
+                            <div id="fn-stage-output" class="viz-box" style="text-align: center;">
+                                <div class="viz-box-header">3. RETURN OUTPUT</div>
+                                <div id="fn-stage-output-val" class="viz-box-content" style="font-size: 1.25rem;">8</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">Handed back to caller</div>
+                            </div>
+                        </div>
+
+                        <div class="viz-display-area" style="margin-bottom: 15px;">
+                            <div style="font-weight: 700; color: var(--accent-secondary); margin-bottom: 6px;">Python Function Definition:</div>
+                            <pre id="function-code" class="viz-code-block" style="font-size: 13px; overflow-x: auto; margin-top: 0;"></pre>
+                        </div>
+
+                        <div id="function-output" class="viz-terminal" style="text-align: left; min-height: 80px;">
+                            Configure inputs and click "Call Function" to trace execution!
+                        </div>
+                    </div>
+                </div>
+
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge">SYNTAX ANATOMY</span>
+                            <span>Function Definition &amp; Call Syntax Template</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <pre class="viz-code-block">def function_name(parameter1, parameter2):
+    # Function body - the code that runs when called
     result = parameter1 + parameter2
-    return result  # Output
+    return result  # Hand the output back to the caller
 
-# Calling the function
+# Calling the function with arguments (2, 3)
 output = function_name(2, 3)  # output = 5</pre>
-
-            <div class="key-concept">
-                <strong>Two Parts:</strong>
-                <ul style="margin-top: 10px;">
-                    <li><strong>Function Header:</strong> Name and parameters (inputs)</li>
-                    <li><strong>Function Body:</strong> Code that executes when called</li>
-                </ul>
-            </div>
-
-            <h3>Interactive Function Builder</h3>
-
-            <div class="visualization">
-                <div class="viz-container">
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; font-weight: bold; margin-bottom: 5px;">Select Function:</label>
-                        <select id="functionType" onchange="updateFunction()" class="viz-input" style="width: 100%; font-family: monospace;">
-                            <option value="add">add(a, b) - Addition</option>
-                            <option value="multiply">multiply(a, b) - Multiplication</option>
-                            <option value="greet">greet(name) - Greeting</option>
-                            <option value="is_even">is_even(n) - Check even</option>
-                        </select>
                     </div>
+                </details>
 
-                    <div id="input-area" style="margin-bottom: 15px;">
-                        <!-- Dynamic inputs -->
-                    </div>
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge badge-code">CODE EXAMPLES</span>
+                            <span>Why Use Functions &amp; Reusable Grade Calculator</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 16px;">
+                            <div class="viz-box">
+                                <div class="viz-box-header">Reusability</div>
+                                <p style="font-size: 13px; margin: 0; text-align: center;">Write logic once, invoke it as many times as you need.</p>
+                            </div>
+                            <div class="viz-box">
+                                <div class="viz-box-header">Organization</div>
+                                <p style="font-size: 13px; margin: 0; text-align: center;">Group related instructions under a clear, descriptive name.</p>
+                            </div>
+                            <div class="viz-box">
+                                <div class="viz-box-header">Abstraction</div>
+                                <p style="font-size: 13px; margin: 0; text-align: center;">Hide internal complexity behind a clean input/output interface.</p>
+                            </div>
+                        </div>
 
-                    <button class="hc-button" onclick="callFunction()" style="width: 100%; margin-bottom: 15px;">Call Function</button>
-
-                    <div class="viz-display-area" style="margin-bottom: 15px;">
-                        <div class="viz-box-header">Function Definition:</div>
-                        <pre id="function-code" class="viz-code-block" style="font-size: 13px; overflow-x: auto;"></pre>
-                    </div>
-
-                    <div id="function-output" class="viz-terminal" style="text-align: center; min-height: 80px;">
-                        Configure inputs and call function
-                    </div>
-                </div>
-            </div>
-
-            <h3>Why Use Functions?</h3>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
-                <div class="viz-box" style="background-color: var(--viz-bg, #3a4a5a); border: 2px solid var(--viz-border, #4a5a6a);">
-                    <h4>Reusability</h4>
-                    <p style="font-size: 13px;">Write once, use many times</p>
-                </div>
-                <div class="viz-box" style="background-color: var(--viz-bg, #4a3a4a); border: 2px solid var(--viz-border, #5a4a5a);">
-                    <h4>Organization</h4>
-                    <p style="font-size: 13px;">Group related code together</p>
-                </div>
-                <div class="viz-box" style="background-color: var(--viz-bg, #3a4a4a); border: 2px solid var(--viz-border, #4a6a6a);">
-                    <h4>Abstraction</h4>
-                    <p style="font-size: 13px;">Hide complexity, show interface</p>
-                </div>
-            </div>
-
-            <h3>Real-World Example</h3>
-
-            <pre class="viz-code-block">
-# Define function once
+                        <pre class="viz-code-block"># Define function once
 def calculate_grade(score):
     if score >= 90:
         return "A"
@@ -154,38 +184,39 @@ def calculate_grade(score):
     else:
         return "F"
 
-# Use it many times
+# Reuse it anywhere in your program
 grade1 = calculate_grade(95)  # "A"
 grade2 = calculate_grade(82)  # "B"
 grade3 = calculate_grade(68)  # "F"</pre>
+                    </div>
+                </details>
 
-            <div class="key-concept">
-                <strong>Mental Model:</strong> Functions are like tools in a toolbox. You reach for the right tool (function) when you need it. You don't rebuild the hammer each time - you just use it.
+                <div class="flower-encouragement">
+                    <img src="../static/images/cursors/flower_13.png" alt="Pink Gerberas Encouragement">
+                    <div>
+                        <strong>Pink Gerberas Collected! (13 / 16)</strong><br>
+                        <span>You can now craft your own reusable functions with parameters and return values. Next up: unlocking data by name with Dictionaries!</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="narrative">
-                "Functions let you build your own custom operations. They're fundamental to organizing code and avoiding repetition."
-            </div>
-        </div>
-
-                                                                <div class="bottom-nav">
+                    <div class="bottom-nav">
             <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">########################......</span>] 12/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='card_11.html'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='card_13.html'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='card_11.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='card_13.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
@@ -194,20 +225,31 @@ grade3 = calculate_grade(68)  # "F"</pre>
         </div>
     </div>
 
-        <!-- ASCII ASSISTANT -->
     <div class="ascii-assistant">
         <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            Functions are tools you build yourself. Don't reinvent the wheel—call the function.
+            A function packages reusable logic: parameters receive the inputs, the body processes them, and return sends back the result.
         </div>
         <div class="assistant-avatar">
-            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
+            <img src="../static/images/mascot.png" alt="Wizard Guide" />
         </div>
     </div>
     </div>
 
     <script src="../static/js/navigation.js"></script>
     <script>
+    let animTimers = [];
+
+    function clearStageHighlights() {
+        animTimers.forEach(t => clearTimeout(t));
+        animTimers = [];
+        ['fn-stage-input', 'fn-stage-body', 'fn-stage-output'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.remove('viz-highlight', 'viz-state-success');
+            }
+        });
+    }
+
     function updateFunction() {
         const type = document.getElementById('functionType').value;
         const inputArea = document.getElementById('input-area');
@@ -220,73 +262,134 @@ grade3 = calculate_grade(68)  # "F"</pre>
             case 'add':
                 inputHTML = `
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <input type="number" id="param1" value="5" placeholder="a" class="viz-input" style="flex: 1;">
-                        <input type="number" id="param2" value="3" placeholder="b" class="viz-input" style="flex: 1;">
+                        <div style="flex: 1; min-width: 120px;">
+                            <label style="font-size: 12px; color: var(--text-secondary);">Argument <code>a</code>:</label>
+                            <input type="number" id="param1" value="5" placeholder="a" class="viz-input" style="width: 100%;">
+                        </div>
+                        <div style="flex: 1; min-width: 120px;">
+                            <label style="font-size: 12px; color: var(--text-secondary);">Argument <code>b</code>:</label>
+                            <input type="number" id="param2" value="3" placeholder="b" class="viz-input" style="width: 100%;">
+                        </div>
                     </div>
                 `;
-                code = `def add(a, b):
-    return a + b`;
+                code = `def add(a, b):\n    result = a + b\n    return result`;
                 break;
             case 'multiply':
                 inputHTML = `
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <input type="number" id="param1" value="4" placeholder="a" class="viz-input" style="flex: 1;">
-                        <input type="number" id="param2" value="7" placeholder="b" class="viz-input" style="flex: 1;">
+                        <div style="flex: 1; min-width: 120px;">
+                            <label style="font-size: 12px; color: var(--text-secondary);">Argument <code>a</code>:</label>
+                            <input type="number" id="param1" value="4" placeholder="a" class="viz-input" style="width: 100%;">
+                        </div>
+                        <div style="flex: 1; min-width: 120px;">
+                            <label style="font-size: 12px; color: var(--text-secondary);">Argument <code>b</code>:</label>
+                            <input type="number" id="param2" value="7" placeholder="b" class="viz-input" style="width: 100%;">
+                        </div>
                     </div>
                 `;
-                code = `def multiply(a, b):
-    return a * b`;
+                code = `def multiply(a, b):\n    result = a * b\n    return result`;
                 break;
             case 'greet':
                 inputHTML = `
-                    <input type="text" id="param1" value="Alice" placeholder="name" class="viz-input" style="width: 100%;">
+                    <div>
+                        <label style="font-size: 12px; color: var(--text-secondary);">Argument <code>name</code>:</label>
+                        <input type="text" id="param1" value="Alice" placeholder="name" class="viz-input" style="width: 100%;">
+                    </div>
                 `;
-                code = `def greet(name):
-    return "Hello, " + name + "!"`;
+                code = `def greet(name):\n    return "Hello, " + name + "!"`;
                 break;
             case 'is_even':
                 inputHTML = `
-                    <input type="number" id="param1" value="8" placeholder="n" class="viz-input" style="width: 100%;">
+                    <div>
+                        <label style="font-size: 12px; color: var(--text-secondary);">Argument <code>n</code>:</label>
+                        <input type="number" id="param1" value="8" placeholder="n" class="viz-input" style="width: 100%;">
+                    </div>
                 `;
-                code = `def is_even(n):
-    return n % 2 == 0`;
+                code = `def is_even(n):\n    return n % 2 == 0`;
                 break;
         }
 
         inputArea.innerHTML = inputHTML;
         codeDisplay.textContent = code;
+        callFunction();
     }
 
     function callFunction() {
+        clearStageHighlights();
+
         const type = document.getElementById('functionType').value;
         const output = document.getElementById('function-output');
         const param1 = document.getElementById('param1').value;
 
-        let result = '';
-        let visualization = '';
+        const stageInputVal = document.getElementById('fn-stage-input-val');
+        const stageBodyVal = document.getElementById('fn-stage-body-val');
+        const stageOutputVal = document.getElementById('fn-stage-output-val');
+
+        const stageInputBox = document.getElementById('fn-stage-input');
+        const stageBodyBox = document.getElementById('fn-stage-body');
+        const stageOutputBox = document.getElementById('fn-stage-output');
+
+        let inputLabel = '';
+        let bodyLabel = '';
+        let returnLabel = '';
+        let traceText = '';
 
         switch(type) {
-            case 'add':
-                const param2_add = document.getElementById('param2').value;
-                const sum = parseFloat(param1) + parseFloat(param2_add);
-                result = `INPUT: ${param1}, ${param2_add}\n\n↓ Into Function ↓\n\n[add(${param1}, ${param2_add})]\n\n↓ Processing ↓\n\nreturn ${param1} + ${param2_add}\n\n↓ Output ↓\n\n${sum}`;
+            case 'add': {
+                const a = parseFloat(param1) || 0;
+                const b = parseFloat(document.getElementById('param2').value) || 0;
+                const sum = a + b;
+                inputLabel = `a = ${a}, b = ${b}`;
+                bodyLabel = `return ${a} + ${b}`;
+                returnLabel = `${sum}`;
+                traceText = `> output = add(${a}, ${b})\n1. [INPUT]   Parameters receive: a = ${a}, b = ${b}\n2. [BODY]    Computes ${a} + ${b} = ${sum}\n3. [RETURN]  Hands back ${sum} -> output = ${sum}`;
                 break;
-            case 'multiply':
-                const param2_mult = document.getElementById('param2').value;
-                const product = parseFloat(param1) * parseFloat(param2_mult);
-                result = `INPUT: ${param1}, ${param2_mult}\n\n↓ Into Function ↓\n\n[multiply(${param1}, ${param2_mult})]\n\n↓ Processing ↓\n\nreturn ${param1} * ${param2_mult}\n\n↓ Output ↓\n\n${product}`;
+            }
+            case 'multiply': {
+                const a = parseFloat(param1) || 0;
+                const b = parseFloat(document.getElementById('param2').value) || 0;
+                const product = a * b;
+                inputLabel = `a = ${a}, b = ${b}`;
+                bodyLabel = `return ${a} * ${b}`;
+                returnLabel = `${product}`;
+                traceText = `> output = multiply(${a}, ${b})\n1. [INPUT]   Parameters receive: a = ${a}, b = ${b}\n2. [BODY]    Computes ${a} * ${b} = ${product}\n3. [RETURN]  Hands back ${product} -> output = ${product}`;
                 break;
-            case 'greet':
-                const greeting = `Hello, ${param1}!`;
-                result = `INPUT: "${param1}"\n\n↓ Into Function ↓\n\n[greet("${param1}")]\n\n↓ Processing ↓\n\nreturn "Hello, " + "${param1}" + "!"\n\n↓ Output ↓\n\n"${greeting}"`;
+            }
+            case 'greet': {
+                const cleanName = param1 || 'World';
+                const greeting = `"Hello, ${cleanName}!"`;
+                inputLabel = `name = "${cleanName}"`;
+                bodyLabel = `"Hello, " + "${cleanName}" + "!"`;
+                returnLabel = greeting;
+                traceText = `> output = greet("${cleanName}")\n1. [INPUT]   Parameter receives: name = "${cleanName}"\n2. [BODY]    Concatenates string greeting\n3. [RETURN]  Hands back ${greeting}`;
                 break;
-            case 'is_even':
-                const isEven = parseFloat(param1) % 2 === 0;
-                result = `INPUT: ${param1}\n\n↓ Into Function ↓\n\n[is_even(${param1})]\n\n↓ Processing ↓\n\nreturn ${param1} % 2 == 0\n\n↓ Output ↓\n\n${isEven}`;
+            }
+            case 'is_even': {
+                const n = parseFloat(param1) || 0;
+                const isEven = n % 2 === 0 ? 'True' : 'False';
+                inputLabel = `n = ${n}`;
+                bodyLabel = `${n} % 2 == 0`;
+                returnLabel = isEven;
+                traceText = `> output = is_even(${n})\n1. [INPUT]   Parameter receives: n = ${n}\n2. [BODY]    Checks remainder: ${n} % 2 == ${n % 2}\n3. [RETURN]  Hands back boolean ${isEven}`;
                 break;
+            }
         }
 
-        output.textContent = result;
+        stageInputVal.textContent = inputLabel;
+        stageBodyVal.textContent = bodyLabel;
+        stageOutputVal.textContent = returnLabel;
+        output.textContent = traceText;
+
+        // Visual step-by-step highlight sequence: Input -> Body -> Return Output
+        stageInputBox.classList.add('viz-highlight');
+        animTimers.push(setTimeout(() => {
+            stageInputBox.classList.remove('viz-highlight');
+            stageBodyBox.classList.add('viz-highlight');
+        }, 220));
+        animTimers.push(setTimeout(() => {
+            stageBodyBox.classList.remove('viz-highlight');
+            stageOutputBox.classList.add('viz-state-success', 'viz-highlight');
+        }, 460));
     }
 
     // Initialize

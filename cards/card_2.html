@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Variables as Mental Containers</title>
-        <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../static/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../static/css/hypercard.css">
 </head>
 <body class="has-sticky-nav">
@@ -23,118 +23,137 @@
 
     <div class="layout-wrapper">
         <div class="hypercard-stack">
-        <div class="card-header">
+            <div class="card-header">
             <div class="card-title">Variables as Mental Containers</div>
-            <div class="card-number">Card 2 of 15</div>
+            <div class="card-number">2 / 15</div>
         </div>
-
         <div class="card-content">
-            <h2>How Do We Remember Things?</h2>
+                <h2>How Do Programs Remember Things?</h2>
 
-            <div class="narrative">
-                "Programming is fundamentally about data transformation and manipulation. Variables are how we keep track of information as it changes."
-            </div>
+                <div class="narrative">
+                    "Programming is fundamentally about data transformation and manipulation. Variables are how we keep track of information as it changes."
+                </div>
 
-            <h3>The Container Metaphor</h3>
-            <p>
-                Think of a variable as a labeled box. The label is the variable name. The contents are the value. You can look inside the box, change what's inside, or use what's inside for other operations.
-            </p>
+                <h3>The Labeled Container Metaphor</h3>
+                <p>
+                    Think of a variable as a labeled chest in your inventory. The label on the outside is the <strong>variable name</strong>. What sits inside is the <strong>value</strong>. You can peek inside the box, replace what's inside, or combine its contents with other boxes.
+                </p>
 
-            <div class="key-concept">
-                <strong>Key Insight:</strong> Variables don't just store data—they give data <em>meaning</em>. The number 25 is just a number. A variable called <code>age</code> containing 25 tells a story.
-            </div>
+                <div class="key-concept">
+                    <strong>Key Insight:</strong> Variables don't just store data—they give data <em>meaning</em>. The number <code>25</code> by itself is a mystery. A variable named <code>age</code> containing <code>25</code> tells a story.
+                </div>
 
-            <div class="visualization">
-                <div style="text-align: center; width: 100%;">
-                    <h4 style="margin-bottom: 20px;">Interactive Variable Box</h4>
-                    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
-                        <div class="viz-box" style="min-width: 150px;">
-                            <div class="viz-box-header">
-                                name
+                <!-- Interactive Variable Container Boxes -->
+                <div class="visualization">
+                    <div style="text-align: center; width: 100%;">
+                        <h4 style="margin-top: 0; margin-bottom: 18px;">Interactive Variable Containers</h4>
+                        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 18px;">
+                            <div id="box-name" class="viz-box" style="min-width: 150px;">
+                                <div class="viz-box-header">name</div>
+                                <div id="var-name" class="viz-box-content">"Alice"</div>
                             </div>
-                            <div id="var-name" class="viz-box-content">
-                                "Alice"
+                            <div id="box-age" class="viz-box" style="min-width: 150px;">
+                                <div class="viz-box-header">age</div>
+                                <div id="var-age" class="viz-box-content">25</div>
+                            </div>
+                            <div id="box-score" class="viz-box" style="min-width: 150px;">
+                                <div class="viz-box-header">score</div>
+                                <div id="var-score" class="viz-box-content">0</div>
+                            </div>
+                            <div id="box-student" class="viz-box" style="min-width: 150px;">
+                                <div class="viz-box-header">is_student</div>
+                                <div id="var-student" class="viz-box-content">True</div>
                             </div>
                         </div>
-                        <div class="viz-box" style="min-width: 150px;">
-                            <div class="viz-box-header">
-                                age
-                            </div>
-                            <div id="var-age" class="viz-box-content">
-                                25
-                            </div>
-                        </div>
-                        <div class="viz-box" style="min-width: 150px;">
-                            <div class="viz-box-header">
-                                score
-                            </div>
-                            <div id="var-score" class="viz-box-content">
-                                0
-                            </div>
+
+                        <div id="code-display" class="viz-code-block" style="margin-bottom: 16px; text-align: left;">name = "Alice"
+age = 25
+score = 0
+is_student = True</div>
+
+                        <div class="viz-button-group">
+                            <button type="button" class="hc-button" onclick="runOperation('reassign')">
+                                age = age + 1
+                            </button>
+                            <button type="button" class="hc-button" onclick="runOperation('changeName')">
+                                name = "Bob"
+                            </button>
+                            <button type="button" class="hc-button" onclick="runOperation('updateScore')">
+                                score = score + 10
+                            </button>
+                            <button type="button" class="hc-button" onclick="runOperation('toggleStudent')">
+                                is_student = not is_student
+                            </button>
+                            <button type="button" class="hc-button" onclick="reset()">
+                                ↺ Reset
+                            </button>
                         </div>
                     </div>
+                </div>
 
-                    <div class="viz-code-block" style="margin-bottom: 15px; text-align: left;">
-                        <div id="code-display">name = "Alice"<br>age = 25<br>score = 0</div>
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge badge-pitfall">PITFALL WATCH</span>
+                            <span>Assignment (<code>=</code>) vs. Algebraic Equality</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <p>
+                            The single <code>=</code> sign in Python means <strong>"assign"</strong>, not "is equal to". Always read <code>age = 25</code> from right to left: <em>"Take the value <code>25</code> on the right and pour it into the container labeled <code>age</code> on the left."</em>
+                        </p>
+
+                        <div class="key-concept" style="margin-bottom: 0;">
+                            <strong>Common Confusion:</strong> In algebra, <code>x = x + 1</code> is impossible. In Python, it is one of the most useful spells in existence: <em>"Read the current value inside <code>x</code>, add <code>1</code> to it, and store the new total back inside <code>x</code>."</em>
+                        </div>
                     </div>
+                </details>
 
-                    <div class="viz-button-group">
-                        <button class="hc-button" onclick="runOperation('reassign')" style="width: 200px;">
-                            age = age + 1
-                        </button>
-                        <button class="hc-button" onclick="runOperation('changeName')" style="width: 200px;">
-                            name = "Bob"
-                        </button>
-                        <button class="hc-button" onclick="runOperation('updateScore')" style="width: 200px;">
-                            score = score + 10
-                        </button>
-                        <button class="hc-button" onclick="reset()" style="width: 200px;">
-                            Reset
-                        </button>
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge">DEEP DIVE</span>
+                            <span>Four Reasons Variables Matter in Every Program</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <ol>
+                            <li><strong>Memory:</strong> Keep important values around for future lines of code</li>
+                            <li><strong>Clarity:</strong> Self-explanatory labels make code read like English</li>
+                            <li><strong>Reusability:</strong> Update a value in one place and use it everywhere</li>
+                            <li><strong>Step-by-Step Transformation:</strong> Evolve data cleanly over time</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <div class="flower-encouragement">
+                    <img src="../static/images/cursors/flower_3.png" alt="Coral Tulips">
+                    <div>
+                        <strong>Card 2 Takeaway (Coral Tulips Unlocked!):</strong>
+                        Without variables, data vanishes the moment it is calculated. With variables, you give every piece of information a home and a meaningful name!
                     </div>
                 </div>
             </div>
 
-            <h3>Assignment vs. Equality</h3>
-            <p>
-                The <code>=</code> sign in programming means "assign" not "equals". Reading <code>age = 25</code> should be: "Put the value 25 into the box labeled age."
-            </p>
-
-            <div class="key-concept">
-                <strong>Common Confusion:</strong> In math, <code>x = x + 1</code> makes no sense. In programming, it means: "Take the current value of x, add 1, and store the result back in x."
-            </div>
-
-            <h3>Why Variables Matter</h3>
-            <ol>
-                <li><strong>Memory:</strong> Store data you need later</li>
-                <li><strong>Clarity:</strong> Names make code readable</li>
-                <li><strong>Reusability:</strong> Change the value once, use it everywhere</li>
-                <li><strong>Manipulation:</strong> Transform data step by step</li>
-            </ol>
-
-            <div class="narrative">
-                "Without variables, you'd have to work with raw values. With variables, you work with <em>meaning</em>. That's the power of abstraction."
-            </div>
-        </div>
-
-                                                                <div class="bottom-nav">
+                    <div class="bottom-nav">
             <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='../browse.html'">
-                    [ BROWSE ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='../index.html'">
-                    [ HOME ]
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
             </div>
 
-            <!-- Visual Navigation Progress -->
-            <div style="font-family: monospace; font-size: 14px; letter-spacing: 2px;">
-                [<span style="background: var(--phosphor); color: var(--void);">####..........................</span>] 02/15
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
 
             <div class="nav-arrows">
-                <button class="arrow-button" onclick="window.location.href='card_1.html'"> &lt; PREV </button>
-                <button class="arrow-button" onclick="window.location.href='card_3.html'"> NEXT &gt; </button>
+                <button class="arrow-button" data-nav="prev" onclick="window.location.href='card_1.html'"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='card_3.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
@@ -143,14 +162,12 @@
         </div>
     </div>
 
-        <!-- ASCII ASSISTANT -->
     <div class="ascii-assistant">
         <div class="assistant-bubble">
-            > [WHY_IT_MATTERS]:<br>
-            You can't multiply a sentence by a sandwich. Types define the laws of physics for data.
+            A variable is a labeled container for data. In Python, = is not a balance scale—it pours the value on the right into the label on the left.
         </div>
         <div class="assistant-avatar">
-            <img src="../static/images/mascot.png" alt="Cute Computer Mascot" />
+            <img src="../static/images/mascot.png" alt="Wizard Guide" />
         </div>
     </div>
     </div>
@@ -160,29 +177,48 @@
     let name = "Alice";
     let age = 25;
     let score = 0;
+    let isStudent = true;
+
+    function pulseBox(boxId) {
+        const box = document.getElementById(boxId);
+        if (!box) return;
+        box.classList.add('viz-highlight');
+        setTimeout(() => box.classList.remove('viz-highlight'), 450);
+    }
 
     function updateDisplay() {
-        document.getElementById('var-name').textContent = typeof name === 'string' ? `"${name}"` : name;
+        document.getElementById('var-name').textContent = `"${name}"`;
         document.getElementById('var-age').textContent = age;
         document.getElementById('var-score').textContent = score;
+        document.getElementById('var-student').textContent = isStudent ? 'True' : 'False';
     }
 
     function runOperation(op) {
+        const pyBool = () => isStudent ? 'True' : 'False';
         switch(op) {
             case 'reassign':
                 age = age + 1;
-                document.getElementById('code-display').innerHTML =
-                    `name = "${name}"<br>age = age + 1  → age = ${age}<br>score = ${score}`;
+                pulseBox('box-age');
+                document.getElementById('code-display').textContent =
+                    `name = "${name}"\nage = age + 1   # → age is now ${age}\nscore = ${score}\nis_student = ${pyBool()}`;
                 break;
             case 'changeName':
-                name = "Bob";
-                document.getElementById('code-display').innerHTML =
-                    `name = "Bob"<br>age = ${age}<br>score = ${score}`;
+                name = name === "Alice" ? "Bob" : "Alice";
+                pulseBox('box-name');
+                document.getElementById('code-display').textContent =
+                    `name = "${name}"   # → container relabeled with "${name}"\nage = ${age}\nscore = ${score}\nis_student = ${pyBool()}`;
                 break;
             case 'updateScore':
                 score = score + 10;
-                document.getElementById('code-display').innerHTML =
-                    `name = "${name}"<br>age = ${age}<br>score = score + 10  → score = ${score}`;
+                pulseBox('box-score');
+                document.getElementById('code-display').textContent =
+                    `name = "${name}"\nage = ${age}\nscore = score + 10   # → score is now ${score}\nis_student = ${pyBool()}`;
+                break;
+            case 'toggleStudent':
+                isStudent = !isStudent;
+                pulseBox('box-student');
+                document.getElementById('code-display').textContent =
+                    `name = "${name}"\nage = ${age}\nscore = ${score}\nis_student = ${pyBool()}   # → flipped boolean state`;
                 break;
         }
         updateDisplay();
@@ -192,7 +228,9 @@
         name = "Alice";
         age = 25;
         score = 0;
-        document.getElementById('code-display').innerHTML = `name = "Alice"<br>age = 25<br>score = 0`;
+        isStudent = true;
+        document.getElementById('code-display').textContent =
+            `name = "Alice"\nage = 25\nscore = 0\nis_student = True`;
         updateDisplay();
     }
     </script>

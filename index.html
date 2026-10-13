@@ -21,55 +21,118 @@
         </div>
     </div>
 
-    <div class="hypercard-stack">
-        <div class="card-header">
+    <div class="layout-wrapper">
+        <div class="hypercard-stack">
+            <div class="card-header">
             <div class="card-title">Python Zero2One</div>
-            <div class="card-number">zero2one</div>
+            <div class="card-number">Start</div>
         </div>
-
         <div class="card-content">
-            <h2>Welcome to Python Zero2One</h2>
+                <h2>Welcome to the Enchanted Forest of Python</h2>
 
-            <div class="narrative">
-                "This is not a syntax reference. This is a journey into computational thinking."
+                <div class="narrative">
+                    "This is not a cold syntax dictionary. This is an interactive grimoire for cultivating computational intuition—growing your mind from Seed 0 to Canopy 1."
+                </div>
+
+                <p>
+                    Most programming tutorials teach you <em>what</em> to type. This guide teaches you <em>how to think</em> so that every line of Python you write feels natural, purposeful, and clear.
+                </p>
+
+                <!-- Interactive Bonsai Growth Visualizer -->
+                <div class="visualization">
+                    <div class="viz-container" style="text-align: center;">
+                        <h4 style="margin-top: 0; margin-bottom: 14px;">From Seed 0 to Canopy 1 — Interactive Growth Visualizer</h4>
+                        
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; margin: 18px 0;">
+                            <div class="viz-box" style="min-width: 190px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;">
+                                <img id="bonsai-stage-img" src="static/images/bonsai.png" alt="Pixel Bonsai Tree" style="width: 96px; height: 96px; object-fit: contain; image-rendering: pixelated; transition: transform 0.3s ease, filter 0.3s ease; transform: scale(0.75);" />
+                                <div id="bonsai-bloom-row" style="display: flex; gap: 6px; margin-top: 12px; min-height: 28px; align-items: center; justify-content: center;">
+                                    <img src="static/images/cursors/flower_1.png" style="width: 24px; height: 24px; image-rendering: pixelated;" alt="Seed Bloom">
+                                </div>
+                            </div>
+
+                            <div class="viz-box" id="bonsai-stage-card" style="flex: 1; min-width: 260px; text-align: left;">
+                                <div class="viz-box-header" id="bonsai-stage-badge">STAGE 0 / 3 — THE SEED</div>
+                                <div id="bonsai-stage-title" style="font-weight: 700; font-size: 1.15rem; color: var(--accent-primary); margin-bottom: 8px;">
+                                    The Seed: Computational Mindset (Cards 0–1)
+                                </div>
+                                <p id="bonsai-stage-desc" style="margin: 0 0 10px 0; font-size: 0.95rem;">
+                                    Before writing a single symbol of syntax, you learn how machines follow literal, sequential steps from top to bottom.
+                                </p>
+                                <div id="bonsai-stage-code" class="viz-code-block" style="margin-top: 8px; padding: 10px; font-size: 0.85rem;"># Stage 0: Think in clear steps first
+step_1 = "Locate the jar"
+step_2 = "Open lid before spreading"</div>
+                            </div>
+                        </div>
+
+                        <div class="viz-button-group" style="margin-top: 16px;">
+                            <button type="button" class="hc-button" onclick="waterBonsai()">
+                                Water &amp; Grow Mental Model
+                            </button>
+                            <button type="button" class="hc-button" onclick="window.location.href='cards/card_0.html'" style="border-color: var(--border-gold); color: #ffe169;">
+                                Begin at Card 0 →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <details class="hc-disclosure">
+                    <summary class="hc-disclosure-summary">
+                        <span class="hc-disclosure-summary-left">
+                            <span class="hc-disclosure-badge">GUIDE</span>
+                            <span>How to Explore This Woodland Grimoire (Controls &amp; Shortcuts)</span>
+                        </span>
+                        <span class="hc-disclosure-chevron">+ Explore</span>
+                    </summary>
+                    <div class="hc-disclosure-body">
+                        <ul>
+                            <li><strong>Keyboard &amp; Swipe Navigation:</strong> Press your <code>←</code> and <code>→</code> arrow keys (or swipe on touchscreens) to move effortlessly between cards.</li>
+                            <li><strong>Quick Card Jumper:</strong> Click the card badge (e.g. <code>Start</code> or <code>3 / 15</code>) in the header anytime to jump directly to any of the 16 cards.</li>
+                            <li><strong>Sunlit Glade &amp; Woodland Night:</strong> Click the glowing <strong>Pixel Sun</strong> in the top-right corner anytime to toggle between cozy dark mode and warm parchment daylight.</li>
+                            <li><strong>16 Botanical Pixel Cursors:</strong> On desktop, click the <strong>Cursor</strong> button in the top-right corner to equip any of the 16 pixel flowers or 30 pixel pointers.</li>
+                            <li><strong>Redeem All 16 Blooms:</strong> Collect flowers across Cards 0–15 and redeem them on Card 15 for a printable &amp; shareable <strong>Certificate of Programming Fundamentals</strong>!</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <div class="flower-encouragement">
+                    <img src="static/images/cursors/flower_15.png" alt="Twin Sunflowers">
+                    <div>
+                        <strong>Core Philosophy:</strong> Understanding <em>why</em> something works is infinitely more valuable than memorizing how to type it. Every card rewards your curiosity with interactive experiments and a new woodland bloom!
+                    </div>
+                </div>
+
+                <!-- MereSophist Companion Enterprise CTA -->
+                <div class="meresophist-cta">
+                    <div class="meresophist-cta-text">
+                        <h4>Want Personalized 1-on-1 Mentorship?</h4>
+                        <p>
+                            <strong>MereSophist (<a href="https://meresophist.xyz" target="_blank" rel="noopener" style="color: #ffe169;">meresophist.xyz</a>)</strong> is our companion tutoring studio offering tailored human guidance in Python, computer science fundamentals, and analytical thinking.
+                        </p>
+                    </div>
+                    <a href="https://meresophist.xyz" target="_blank" rel="noopener" class="meresophist-btn">
+                        Explore meresophist.xyz ↗
+                    </a>
+                </div>
             </div>
 
-            <p>
-                Most programming tutorials teach you <em>what</em> to type. This guide teaches you <em>how to think</em> so that what you type makes sense.
-            </p>
-
-            <h3>How to Use This Guide</h3>
-            <ul>
-                <li>Navigate using arrow buttons or keyboard shortcuts (Ctrl+← / Ctrl+→)</li>
-                <li>Press <strong>Ctrl+B</strong> to browse all cards</li>
-                <li>Each card builds on previous ones—go in order the first time</li>
-                <li>Interact with visualizations to build intuition</li>
-            </ul>
-
-            <div class="key-concept">
-                <strong>Philosophy:</strong> Understanding why something works is more valuable than memorizing how to write it.
-            </div>
-
-            <p style="margin-top: 30px;">
-                <button class="hc-button" onclick="window.location.href='cards/card_0.html'" style="padding: 12px 24px; font-size: 14px;">
-                    Begin Journey →
-                </button>
-            </p>
-        </div>
-
-        <div class="bottom-nav">
-            <div class="nav-arrows">
-                <button class="arrow-button" disabled>←</button>
-                <button class="arrow-button" onclick="window.location.href='cards/card_0.html'">→</button>
-            </div>
-
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <div class="bottom-nav">
+            <div class="nav-links">
                 <button class="hc-button" onclick="window.location.href='browse.html'">
-                    Browse <span class="shortcut">Ctrl+B</span>
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Browse
                 </button>
                 <button class="hc-button" onclick="window.location.href='index.html'">
-                    Home <span class="shortcut">Ctrl+H</span>
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home
                 </button>
+            </div>
+
+            <div class="nav-progress-indicator">
+                <a href="https://meresophist.xyz" target="_blank" rel="noopener">meresophist.xyz <svg class="svg-icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+            </div>
+
+            <div class="nav-arrows">
+                <button class="arrow-button" data-nav="prev" disabled><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev</button>
+                <button class="arrow-button" data-nav="next" onclick="window.location.href='cards/card_0.html'">Next <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
         </div>
 
@@ -78,6 +141,77 @@
         </div>
     </div>
 
+    <div class="ascii-assistant">
+        <div class="assistant-bubble">
+            Welcome, apprentice. Use the Left and Right arrow keys to move between cards, click the sun in the top corner to switch lighting, or choose a custom pixel cursor.
+        </div>
+        <div class="assistant-avatar">
+            <img src="static/images/mascot.png" alt="Wizard Guide" />
+        </div>
+    </div>
+    </div>
+
     <script src="static/js/navigation.js"></script>
+    <script>
+        const bonsaiStages = [
+            {
+                badge: "STAGE 0 / 3 — THE SEED",
+                title: "The Seed: Computational Mindset (Cards 0–1)",
+                desc: "Before writing a single symbol of syntax, you learn how machines follow literal, sequential steps from top to bottom.",
+                code: '# Stage 0: Think in clear steps first\nstep_1 = "Locate the jar"\nstep_2 = "Open lid before spreading"',
+                scale: 0.75,
+                flowers: [1, 2]
+            },
+            {
+                badge: "STAGE 1 / 3 — THE TRUNK",
+                title: "The Trunk: Variables, Types & Logic (Cards 2–6)",
+                desc: "Your mental tree grows a sturdy trunk as you store data in labeled containers, distinguish strings from numbers, and combine truth values.",
+                code: '# Stage 1: Labeled containers & truth\napprentice = "Alice"\nlevel = 3\nis_ready = (level >= 1) and True',
+                scale: 0.9,
+                flowers: [3, 4, 5, 6]
+            },
+            {
+                badge: "STAGE 2 / 3 — THE BRANCHES",
+                title: "The Branches: Conditionals & Loops (Cards 7–11)",
+                desc: "Your programs branch out with if/elif/else decision trees and repeat patterns automatically using while loops, for loops, and lists.",
+                code: '# Stage 2: Branching & repeating patterns\nspells = ["spark", "bloom", "shield"]\nfor spell in spells:\n    print("Casting:", spell)',
+                scale: 1.04,
+                flowers: [8, 10, 11, 12]
+            },
+            {
+                badge: "STAGE 3 / 3 — THE FULL CANOPY",
+                title: "The Full Canopy: Functions, Recursion & Architecture (Cards 12–15)",
+                desc: "At full bloom, you craft reusable functions, organize knowledge with dictionaries, solve self-similar puzzles with recursion, and build real projects!",
+                code: '# Stage 3: Reusable tools & mastery\ndef grow_canopy(depth):\n    if depth == 0:\n        return "Full Bloom!"\n    return grow_canopy(depth - 1)',
+                scale: 1.18,
+                flowers: [13, 14, 15, 16]
+            }
+        ];
+
+        let currentBonsaiStage = 0;
+
+        function waterBonsai() {
+            currentBonsaiStage = (currentBonsaiStage + 1) % bonsaiStages.length;
+            const stage = bonsaiStages[currentBonsaiStage];
+
+            document.getElementById('bonsai-stage-badge').textContent = stage.badge;
+            document.getElementById('bonsai-stage-title').textContent = stage.title;
+            document.getElementById('bonsai-stage-desc').textContent = stage.desc;
+            document.getElementById('bonsai-stage-code').textContent = stage.code;
+
+            const imgEl = document.getElementById('bonsai-stage-img');
+            imgEl.style.transform = `scale(${stage.scale})`;
+            imgEl.style.filter = 'drop-shadow(0 0 12px rgba(102, 192, 50, 0.55))';
+
+            const bloomRow = document.getElementById('bonsai-bloom-row');
+            bloomRow.innerHTML = stage.flowers.map(f =>
+                `<img src="static/images/cursors/flower_${f}.png" style="width: 24px; height: 24px; image-rendering: pixelated;" alt="Bloom ${f}">`
+            ).join('');
+
+            const cardEl = document.getElementById('bonsai-stage-card');
+            cardEl.classList.add('viz-highlight');
+            setTimeout(() => cardEl.classList.remove('viz-highlight'), 450);
+        }
+    </script>
 </body>
 </html>
